@@ -2403,7 +2403,7 @@
       }
       else if (action === 'complete') NODES.forEach(n => n.state = 'complete');
       else if (action === 'fadeOut')  fadeOutStart = elapsed;
-      else if (action === 'reset')    resetState();
+      else if (action === 'reset') { resetState(); break; }
     }
   }
 
