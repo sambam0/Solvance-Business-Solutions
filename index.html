@@ -2084,9 +2084,14 @@
   if (!prefersReduced && window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('.card, .case-card, .tier, .qcard, .step').forEach(card => {
       card.addEventListener('mousemove', e => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--glow-x', ((e.clientX - r.left) / r.width * 100) + '%');
-        card.style.setProperty('--glow-y', ((e.clientY - r.top)  / r.height * 100) + '%');
+        const cx = e.clientX, cy = e.clientY;
+        if (card._glowRaf) return;
+        card._glowRaf = requestAnimationFrame(() => {
+          card._glowRaf = null;
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--glow-x', ((cx - r.left) / r.width * 100) + '%');
+          card.style.setProperty('--glow-y', ((cy - r.top)  / r.height * 100) + '%');
+        });
       });
     });
   }
@@ -2120,6 +2125,7 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const DPR = window.devicePixelRatio || 1;
   let W = 0, H = 0, NS = 0;
+  let bgCache = null, isIntersecting = false;
 
   // ── NODES ────────────────────────────────────────────────
   const NODES = [
@@ -2217,13 +2223,26 @@
   }
 
   // ── DRAW ─────────────────────────────────────────────────
-  function drawBgDots() {
-    ctx.fillStyle = 'rgba(255,255,255,0.028)';
+  function rebuildBgCache() {
+    const oc = document.createElement('canvas');
+    oc.width  = Math.round(W * DPR);
+    oc.height = Math.round(H * DPR);
+    const oc2 = oc.getContext('2d');
+    oc2.scale(DPR, DPR);
+    oc2.fillStyle = 'rgba(255,255,255,0.028)';
     const s = 28;
     for (let x = s; x < W; x += s)
       for (let y = s; y < H; y += s) {
-        ctx.beginPath(); ctx.arc(x, y, 0.75, 0, Math.PI * 2); ctx.fill();
+        oc2.beginPath(); oc2.arc(x, y, 0.75, 0, Math.PI * 2); oc2.fill();
       }
+    bgCache = oc;
+  }
+  function drawBgDots() {
+    if (!bgCache) rebuildBgCache();
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(bgCache, 0, 0);
+    ctx.restore();
   }
 
   function drawEdges() {
@@ -2406,6 +2425,7 @@
 
   // ── LOOP ─────────────────────────────────────────────────
   function frame(ts) {
+    if (document.hidden) { rafId = null; return; }
     currentTs = ts;
     if (!animStart) animStart = ts;
     const elapsed = ts - animStart;
@@ -2440,6 +2460,7 @@
 
   // ── SIZE ─────────────────────────────────────────────────
   function setSize() {
+    bgCache = null;
     const mobile = window.innerWidth < 600;
     W  = Math.min(canvas.parentElement.offsetWidth, 1200);
     H  = Math.round(W * (mobile ? 0.60 : 0.44)); // taller on mobile for node spacing
@@ -2476,15 +2497,23 @@
     const section = document.getElementById('workflow-demo');
     if (section && 'IntersectionObserver' in window) {
       new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
+        isIntersecting = entries[0].isIntersecting;
+        if (isIntersecting) {
           if (!rafId) { resetState(); rafId = requestAnimationFrame(frame); }
         } else {
           if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
         }
-      }, { threshold: 0.05 }).observe(section);
+      }, { threshold: 0.15 }).observe(section);
     } else {
+      isIntersecting = true;
       rafId = requestAnimationFrame(frame);
     }
+    // Resume RAF when tab becomes visible again (if section is in view)
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && isIntersecting && !rafId) {
+        rafId = requestAnimationFrame(frame);
+      }
+    });
   }
 })();
 </script>
