@@ -284,12 +284,20 @@ nav.top .row {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(59, 158, 255, .025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 158, 255, .025) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 75%);
+    linear-gradient(rgba(59, 158, 255, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 158, 255, .055) 1px, transparent 1px),
+    linear-gradient(rgba(157, 111, 255, .018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 111, 255, .018) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
+  mask-image: radial-gradient(ellipse 100% 85% at 50% 0%, black 15%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 85% at 50% 0%, black 15%, transparent 80%);
+  animation: gridDrift 28s linear infinite;
   pointer-events: none
+}
+
+@keyframes gridDrift {
+  0%   { background-position: 0 0, 0 0, 0 0, 0 0 }
+  100% { background-position: 64px 64px, 64px 64px, 16px 16px, 16px 16px }
 }
 
 .hero .ann {
@@ -359,11 +367,11 @@ nav.top .row {
 }
 
 .hero-orb-1 {
-  width: 640px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(59, 158, 255, .13) 0%, transparent 70%);
-  top: -80px;
-  left: calc(50% - 200px);
+  width: 820px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(59, 158, 255, .16) 0%, transparent 70%);
+  top: -100px;
+  left: calc(50% - 410px);
   animation: orb1 14s ease-in-out infinite
 }
 
