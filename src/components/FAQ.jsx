@@ -42,7 +42,7 @@ function FAQItem({ q, a }) {
           transition={{ type: 'spring', stiffness: 400, damping: 26 }}
         >
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-            <path d="M5 1v8M1 5h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <path d="M5 1v8M1 5h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </motion.span>
       </div>

@@ -14,47 +14,47 @@ export default function WorkflowCanvas() {
     let bgCache = null
 
     const NODES = [
-      { id: 'trigger',  label: 'Trigger',        abbr: 'TR', rx: 0.075, ry: 0.50,  color: '#F97316', glow: 0, state: 'dormant' },
-      { id: 'orch',     label: 'Orchestrator',   abbr: 'OR', rx: 0.265, ry: 0.50,  color: '#8B5CF6', glow: 0, state: 'dormant' },
-      { id: 'data',     label: 'Data Ingestion', abbr: 'DI', rx: 0.490, ry: 0.175, color: '#3B82F6', glow: 0, state: 'dormant' },
-      { id: 'memory',   label: 'Memory',         abbr: 'ME', rx: 0.490, ry: 0.800, color: '#06B6D4', glow: 0, state: 'dormant' },
-      { id: 'llm',      label: 'LLM Router',     abbr: 'LM', rx: 0.625, ry: 0.375, color: '#A78BFA', glow: 0, state: 'dormant' },
-      { id: 'actions',  label: 'Actions',        abbr: 'AC', rx: 0.760, ry: 0.650, color: '#10B981', glow: 0, state: 'dormant' },
-      { id: 'response', label: 'Response',       abbr: 'RE', rx: 0.905, ry: 0.240, color: '#60A5FA', glow: 0, state: 'dormant' },
-      { id: 'integ',    label: 'Integrations',   abbr: 'IN', rx: 0.905, ry: 0.775, color: '#F59E0B', glow: 0, state: 'dormant' },
+      { id: 'trigger', label: 'Trigger', abbr: 'TR', rx: 0.075, ry: 0.50, color: '#F97316', glow: 0, state: 'dormant' },
+      { id: 'orch', label: 'Orchestrator', abbr: 'OR', rx: 0.265, ry: 0.50, color: '#8B5CF6', glow: 0, state: 'dormant' },
+      { id: 'data', label: 'Data Ingestion', abbr: 'DI', rx: 0.490, ry: 0.175, color: '#3B82F6', glow: 0, state: 'dormant' },
+      { id: 'memory', label: 'Memory', abbr: 'ME', rx: 0.490, ry: 0.800, color: '#06B6D4', glow: 0, state: 'dormant' },
+      { id: 'llm', label: 'LLM Router', abbr: 'LM', rx: 0.625, ry: 0.375, color: '#A78BFA', glow: 0, state: 'dormant' },
+      { id: 'actions', label: 'Actions', abbr: 'AC', rx: 0.760, ry: 0.650, color: '#10B981', glow: 0, state: 'dormant' },
+      { id: 'response', label: 'Response', abbr: 'RE', rx: 0.905, ry: 0.240, color: '#60A5FA', glow: 0, state: 'dormant' },
+      { id: 'integ', label: 'Integrations', abbr: 'IN', rx: 0.905, ry: 0.775, color: '#F59E0B', glow: 0, state: 'dormant' },
     ]
     const nMap = Object.fromEntries(NODES.map(n => [n.id, n]))
 
     const EDGES = [
-      { from: 'trigger', to: 'orch',     lit: 0 },
-      { from: 'orch',    to: 'data',     lit: 0 },
-      { from: 'orch',    to: 'memory',   lit: 0 },
-      { from: 'orch',    to: 'llm',      lit: 0 },
-      { from: 'llm',     to: 'response', lit: 0 },
-      { from: 'llm',     to: 'actions',  lit: 0 },
-      { from: 'actions', to: 'integ',    lit: 0 },
+      { from: 'trigger', to: 'orch', lit: 0 },
+      { from: 'orch', to: 'data', lit: 0 },
+      { from: 'orch', to: 'memory', lit: 0 },
+      { from: 'orch', to: 'llm', lit: 0 },
+      { from: 'llm', to: 'response', lit: 0 },
+      { from: 'llm', to: 'actions', lit: 0 },
+      { from: 'actions', to: 'integ', lit: 0 },
     ]
     const eMap = Object.fromEntries(EDGES.map(e => [`${e.from}→${e.to}`, e]))
 
     const SEQ = [
-      [  400, 'activate', 'trigger'],
-      [  900, 'pulse',    'trigger→orch'],
-      [ 2600, 'activate', 'orch'],
-      [ 3100, 'pulse',    'orch→data'],
-      [ 3100, 'pulse',    'orch→memory'],
-      [ 3100, 'pulse',    'orch→llm'],
-      [ 4700, 'activate', 'data'],
-      [ 4700, 'activate', 'memory'],
-      [ 4800, 'activate', 'llm'],
-      [ 5200, 'pulse',    'llm→response'],
-      [ 5200, 'pulse',    'llm→actions'],
-      [ 6800, 'activate', 'response'],
-      [ 6900, 'activate', 'actions'],
-      [ 7200, 'pulse',    'actions→integ'],
-      [ 8500, 'activate', 'integ'],
-      [ 9100, 'complete', null],
-      [10300, 'fadeOut',  null],
-      [12000, 'reset',    null],
+      [400, 'activate', 'trigger'],
+      [900, 'pulse', 'trigger→orch'],
+      [2600, 'activate', 'orch'],
+      [3100, 'pulse', 'orch→data'],
+      [3100, 'pulse', 'orch→memory'],
+      [3100, 'pulse', 'orch→llm'],
+      [4700, 'activate', 'data'],
+      [4700, 'activate', 'memory'],
+      [4800, 'activate', 'llm'],
+      [5200, 'pulse', 'llm→response'],
+      [5200, 'pulse', 'llm→actions'],
+      [6800, 'activate', 'response'],
+      [6900, 'activate', 'actions'],
+      [7200, 'pulse', 'actions→integ'],
+      [8500, 'activate', 'integ'],
+      [9100, 'complete', null],
+      [10300, 'fadeOut', null],
+      [12000, 'reset', null],
     ]
 
     let pulses = [], seqIdx = 0, animStart = null, lastTs = 0, rafId = null
@@ -77,15 +77,15 @@ export default function WorkflowCanvas() {
       const x1 = x0 + off, x2 = x3 - off
       const m = 1 - t
       return {
-        x: m*m*m*x0 + 3*m*m*t*x1 + 3*m*t*t*x2 + t*t*t*x3,
-        y: m*m*m*y0 + 3*m*m*t*y0 + 3*m*t*t*y3 + t*t*t*y3,
+        x: m * m * m * x0 + 3 * m * m * t * x1 + 3 * m * t * t * x2 + t * t * t * x3,
+        y: m * m * m * y0 + 3 * m * m * t * y0 + 3 * m * t * t * y3 + t * t * t * y3,
       }
     }
 
-    function eio(t) { return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t }
+    function eio(t) { return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t }
 
     function ca(hex, a) {
-      const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16)
+      const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16)
       return `rgba(${r},${g},${b},${a})`
     }
 
@@ -93,19 +93,19 @@ export default function WorkflowCanvas() {
       ctx.beginPath()
       ctx.moveTo(x + r, y)
       ctx.lineTo(x + w - r, y)
-      ctx.arcTo(x + w, y,     x + w, y + r,     r)
+      ctx.arcTo(x + w, y, x + w, y + r, r)
       ctx.lineTo(x + w, y + h - r)
       ctx.arcTo(x + w, y + h, x + w - r, y + h, r)
       ctx.lineTo(x + r, y + h)
-      ctx.arcTo(x,     y + h, x,     y + h - r, r)
+      ctx.arcTo(x, y + h, x, y + h - r, r)
       ctx.lineTo(x, y + r)
-      ctx.arcTo(x,     y,     x + r, y,          r)
+      ctx.arcTo(x, y, x + r, y, r)
       ctx.closePath()
     }
 
     function rebuildBgCache() {
       const oc = document.createElement('canvas')
-      oc.width  = Math.round(W * DPR)
+      oc.width = Math.round(W * DPR)
       oc.height = Math.round(H * DPR)
       const oc2 = oc.getContext('2d')
       oc2.scale(DPR, DPR)
@@ -171,9 +171,9 @@ export default function WorkflowCanvas() {
       if (g > 0.04) {
         const bloomR = NS * (1.35 + 0.12 * pulse * g)
         const bloom = ctx.createRadialGradient(cx, cy, 0, cx, cy, bloomR)
-        bloom.addColorStop(0,   ca(nc, (0.18 + 0.07 * pulse) * g))
+        bloom.addColorStop(0, ca(nc, (0.18 + 0.07 * pulse) * g))
         bloom.addColorStop(0.6, ca(nc, 0.07 * g))
-        bloom.addColorStop(1,   ca(nc, 0))
+        bloom.addColorStop(1, ca(nc, 0))
         ctx.beginPath(); ctx.arc(cx, cy, bloomR, 0, Math.PI * 2)
         ctx.fillStyle = bloom; ctx.fill()
       }
@@ -187,9 +187,9 @@ export default function WorkflowCanvas() {
       rrect(x, y, NS, NS, cr)
       ctx.clip()
       const sg = ctx.createLinearGradient(x, y, x, y + stripH * 1.8)
-      sg.addColorStop(0,   ca(nc, 0.30 + 0.30 * g))
+      sg.addColorStop(0, ca(nc, 0.30 + 0.30 * g))
       sg.addColorStop(0.6, ca(nc, 0.10 + 0.10 * g))
-      sg.addColorStop(1,   ca(nc, 0))
+      sg.addColorStop(1, ca(nc, 0))
       ctx.fillStyle = sg
       ctx.fillRect(x, y, NS, stripH * 1.8)
       ctx.restore()
@@ -265,13 +265,13 @@ export default function WorkflowCanvas() {
     function processSeq(elapsed) {
       while (seqIdx < SEQ.length && elapsed >= SEQ[seqIdx][0]) {
         const [, action, target] = SEQ[seqIdx++]
-        if      (action === 'activate') nMap[target].state = 'active'
+        if (action === 'activate') nMap[target].state = 'active'
         else if (action === 'pulse') {
           const [from, to] = target.split('→')
           pulses.push({ from, to, t: 0, start: elapsed, dur: 1650 })
         }
         else if (action === 'complete') NODES.forEach(n => n.state = 'complete')
-        else if (action === 'fadeOut')  fadeOutStart = elapsed
+        else if (action === 'fadeOut') fadeOutStart = elapsed
         else if (action === 'reset') { resetState(); break }
       }
     }
@@ -326,12 +326,12 @@ export default function WorkflowCanvas() {
     function setSize() {
       bgCache = null
       const mobile = window.innerWidth < 600
-      W  = Math.min(canvas.parentElement.offsetWidth, 1200)
-      H  = Math.round(W * (mobile ? 0.60 : 0.44))
+      W = Math.min(canvas.parentElement.offsetWidth, 1200)
+      H = Math.round(W * (mobile ? 0.60 : 0.44))
       NS = Math.max(Math.round(Math.min(W * 0.065, 72)), mobile ? 36 : 44)
-      canvas.width  = Math.round(W * DPR)
+      canvas.width = Math.round(W * DPR)
       canvas.height = Math.round(H * DPR)
-      canvas.style.width  = W + 'px'
+      canvas.style.width = W + 'px'
       canvas.style.height = H + 'px'
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0)
     }

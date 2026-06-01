@@ -61,7 +61,7 @@ export default function Contact() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <div className="cta-strip">
-                {[['40+','AI projects delivered and in production.'],['3 wks','Average time to first result.'],['100%','Client ownership of all work.'],['4.9★','Average satisfaction rating.']].map(([n, l]) => (
+                {[['40+', 'AI projects delivered and in production.'], ['3 wks', 'Average time to first result.'], ['100%', 'Client ownership of all work.'], ['4.9★', 'Average satisfaction rating.']].map(([n, l]) => (
                   <div className="it" key={n}><div className="n">{n}</div><div className="l">{l}</div></div>
                 ))}
               </div>
@@ -126,7 +126,7 @@ export default function Contact() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
                       Message sent — we'll be in touch within one business day.
                     </motion.div>
                   )}

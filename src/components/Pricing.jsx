@@ -17,7 +17,7 @@ export default function Pricing() {
               <h3>Strategy, guidance, and accountability every month.</h3>
               <div className="price"><span className="amt">$1,500</span><span className="per">/month · cancel anytime</span></div>
               <ul>
-                {['2 strategy sessions per month','AI roadmap + prioritization','Unlimited async Q&A','Tool & vendor evaluations','Monthly written report','No long-term commitment'].map(item => (
+                {['2 strategy sessions per month', 'AI roadmap + prioritization', 'Unlimited async Q&A', 'Tool & vendor evaluations', 'Monthly written report', 'No long-term commitment'].map(item => (
                   <li key={item}><span className="ck">✓</span> {item}</li>
                 ))}
               </ul>
@@ -40,7 +40,7 @@ export default function Pricing() {
               <h3>We scope, build, and deploy your custom AI solution.</h3>
               <div className="price"><span className="amt">Custom</span><span className="per">· scoped per project</span></div>
               <ul>
-                {['Everything in Advisory','Dedicated build team','Custom AI agents & automations','Full integration with your stack','Team training & documentation','60-day post-launch support'].map(item => (
+                {['Everything in Advisory', 'Dedicated build team', 'Custom AI agents & automations', 'Full integration with your stack', 'Team training & documentation', '60-day post-launch support'].map(item => (
                   <li key={item}><span className="ck">✓</span> {item}</li>
                 ))}
               </ul>

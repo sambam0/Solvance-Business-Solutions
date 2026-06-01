@@ -7,8 +7,8 @@ const steps = [
     body: "We map your operations, interview your team, and identify the highest-leverage AI opportunities. You leave with a prioritized roadmap — useful whether or not you hire us.",
     lines: [
       { green: false, text: 'Auditing current workflows + tools…' },
-      { green: true,  text: '3 high-ROI automation targets found' },
-      { green: true,  text: 'Roadmap ready — ranked by impact' },
+      { green: true, text: '3 high-ROI automation targets found' },
+      { green: true, text: 'Roadmap ready — ranked by impact' },
     ],
   },
   {
@@ -17,7 +17,7 @@ const steps = [
     lines: [
       { green: false, text: 'Week 2 — prototype live in staging' },
       { green: false, text: 'Week 3 — integrated with your systems' },
-      { green: true,  text: 'Week 4 — accuracy benchmarks passing' },
+      { green: true, text: 'Week 4 — accuracy benchmarks passing' },
     ],
   },
   {
