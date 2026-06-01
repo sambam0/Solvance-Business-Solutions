@@ -65,6 +65,18 @@ img {
   padding: 0 28px
 }
 
+/* ── Scroll progress bar ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3B9EFF, #9D6FFF);
+  transform-origin: left;
+  z-index: 100
+}
+
 /* ── Nav ── */
 nav.top {
   position: fixed;
@@ -128,7 +140,8 @@ nav.top .row {
   color: var(--ink-2);
   transition: color .2s ease;
   border-radius: 4px;
-  padding: 2px 4px
+  padding: 2px 4px;
+  position: relative
 }
 
 .nav-links a:hover {
@@ -138,6 +151,20 @@ nav.top .row {
 .nav-links a.active {
   color: var(--brand);
   opacity: 1
+}
+
+.nav-label {
+  position: relative;
+  z-index: 1
+}
+
+.nav-pill {
+  position: absolute;
+  inset: -3px -8px;
+  background: rgba(59, 158, 255, .10);
+  border: 1px solid rgba(59, 158, 255, .18);
+  border-radius: 6px;
+  z-index: 0
 }
 
 .nav-links a:focus-visible {
@@ -955,9 +982,17 @@ section {
   margin-top: auto
 }
 
+/* ── Steps connector ── */
+.steps-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3B9EFF 25%, #9D6FFF 75%, transparent);
+  margin: 32px 0 0;
+  transform-origin: left
+}
+
 /* ── Steps ── */
 .steps {
-  margin-top: 48px;
+  margin-top: 32px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px
@@ -1231,6 +1266,21 @@ section {
 }
 
 /* ── Testimonials ── */
+.desktop-quotes {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px
+}
+
+.quotes-mobile {
+  display: none
+}
+
+.carousel-dots {
+  display: none
+}
+
 .quotes {
   margin-top: 48px;
   display: grid;
@@ -1313,18 +1363,16 @@ section {
 }
 
 .team-av {
-  width: 58px;
-  height: 58px;
-  border-radius: 16px;
-  background: var(--soft);
-  border: 1px solid var(--line-2);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
-  color: var(--brand);
   flex-shrink: 0;
-  letter-spacing: -.02em
+  letter-spacing: -.02em;
+  font-family: 'Geist Mono', monospace
 }
 
 .team-info {
@@ -1525,26 +1573,86 @@ section {
 
 footer {
   background: #08080A;
-  border-top: 1px solid var(--line);
-  padding: 28px 0
+  border-top: 1px solid var(--line)
 }
 
-footer .row {
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  padding: 52px 0 40px;
+  border-bottom: 1px solid var(--line)
+}
+
+.footer-brand .brand {
+  font-size: 17px
+}
+
+.footer-tagline {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.6
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+
+.footer-nav a {
+  font-size: 14px;
+  color: var(--mute);
+  transition: color .2s
+}
+
+.footer-nav a:hover {
+  color: var(--ink)
+}
+
+.footer-social {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  display: grid;
+  place-items: center;
+  color: var(--mute);
+  transition: color .2s, border-color .2s, background .2s
+}
+
+.social-link:hover {
+  color: var(--ink);
+  border-color: var(--mute-2);
+  background: var(--bg-3)
+}
+
+.footer-base {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  padding: 20px 0;
   font-size: 13px;
-  color: var(--mute)
+  color: var(--mute);
+  flex-wrap: wrap;
+  gap: 12px
 }
 
-footer .links {
+.footer-legal {
   display: flex;
-  gap: 20px
+  gap: 16px
 }
 
-footer .links a:hover {
+.footer-legal a:hover {
   color: var(--ink)
 }
 
@@ -1617,6 +1725,63 @@ footer .links a:hover {
   .quotes,
   .pricing {
     grid-template-columns: 1fr
+  }
+
+  .desktop-quotes {
+    display: none
+  }
+
+  .quotes-mobile {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    gap: 16px;
+    padding-bottom: 4px;
+    margin-top: 32px
+  }
+
+  .quotes-mobile::-webkit-scrollbar {
+    display: none
+  }
+
+  .qcard-wrap {
+    scroll-snap-align: start;
+    min-width: calc(88vw);
+    flex-shrink: 0
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px
+  }
+
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--mute-2);
+    border: 0;
+    cursor: pointer;
+    padding: 0
+  }
+
+  .steps-line {
+    display: none
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 36px;
+    padding: 40px 0 32px
+  }
+
+  .footer-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 24px
   }
 
   .case-grid {

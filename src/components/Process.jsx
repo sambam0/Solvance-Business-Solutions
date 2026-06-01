@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import FadeIn from './FadeIn.jsx'
 import SpringCard from './SpringCard.jsx'
 
@@ -43,6 +44,14 @@ export default function Process() {
           </h2>
         </FadeIn>
         <FadeIn delay={0.1}><p className="section-sub">Three steps, no surprises. We move fast, keep you in the loop, and don't disappear after launch.</p></FadeIn>
+
+        <motion.div
+          className="steps-line"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 1.4, ease: [0.2, 0.7, 0.2, 1], delay: 0.2 }}
+        />
 
         <div className="steps">
           {steps.map((s, i) => (

@@ -1,3 +1,4 @@
+import { useScroll, motion } from 'framer-motion'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import Clients from './components/Clients.jsx'
@@ -13,8 +14,14 @@ import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 
 export default function App() {
+  const { scrollYProgress } = useScroll()
+
   return (
     <>
+      <motion.div
+        className="scroll-progress"
+        style={{ scaleX: scrollYProgress }}
+      />
       <Nav />
       <Hero />
       <Clients />
