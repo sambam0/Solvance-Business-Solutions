@@ -285,10 +285,8 @@ nav.top .row {
   inset: 0;
   background-image:
     linear-gradient(rgba(59, 158, 255, .055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 158, 255, .055) 1px, transparent 1px),
-    linear-gradient(rgba(157, 111, 255, .018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(157, 111, 255, .018) 1px, transparent 1px);
-  background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
+    linear-gradient(90deg, rgba(59, 158, 255, .055) 1px, transparent 1px);
+  background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 100% 85% at 50% 0%, black 15%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 100% 85% at 50% 0%, black 15%, transparent 80%);
   animation: gridDrift 28s linear infinite;
@@ -296,8 +294,8 @@ nav.top .row {
 }
 
 @keyframes gridDrift {
-  0%   { background-position: 0 0, 0 0, 0 0, 0 0 }
-  100% { background-position: 64px 64px, 64px 64px, 16px 16px, 16px 16px }
+  0%   { background-position: 0 0, 0 0 }
+  100% { background-position: 64px 64px, 64px 64px }
 }
 
 .hero .ann {
