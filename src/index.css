@@ -29,7 +29,6 @@ body {
   font-family: 'Geist', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: 'ss01', 'cv11', 'cv02';
-  scroll-behavior: smooth;
 }
 
 body {

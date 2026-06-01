@@ -1,4 +1,6 @@
 import { useScroll, motion } from 'framer-motion'
+import { useEffect } from 'react'
+import Lenis from 'lenis'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import Clients from './components/Clients.jsx'
@@ -15,6 +17,29 @@ import Footer from './components/Footer.jsx'
 
 export default function App() {
   const { scrollYProgress } = useScroll()
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+    })
+
+    let rafId
+    function raf(time) {
+      lenis.raf(time)
+      rafId = requestAnimationFrame(raf)
+    }
+    rafId = requestAnimationFrame(raf)
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      lenis.destroy()
+    }
+  }, [])
 
   return (
     <>
