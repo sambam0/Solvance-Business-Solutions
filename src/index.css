@@ -293,10 +293,13 @@ nav.top .row {
 }
 
 .hero .ann {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   align-items: center;
   gap: 8px;
-  padding: 5px 6px 5px 14px;
+  padding: 5px 10px;
   border: 1px solid var(--line-2);
   border-radius: 999px;
   font-size: 13px;
