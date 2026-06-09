@@ -36,15 +36,21 @@ export default function Nav() {
             Solvance
           </div>
           <div className="nav-links">
-            {links.map(l => (
-              <a
-                key={l.href}
-                href={l.href}
-                className={active === l.href.slice(1) ? 'active' : ''}
-              >
-                {l.label}
-              </a>
-            ))}
+            {links.map(l => {
+              const isActive = active === l.href.slice(1)
+              return (
+                <a key={l.href} href={l.href} className={isActive ? 'active' : ''}>
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="nav-pill"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  <span className="nav-label">{l.label}</span>
+                </a>
+              )
+            })}
           </div>
           <div className="nav-cta">
             <span className="pill"><span className="dot" /> Taking clients</span>

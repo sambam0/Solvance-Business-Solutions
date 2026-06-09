@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import FadeIn from './FadeIn.jsx'
 
 function validate(fields) {
@@ -8,6 +8,49 @@ function validate(fields) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim())) errs.email = 'Please enter a valid email address.'
   if (fields.message.trim().length <= 10) errs.message = 'Please tell us a bit about your situation.'
   return errs
+}
+
+const statItems = [
+  { target: 40, suffix: '+', label: 'AI projects delivered and in production.' },
+  { target: 3, suffix: ' wks', label: 'Average time to first result.' },
+  { target: 100, suffix: '%', label: 'Client ownership of all work.' },
+  { target: 4.9, suffix: '★', label: 'Average satisfaction rating.' },
+]
+
+function AnimStat({ target, suffix, label }) {
+  const ref = useRef(null)
+  const numRef = useRef(null)
+  const prefersReduced = useReducedMotion()
+
+  useEffect(() => {
+    if (prefersReduced) return
+    const isDecimal = String(target).includes('.')
+    let started = false
+    const obs = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting || started) return
+      started = true
+      obs.disconnect()
+      const duration = 1200
+      const startTime = performance.now()
+      function tick(now) {
+        const p = Math.min((now - startTime) / duration, 1)
+        const eased = 1 - Math.pow(1 - p, 3)
+        const val = isDecimal ? (eased * target).toFixed(1) : Math.floor(eased * target)
+        if (numRef.current) numRef.current.textContent = val + suffix
+        if (p < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }, { threshold: 0.5 })
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [target, suffix, prefersReduced])
+
+  return (
+    <div className="it" ref={ref}>
+      <div className="n" ref={numRef}>{target}{suffix}</div>
+      <div className="l">{label}</div>
+    </div>
+  )
 }
 
 export default function Contact() {
@@ -61,8 +104,8 @@ export default function Contact() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <div className="cta-strip">
-                {[['40+', 'AI projects delivered and in production.'], ['3 wks', 'Average time to first result.'], ['100%', 'Client ownership of all work.'], ['4.9★', 'Average satisfaction rating.']].map(([n, l]) => (
-                  <div className="it" key={n}><div className="n">{n}</div><div className="l">{l}</div></div>
+                {statItems.map(s => (
+                  <AnimStat key={s.suffix} {...s} />
                 ))}
               </div>
             </FadeIn>
