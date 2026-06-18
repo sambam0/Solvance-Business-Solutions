@@ -2704,7 +2704,8 @@ footer {
   .result-item:last-child { border-bottom: 0; }
   .audit-layout { grid-template-columns: 1fr; gap: 40px; }
   .funnel-hero-layout { grid-template-columns: 1fr; }
-  .funnel-diagram { display: none; }
+  .funnel-diagram { max-width: 260px; margin: 0 auto; }
+  .pain-grid { grid-template-columns: 1fr; }
   .seo-pricing { grid-template-columns: 1fr; }
   .wwd-grid { grid-template-columns: 1fr; }
   .blueprint-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
@@ -2713,4 +2714,106 @@ footer {
 @media (max-width: 600px) {
   .results-grid { grid-template-columns: 1fr 1fr; }
   .page-hero { padding: 120px 0 60px; }
+}
+
+/* ── Platform logos strip (Ads page) ── */
+.platform-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-2);
+}
+
+.platform-label {
+  font-size: 11px;
+  color: var(--mute);
+  font-family: 'Geist Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+.platform-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mute);
+  padding: 4px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  font-family: 'Geist Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* ── Pain points section (Ads page) ── */
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card.pain-card {
+  border-left: 2px solid rgba(220, 38, 38, .35);
+}
+
+.pain-x {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 38, 38, .1);
+  border: 1px solid rgba(220, 38, 38, .2);
+  border-radius: 8px;
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+/* ── Before / After case cards (Ads page) ── */
+.ba-before {
+  margin-top: 12px;
+  padding-bottom: 16px;
+}
+
+.ba-label {
+  font-size: 10px;
+  font-family: 'Geist Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--mute);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.ba-label-after {
+  color: var(--orange);
+}
+
+.ba-divider {
+  height: 1px;
+  background: var(--line-2);
+  margin: 0 0 0 0;
+}
+
+.ba-before-text {
+  color: var(--mute);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.ba-after {
+  padding-top: 16px;
+}
+
+.case-attribution {
+  font-size: 12px;
+  color: var(--mute);
+  font-family: 'Geist Mono', monospace;
+  margin-top: 10px;
+  letter-spacing: .01em;
 }

@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { motion, useScroll, useReducedMotion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useScroll, useReducedMotion, AnimatePresence } from 'framer-motion'
 import Lenis from 'lenis'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
@@ -13,8 +13,30 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: [0.2, 0.7, 0.2, 1] },
 })
 
+// ── SVG check icon ────────────────────────────────────────────────
+const Check = () => (
+  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
+
+// ── useInView (fires once on viewport entry) ──────────────────────
+function useInViewOnce(threshold = 0.25) {
+  const ref = useRef(null)
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect() } },
+      { threshold }
+    )
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [threshold])
+  return [ref, inView]
+}
+
 // ── Animated stat counter ─────────────────────────────────────────
-function StatItem({ target, suffix, label }) {
+function StatItem({ target, suffix, label, prefix = '' }) {
   const ref = useRef(null)
   const numRef = useRef(null)
   const prefersReduced = useReducedMotion()
@@ -30,23 +52,45 @@ function StatItem({ target, suffix, label }) {
         const p = Math.min((now - startTime) / duration, 1)
         const eased = 1 - Math.pow(1 - p, 3)
         const val = isDecimal ? (eased * target).toFixed(1) : Math.floor(eased * target)
-        if (numRef.current) numRef.current.innerHTML = val + '<sup>' + suffix + '</sup>'
+        if (numRef.current) numRef.current.innerHTML = prefix + val + '<sup>' + suffix + '</sup>'
         if (p < 1) requestAnimationFrame(tick)
       }
       requestAnimationFrame(tick)
     }, { threshold: 0.5 })
     if (ref.current) obs.observe(ref.current)
     return () => obs.disconnect()
-  }, [target, suffix, prefersReduced])
+  }, [target, suffix, prefix, prefersReduced])
   return (
     <motion.div className="stat" ref={ref} whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
-      <div className="n" ref={numRef} dangerouslySetInnerHTML={{ __html: `${target}<sup>${suffix}</sup>` }} />
+      <div className="n" ref={numRef} dangerouslySetInnerHTML={{ __html: `${prefix}${target}<sup>${suffix}</sup>` }} />
       <div className="l">{label}</div>
     </motion.div>
   )
 }
 
-// ── Animated funnel diagram ───────────────────────────────────────
+// ── Animated demo lines (scroll-triggered stagger) ────────────────
+function AnimatedDemoLines({ lines }) {
+  const [ref, inView] = useInViewOnce(0.3)
+  const prefersReduced = useReducedMotion()
+  return (
+    <div className="demo" ref={ref}>
+      {lines.map((l, i) => (
+        <motion.div
+          key={l}
+          className="ln"
+          style={{ '--ln-dot': 'var(--orange)' }}
+          initial={prefersReduced ? false : { opacity: 0, x: -8 }}
+          animate={inView ? { opacity: 1, x: 0 } : (prefersReduced ? {} : { opacity: 0, x: -8 })}
+          transition={{ duration: 0.35, delay: 0.08 + i * 0.14, ease: [0.2, 0.7, 0.2, 1] }}
+        >
+          {l}
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
+// ── Funnel diagram ────────────────────────────────────────────────
 function FunnelDiagram() {
   const prefersReduced = useReducedMotion()
   const nodes = [
@@ -55,7 +99,6 @@ function FunnelDiagram() {
     { label: 'Landing page', accent: false, metric: 'Conversion' },
     { label: 'Closed client', accent: true, metric: '↑ Revenue' },
   ]
-
   return (
     <div className="funnel-diagram">
       {nodes.map((node, i) => (
@@ -82,13 +125,35 @@ function FunnelDiagram() {
   )
 }
 
-const Star = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-  </svg>
-)
+// ── Platform logos strip ──────────────────────────────────────────
+function PlatformLogos() {
+  const platforms = ['Meta', 'Google', 'TikTok', 'LinkedIn']
+  return (
+    <div className="platform-logos">
+      <span className="platform-label">Campaigns running on</span>
+      {platforms.map(p => (
+        <span key={p} className="platform-badge">{p}</span>
+      ))}
+    </div>
+  )
+}
 
-// ── What We Do cards ──────────────────────────────────────────────
+// ── Data ──────────────────────────────────────────────────────────
+const painPoints = [
+  {
+    title: 'Paying for impressions, not outcomes',
+    desc: 'The campaign is "performing." Your CPL keeps climbing. The report celebrates reach while your pipeline sits empty.',
+  },
+  {
+    title: "Reports are theater. Accountability isn't.",
+    desc: '40-slide decks full of branded charts. No clear answer to "what are we doing differently next week?"',
+  },
+  {
+    title: '"Optimization takes three more months"',
+    desc: 'Always another learning phase, another A/B test, another reason the results you were promised are still coming.',
+  },
+]
+
 const services = [
   {
     icon: <><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></>,
@@ -114,43 +179,49 @@ const services = [
   {
     icon: <><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></>,
     title: 'Analytics & Reporting',
-    desc: 'Weekly performance reports in plain English. No vanity metrics — just cost per lead, ROAS, pipeline added, and what we\'re doing about it next week.',
+    desc: "Weekly performance reports in plain English. No vanity metrics — just cost per lead, ROAS, pipeline added, and what we're doing about it next week.",
     stat: '100%',
     statLabel: 'transparent',
   },
 ]
 
-// ── Case studies ──────────────────────────────────────────────────
 const cases = [
   {
     tag: 'E-commerce',
-    label: 'Challenge',
-    title: 'Customer acquisition costs were rising 40% month-over-month. No visibility into what was working.',
+    before: 'Customer acquisition costs rising 40% month-over-month. Zero visibility into which creative was actually converting.',
     metric: '3.1×',
     metricLabel: 'ROAS in 90 days',
     quote: '"Within six weeks they\'d cut our cost per purchase in half. By week 12 we were scaling into new markets."',
+    attribution: 'Marcus T., Director of Growth',
   },
   {
     tag: 'Professional Services',
-    label: 'Challenge',
-    title: 'Sales proposals took 3+ hours to research and draft. Pipeline was unpredictable.',
+    before: 'Cold outbound was burning the team\'s time. Pipeline was unpredictable and cost per lead kept climbing.',
     metric: '4×',
     metricLabel: 'faster lead response',
     quote: '"Every agency gave us a deck. Solvance had an ad live and a lead in the pipeline by day seven."',
+    attribution: 'Priya S., Managing Partner',
   },
   {
     tag: 'Local Services',
-    label: 'Challenge',
-    title: 'Word-of-mouth only. No paid channel. Revenue was capped by referral volume.',
+    before: 'Word-of-mouth only. No paid channel. Revenue was hard-capped by referral volume.',
     metric: '80%',
     metricLabel: 'more inbound leads',
     quote: '"First month running ads through them, we booked more new clients than the entire prior quarter."',
+    attribution: 'Derek M., Owner',
   },
 ]
 
-// ── FAQ items ─────────────────────────────────────────────────────
-import { useState } from 'react'
+const faqItems = [
+  { q: "What if we don't see results?", a: "We don't hide behind the algorithm. If 60 days in we're not hitting targets, we'll show you the data, tell you exactly why, and either restructure the campaign or recommend you pause. We're not in the business of billing for results that aren't coming." },
+  { q: 'Do you manage our ad spend?', a: 'Yes — we handle the full campaign setup and ongoing management. You set the monthly budget, we allocate it across platforms and campaigns for maximum return. Our management fee is separate from your ad spend.' },
+  { q: 'What platforms do you run ads on?', a: 'Primarily Meta (Facebook + Instagram) and Google (Search + Display + YouTube), based on where your audience actually is. We also work with TikTok and LinkedIn depending on your target customer.' },
+  { q: 'How quickly will we see results?', a: 'Most clients see initial data within 2 weeks and meaningful leads within the first month. Full optimization typically takes 60–90 days as the algorithm learns. We set honest expectations upfront and share weekly progress.' },
+  { q: 'Do you handle the creative (copy, images, video)?', a: "Yes, completely. We write the ad copy, design static and animated creatives, and produce video scripts. Everything is produced in-house and tested against each other so we always know what's working." },
+  { q: "What's the minimum monthly budget?", a: "We typically work with clients spending $1,500–$3,000/month in ad spend at minimum. Below that threshold, the data signals are too thin to optimize effectively. We'll be upfront if your budget isn't a fit." },
+]
 
+// ── FAQ accordion ─────────────────────────────────────────────────
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
   return (
@@ -185,16 +256,6 @@ function FAQItem({ q, a }) {
     </div>
   )
 }
-
-import { AnimatePresence } from 'framer-motion'
-
-const faqItems = [
-  { q: 'Do you manage our ad spend?', a: 'Yes — we handle the full campaign setup and ongoing management. You set the monthly budget, we allocate it across platforms and campaigns for maximum return. Our management fee is separate from your ad spend.' },
-  { q: 'What platforms do you run ads on?', a: 'Primarily Meta (Facebook + Instagram) and Google (Search + Display + YouTube), based on where your audience actually is. We also work with TikTok and LinkedIn depending on your target customer.' },
-  { q: 'How quickly will we see results?', a: 'Most clients see initial data within 2 weeks and meaningful leads within the first month. Full optimization typically takes 60–90 days as the algorithm learns. We set honest expectations upfront and share weekly progress.' },
-  { q: 'Do you handle the creative (copy, images, video)?', a: 'Yes, completely. We write the ad copy, design static and animated creatives, and produce video scripts. Everything is produced in-house and tested against each other so we always know what\'s working.' },
-  { q: 'What\'s the minimum monthly budget?', a: 'We typically work with clients spending $1,500–$3,000/month in ad spend at minimum. Below that threshold, the data signals are too thin to optimize effectively. We\'ll be upfront if your budget isn\'t a fit.' },
-]
 
 // ── Main page ─────────────────────────────────────────────────────
 export default function AdsMarketing() {
@@ -260,9 +321,9 @@ export default function AdsMarketing() {
               </motion.div>
 
               <motion.div className="micro" style={{ justifyContent: 'flex-start' }} {...fadeUp(0.56)}>
-                <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}>✓</span> No retainer lock-in</span>
-                <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}>✓</span> Full creative included</span>
-                <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}>✓</span> Results-first always</span>
+                <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}><Check /></span> No retainer lock-in</span>
+                <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}><Check /></span> Full creative included</span>
+                <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}><Check /></span> Results-first always</span>
               </motion.div>
             </div>
 
@@ -276,9 +337,36 @@ export default function AdsMarketing() {
           </div>
 
           <div className="stats" style={{ marginTop: 72 }}>
-            <StatItem target={40} suffix="+" label="Campaigns launched across industries" />
-            <StatItem target={2.4} suffix="×" label="Average ROAS across active clients" />
-            <StatItem target={4.9} suffix="★" label="Average client satisfaction rating" />
+            <StatItem target={2.1} suffix="M+" prefix="$" label="In tracked client revenue driven" />
+            <StatItem target={2.4} suffix="×" label="Average ROAS across active accounts" />
+            <StatItem target={18} suffix="" prefix="$" label="Avg cost-per-lead across all campaigns" />
+          </div>
+
+          <PlatformLogos />
+        </div>
+      </section>
+
+      {/* ── Pain Points ── */}
+      <section style={{ background: 'var(--bg-2)' }}>
+        <div className="wrap">
+          <FadeIn><span className="eyebrow-orange"><span className="dot" /> Sound familiar?</span></FadeIn>
+          <FadeIn delay={0.05}><h2 className="section-title">Most agencies optimize<br />for retainers.</h2></FadeIn>
+          <FadeIn delay={0.1}><p className="section-sub">We optimize for your pipeline. Here's what clients tell us before they find us.</p></FadeIn>
+
+          <div className="pain-grid">
+            {painPoints.map((p, i) => (
+              <FadeIn key={p.title} delay={0.08 * i}>
+                <SpringCard className="card pain-card" hoverY={-3} style={{ height: '100%' }}>
+                  <div className="pain-x" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  <h3 style={{ marginTop: 14 }}>{p.title}</h3>
+                  <p>{p.desc}</p>
+                </SpringCard>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -324,8 +412,8 @@ export default function AdsMarketing() {
           <div className="steps-line" style={{ background: 'linear-gradient(90deg, transparent, #F97316 25%, #dc2626 75%, transparent)' }} />
           <div className="steps">
             {[
-              { num: '01', time: 'Week 1', title: 'Strategy audit', desc: 'We audit your current traffic, competitors\' ad angles, and highest-ROI channel. You leave with a channel strategy and creative brief — useful regardless of whether you hire us.', lines: ['Auditing competitor ad library…', 'Identifying highest-ROI channel…', 'Drafting creative brief…'] },
-              { num: '02', time: 'Weeks 2–4', title: 'Launch & test', desc: 'Campaigns live within 2 weeks. We run 3–5 creative variants simultaneously, gather data, and start identifying what\'s converting. Weekly updates, zero jargon.', lines: ['Campaigns live on Meta + Google…', 'A/B testing 4 ad variants…', 'First leads coming in…'] },
+              { num: '01', time: 'Week 1', title: 'Strategy audit', desc: "We audit your current traffic, competitors' ad angles, and highest-ROI channel. You leave with a channel strategy and creative brief — useful regardless of whether you hire us.", lines: ['Auditing competitor ad library…', 'Identifying highest-ROI channel…', 'Drafting creative brief…'] },
+              { num: '02', time: 'Weeks 2–4', title: 'Launch & test', desc: "Campaigns live within 2 weeks. We run 3–5 creative variants simultaneously, gather data, and start identifying what's converting. Weekly updates, zero jargon.", lines: ['Campaigns live on Meta + Google…', 'A/B testing 4 ad variants…', 'First leads coming in…'] },
               { num: '03', time: 'Week 5+', title: 'Optimize & scale', desc: 'We cut losers, scale winners, and compound results monthly. As costs drop and ROAS climbs, we expand to new channels, audiences, or markets.', lines: ['Cutting underperformers…', 'Scaling top variant 3×…', 'Cost per lead ↓ 34% this week'] },
             ].map((step, i) => (
               <FadeIn key={step.num} delay={0.08 * i}>
@@ -336,13 +424,7 @@ export default function AdsMarketing() {
                   </div>
                   <h3>{step.title}</h3>
                   <p>{step.desc}</p>
-                  <div className="demo">
-                    {step.lines.map(l => (
-                      <div key={l} className="ln" style={{ '--ln-dot': 'var(--orange)' }}>
-                        {l}
-                      </div>
-                    ))}
-                  </div>
+                  <AnimatedDemoLines lines={step.lines} />
                 </SpringCard>
               </FadeIn>
             ))}
@@ -360,34 +442,28 @@ export default function AdsMarketing() {
           <div className="case-grid">
             {cases.map((c, i) => (
               <FadeIn key={c.tag} delay={0.08 * i}>
-                <SpringCard className="case-card" hoverY={-3} style={{ borderLeftColor: ['var(--orange)', '#dc2626', '#F97316'][i] }}>
+                <SpringCard className="case-card" hoverY={-3}>
                   <span className="case-tag" style={{ color: 'var(--orange)', background: 'var(--soft-orange)' }}>{c.tag}</span>
-                  <div className="case-label">{c.label}</div>
-                  <h3>{c.title}</h3>
-                  <div className="case-metric">{c.metric}<span>{c.metricLabel}</span></div>
-                  <p className="case-quote">{c.quote}</p>
+
+                  <div className="ba-before">
+                    <div className="ba-label">Before</div>
+                    <p className="ba-before-text">{c.before}</p>
+                  </div>
+
+                  <div className="ba-divider" />
+
+                  <div className="ba-after">
+                    <div className="ba-label ba-label-after">After</div>
+                    <div className="case-metric">{c.metric}<span>{c.metricLabel}</span></div>
+                    <p className="case-quote">{c.quote}</p>
+                    <p className="case-attribution">— {c.attribution}</p>
+                  </div>
                 </SpringCard>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
-
-      {/* ── Chapter break ── */}
-      <div className="chapter-break">
-        <div className="chapter-break-inner">
-          <span className="chapter-break-text">Like what you see in the numbers?</span>
-          <motion.button
-            className="btn orange"
-            onClick={() => document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' })}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-          >
-            Get your free audit <span className="arrow">→</span>
-          </motion.button>
-        </div>
-      </div>
 
       {/* ── FAQ ── */}
       <section style={{ background: 'var(--bg-2)' }}>
