@@ -1,45 +1,63 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+function navigate(href) {
+  history.pushState({}, '', href)
+  window.dispatchEvent(new Event('locationchange'))
+}
+
 export default function Nav() {
   const [open, setOpen] = useState(false)
-  const [active, setActive] = useState('')
+  const [path, setPath] = useState(window.location.pathname)
 
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
-    if (!sections.length || !('IntersectionObserver' in window)) return
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) setActive(e.target.id)
-      })
-    }, { rootMargin: '-35% 0px -55% 0px' })
-    sections.forEach(s => obs.observe(s))
-    return () => obs.disconnect()
+    const onNav = () => { setPath(window.location.pathname); setOpen(false) }
+    window.addEventListener('popstate', onNav)
+    window.addEventListener('locationchange', onNav)
+    return () => {
+      window.removeEventListener('popstate', onNav)
+      window.removeEventListener('locationchange', onNav)
+    }
   }, [])
 
   const links = [
-    { href: '#services', label: 'Services' },
-    { href: '#process', label: 'Process' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: '#proof', label: 'Proof' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/websites-seo', label: 'Websites & SEO' },
+    { href: '/ads-marketing', label: 'Ads & Marketing' },
+    { href: '/custom-builds', label: 'Custom Builds' },
   ]
 
-  const close = () => setOpen(false)
+  const goAudit = () => {
+    if (path !== '/') {
+      navigate('/')
+      setTimeout(() => document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' }), 300)
+    } else {
+      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' })
+    }
+    setOpen(false)
+  }
 
   return (
     <>
       <nav className="top">
         <div className="wrap row">
-          <div className="brand">
+          <button
+            className="brand nav-home-btn"
+            onClick={() => navigate('/')}
+            aria-label="Solvance home"
+          >
             <span className="mk" />
             Solvance
-          </div>
+          </button>
+
           <div className="nav-links">
             {links.map(l => {
-              const isActive = active === l.href.slice(1)
+              const isActive = path === l.href
               return (
-                <a key={l.href} href={l.href} className={isActive ? 'active' : ''}>
+                <button
+                  key={l.href}
+                  onClick={() => navigate(l.href)}
+                  className={isActive ? 'active' : ''}
+                >
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
@@ -48,21 +66,22 @@ export default function Nav() {
                     />
                   )}
                   <span className="nav-label">{l.label}</span>
-                </a>
+                </button>
               )
             })}
           </div>
+
           <div className="nav-cta">
             <span className="pill"><span className="dot" /> Taking clients</span>
-            <motion.a
-              href="#contact"
-              className="btn primary"
+            <motion.button
+              className="btn brand"
+              onClick={goAudit}
               whileHover={{ y: -2, scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             >
-              Book a call <span className="arrow">→</span>
-            </motion.a>
+              Free Audit <span className="arrow">→</span>
+            </motion.button>
             <button
               className={`hamburger${open ? ' open' : ''}`}
               onClick={() => setOpen(o => !o)}
@@ -78,18 +97,25 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="mobile-nav open"
+            className="mobile-nav"
             initial={{ opacity: 0, y: -12, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-            aria-hidden={!open}
           >
             {links.map(l => (
-              <a key={l.href} href={l.href} className="mobile-link" onClick={close}>
+              <button key={l.href} className="mobile-link" onClick={() => navigate(l.href)}>
                 {l.label}
-              </a>
+              </button>
             ))}
+            <motion.button
+              className="btn brand"
+              style={{ marginTop: 8, justifyContent: 'center' }}
+              onClick={goAudit}
+              whileTap={{ scale: 0.97 }}
+            >
+              Free Audit →
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>
