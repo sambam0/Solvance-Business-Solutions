@@ -2627,6 +2627,50 @@ footer {
   box-shadow: 0 0 0 1px rgba(52, 211, 153, .06), 0 0 40px rgba(52, 211, 153, .05);
 }
 
+/* ── Custom Builds — capacity signal ── */
+.cb-capacity {
+  padding: 0 0 0;
+}
+
+.cb-capacity .wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.cb-cap-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border: 1px solid rgba(52, 211, 153, .22);
+  border-radius: 999px;
+  background: rgba(52, 211, 153, .05);
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-bottom: 48px;
+}
+
+.cb-cap-pill strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.cb-cap-dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, .18);
+  animation: dot-pulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation-play-state: paused !important; }
+  .cb-cap-dot { animation: none !important; }
+}
+
 .tier.green-featured .name { color: var(--green); }
 
 .tier.green-featured .ribbon {
