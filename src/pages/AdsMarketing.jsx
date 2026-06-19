@@ -289,17 +289,17 @@ export default function AdsMarketing() {
                 <span className="eyebrow-orange"><span className="dot" /> Ads & full-stack marketing</span>
               </motion.div>
 
-              <motion.h1 style={{ textAlign: 'left' }} {...fadeUp(0.1)}>
+              <motion.h1 {...fadeUp(0.1)}>
                 More clients.<br />More revenue.<br />
                 <span className="grad-orange">Less guesswork.</span>
               </motion.h1>
 
-              <motion.p className="lede" style={{ textAlign: 'left', marginLeft: 0 }} {...fadeUp(0.28)}>
+              <motion.p className="lede" {...fadeUp(0.28)}>
                 Solvance runs your paid ads, builds your funnels, and handles the creative —
                 so your pipeline fills while you run the business. No agency fluff. Just growth.
               </motion.p>
 
-              <motion.div className="ctas" style={{ justifyContent: 'flex-start' }} {...fadeUp(0.44)}>
+              <motion.div className="ctas" {...fadeUp(0.44)}>
                 <motion.a
                   href="#audit"
                   className="btn orange"
@@ -320,7 +320,7 @@ export default function AdsMarketing() {
                 </motion.a>
               </motion.div>
 
-              <motion.div className="micro" style={{ justifyContent: 'flex-start' }} {...fadeUp(0.56)}>
+              <motion.div className="micro" {...fadeUp(0.56)}>
                 <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}><Check /></span> No retainer lock-in</span>
                 <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}><Check /></span> Full creative included</span>
                 <span><span className="ck" style={{ background: 'var(--soft-orange)', color: 'var(--orange)' }}><Check /></span> Results-first always</span>

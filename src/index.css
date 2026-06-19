@@ -328,7 +328,8 @@ nav.top .row {
   100% { background-position: 64px 64px, 64px 64px }
 }
 
-.hero .ann {
+.hero .ann,
+.page-hero .ann {
   display: flex;
   width: fit-content;
   margin-left: auto;
@@ -345,7 +346,8 @@ nav.top .row {
   margin-bottom: 32px
 }
 
-.hero .ann b {
+.hero .ann b,
+.page-hero .ann b {
   background: linear-gradient(135deg, #3B9EFF, #9D6FFF);
   color: #fff;
   padding: 3px 9px;
@@ -525,7 +527,8 @@ nav.top .row {
   }
 }
 
-.hero .lede {
+.hero .lede,
+.page-hero .lede {
   margin: 28px auto 0;
   max-width: 62ch;
   font-size: 19px;
@@ -533,7 +536,8 @@ nav.top .row {
   line-height: 1.5
 }
 
-.hero .ctas {
+.hero .ctas,
+.page-hero .ctas {
   margin-top: 36px;
   display: flex;
   gap: 12px;
@@ -541,7 +545,8 @@ nav.top .row {
   flex-wrap: wrap
 }
 
-.hero .micro {
+.hero .micro,
+.page-hero .micro {
   margin-top: 18px;
   display: flex;
   justify-content: center;
@@ -551,13 +556,15 @@ nav.top .row {
   flex-wrap: wrap
 }
 
-.hero .micro span {
+.hero .micro span,
+.page-hero .micro span {
   display: inline-flex;
   align-items: center;
   gap: 6px
 }
 
-.hero .micro .ck {
+.hero .micro .ck,
+.page-hero .micro .ck {
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -568,7 +575,8 @@ nav.top .row {
   font-size: 10px
 }
 
-.hero .stats {
+.hero .stats,
+.page-hero .stats {
   margin: 72px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -576,7 +584,8 @@ nav.top .row {
   max-width: 980px
 }
 
-.hero .stat {
+.hero .stat,
+.page-hero .stat {
   padding: 24px;
   background: var(--bg-2);
   border: 1px solid var(--line);
@@ -585,7 +594,8 @@ nav.top .row {
   cursor: default
 }
 
-.hero .stat .n {
+.hero .stat .n,
+.page-hero .stat .n {
   font-size: 40px;
   font-weight: 700;
   letter-spacing: -.03em;
@@ -593,14 +603,16 @@ nav.top .row {
   color: var(--ink)
 }
 
-.hero .stat .n sup {
+.hero .stat .n sup,
+.page-hero .stat .n sup {
   font-size: 18px;
   color: var(--brand);
   vertical-align: top;
   font-weight: 500
 }
 
-.hero .stat .l {
+.hero .stat .l,
+.page-hero .stat .l {
   margin-top: 6px;
   font-size: 13px;
   color: var(--mute)
@@ -1708,9 +1720,12 @@ footer {
 
 /* ── Responsive 900px ── */
 @media (max-width: 900px) {
-  .hero .stats {
+  .hero .stats,
+  .page-hero .stats {
     grid-template-columns: 1fr 1fr
   }
+
+  .page-hero { padding: 130px 0 70px; }
 
   .nav-links {
     display: none
@@ -1823,7 +1838,8 @@ footer {
 
 /* ── Responsive 600px ── */
 @media (max-width: 600px) {
-  .hero .stats {
+  .hero .stats,
+  .page-hero .stats {
     grid-template-columns: 1fr
   }
 
@@ -2317,6 +2333,44 @@ footer {
   background-image:
     linear-gradient(rgba(249, 115, 22, .05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(249, 115, 22, .05) 1px, transparent 1px);
+}
+
+/* ── Sub-page hero element spacing ── */
+.page-hero .lede {
+  margin: 24px 0 0;
+  font-size: 18px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.page-hero .ctas {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page-hero .micro {
+  margin-top: 18px;
+  display: flex;
+  gap: 18px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.page-hero .micro span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-hero .micro .ck {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ── Page-specific eyebrows ── */
