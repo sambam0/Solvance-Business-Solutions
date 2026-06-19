@@ -390,7 +390,7 @@ export default function AdsMarketing() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <h3 style={{ flex: 1 }}>{s.title}</h3>
                     <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                      <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--orange)', letterSpacing: '-.03em' }}>{s.stat}</div>
+                      <div style={{ fontSize: 28, fontWeight: 700, color: 'var(--orange)', letterSpacing: '-.03em' }}>{s.stat}</div>
                       <div style={{ fontSize: 11, color: 'var(--mute)', fontFamily: 'Geist Mono, monospace', textTransform: 'uppercase', letterSpacing: '.06em' }}>{s.statLabel}</div>
                     </div>
                   </div>
