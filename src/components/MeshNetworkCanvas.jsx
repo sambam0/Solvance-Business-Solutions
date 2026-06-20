@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react'
-import FadeIn from './FadeIn.jsx'
 
-export default function MeshNetworkCanvas() {
+export default function MeshNetworkCanvas({ highlightNodes = [] }) {
   const canvasRef = useRef(null)
+  const highlightNodesRef = useRef(highlightNodes)
+  const nodesRef = useRef(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -17,20 +18,21 @@ export default function MeshNetworkCanvas() {
       {
         id: 'hub', label: 'Mesh Controller', sub: 'Tailscale VPN Hub', abbr: 'VPN',
         agents: ['Secure Tunnel', 'Smart Routing'],
-        rx: 0.50, ry: 0.14, color: '#3B82F6', glow: 0, state: 'dormant',
+        rx: 0.50, ry: 0.14, color: '#3B82F6', glow: 0, state: 'dormant', boostGlow: 0,
       },
       {
         id: 'cloud', label: 'Cloud Node', sub: 'Always-on VPS', abbr: 'VPS',
         agents: ['Intake Agent', 'Operations Agent'],
-        rx: 0.15, ry: 0.74, color: '#8B5CF6', glow: 0, state: 'dormant',
+        rx: 0.15, ry: 0.74, color: '#8B5CF6', glow: 0, state: 'dormant', boostGlow: 0,
       },
       {
         id: 'local', label: 'Private Node', sub: 'Local Mac Mini', abbr: 'MAC',
         agents: ['Main Agent', 'Librarian', 'Matching (Hermes)'],
-        rx: 0.85, ry: 0.74, color: '#22C55E', glow: 0, state: 'dormant',
+        rx: 0.85, ry: 0.74, color: '#22C55E', glow: 0, state: 'dormant', boostGlow: 0,
       },
     ]
     const nMap = Object.fromEntries(NODES.map(n => [n.id, n]))
+    nodesRef.current = NODES
 
     // 6 directional edges — 3 bidirectional pairs
     const EDGES = [
@@ -358,7 +360,9 @@ export default function MeshNetworkCanvas() {
 
     function updateGlows(dt) {
       NODES.forEach(n => {
-        const target = (n.state === 'active' || n.state === 'complete') ? 1 : 0
+        const baseTarget = (n.state === 'active' || n.state === 'complete') ? 1 : 0
+        // 0.55 floor: visible highlight without reaching fully-active (sequence still surges to 1.0)
+        const target = Math.max(baseTarget, n.boostGlow * 0.55)
         n.glow += (target - n.glow) * Math.min(1, 4.5 * dt / 1000)
       })
     }
@@ -440,7 +444,7 @@ export default function MeshNetworkCanvas() {
     if (reduced) {
       drawStatic()
     } else {
-      const section = canvas.closest('#mesh-network')
+      const section = canvas.closest('section')
       if (section && 'IntersectionObserver' in window) {
         new IntersectionObserver(entries => {
           isIntersecting = entries[0].isIntersecting
@@ -474,63 +478,22 @@ export default function MeshNetworkCanvas() {
     }
   }, [])
 
+  // Sync prop → ref WITHOUT triggering canvas re-mount
+  useEffect(() => {
+    highlightNodesRef.current = highlightNodes
+    if (!nodesRef.current) return
+    const boostSet = new Set(highlightNodes)
+    nodesRef.current.forEach(n => { n.boostGlow = boostSet.has(n.id) ? 1 : 0 })
+  }, [highlightNodes])
+
   return (
-    <section id="mesh-network">
-      <div className="wrap">
-        <FadeIn><span className="eyebrow"><span className="dot" /> Infrastructure</span></FadeIn>
-        <FadeIn delay={0.05}>
-          <h2 className="section-title">
-            Enterprise infrastructure.<br />
-            <span className="grad">Startup-grade cost.</span>
-          </h2>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <p className="section-sub">
-            The Open Claw mesh network splits compute intelligently — sensitive data stays
-            on-premises, public-facing agents run in the cloud, all connected via encrypted
-            Tailscale VPN. Under $100/month total.
-          </p>
-        </FadeIn>
+    <div className="canvas-outer mesh-canvas-outer">
+      <div
+        role="img"
+        aria-label="Animated diagram: a Tailscale VPN hub at top connects to a cloud VPS on the lower-left and a local Mac Mini on the lower-right — an Open Claw mesh network with bidirectional encrypted data flows between all three nodes."
+      >
+        <canvas ref={canvasRef} />
       </div>
-
-      <div className="canvas-outer mesh-canvas-outer">
-        <div
-          role="img"
-          aria-label="Animated diagram: a Tailscale VPN hub at the top connects to a cloud VPS on the lower-left and a local Mac Mini on the lower-right, forming an Open Claw mesh network triangle with bidirectional encrypted data flows between all three nodes."
-        >
-          <canvas ref={canvasRef} />
-        </div>
-      </div>
-
-      <div className="wrap">
-        <div className="mesh-callouts">
-          {[
-            {
-              title: 'On-Premises Security',
-              body: 'Sensitive data never leaves your network. Local agents process your most critical assets.',
-              color: '#22C55E',
-            },
-            {
-              title: 'Always-On Cloud',
-              body: 'Client-facing agents run 24/7 in the cloud. No missed requests, no downtime.',
-              color: '#8B5CF6',
-            },
-            {
-              title: 'Under $100/month',
-              body: 'Mac Mini ($599 one-time) + cloud VPS. Fraction of enterprise alternatives.',
-              color: '#3B82F6',
-            },
-          ].map((c, i) => (
-            <FadeIn key={c.title} delay={0.08 * i}>
-              <div className="mesh-callout" style={{ '--mc-color': c.color }}>
-                <div className="mesh-callout-bar" />
-                <h3>{c.title}</h3>
-                <p>{c.body}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
+    </div>
   )
 }

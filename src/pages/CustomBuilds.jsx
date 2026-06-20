@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import Lenis from 'lenis'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
@@ -130,6 +130,15 @@ const useCases = [
   },
 ]
 
+const USE_CASE_NODE_MAP = [
+  ['local'],                   // 0 — Legal / Prof. Services (Hermes/Matching on Mac Mini)
+  ['cloud'],                   // 1 — E-commerce (Operations Agent on VPS)
+  ['hub', 'cloud', 'local'],  // 2 — Tech / SaaS (full mesh — complex integration)
+  ['cloud'],                   // 3 — Legal / Law Firm Intake (Intake Agent on VPS)
+  ['cloud', 'hub'],            // 4 — Healthcare (intake + routing)
+  ['hub', 'cloud'],            // 5 — Real Estate (routing + intake coordination)
+]
+
 function TrustBar() {
   const tiles = [...industries, ...industries]
   return (
@@ -159,6 +168,8 @@ export default function CustomBuilds() {
   const orb1Y = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : -60])
   const orb2Y = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : -40])
   const headingY = useTransform(scrollY, [0, 400], [0, prefersReduced ? 0 : -30])
+  const [selectedUseCase, setSelectedUseCase] = useState(null)
+  const highlightNodes = selectedUseCase !== null ? USE_CASE_NODE_MAP[selectedUseCase] : []
 
   useEffect(() => {
     document.title = 'Custom Builds — Solvance'
@@ -236,35 +247,6 @@ export default function CustomBuilds() {
       {/* ── Trust Bar ── */}
       <TrustBar />
 
-      {/* ── Use Cases by Industry ── */}
-      <section id="use-cases">
-        <div className="wrap">
-          <FadeIn><span className="eyebrow"><span className="dot" /> Use cases</span></FadeIn>
-          <FadeIn delay={0.05}>
-            <h2 className="section-title">Built for your industry.<br /><span className="grad">Configured for your ops.</span></h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="section-sub">Real workflows running in production across six industries — not demos, not prototypes.</p>
-          </FadeIn>
-        </div>
-        <div className="uc-scroll-outer">
-          <div className="uc-scroll">
-            {useCases.map((uc, i) => (
-              <FadeIn key={uc.title} delay={0.06 * i}>
-                <SpringCard className="uc-card" hoverY={-4} style={{ '--uc-accent': uc.color }}>
-                  <span className="uc-tag" style={{ color: uc.color, background: `${uc.color}1a` }}>
-                    {uc.industry}
-                  </span>
-                  <h3>{uc.title}</h3>
-                  <p className="uc-problem">{uc.solution}</p>
-                  <div className="uc-metric">{uc.metric}</div>
-                </SpringCard>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── What We Build ── */}
       <section id="what-we-build">
         <div className="wrap">
@@ -290,14 +272,78 @@ export default function CustomBuilds() {
         </div>
       </section>
 
+      {/* ── Use Cases + Mesh Network (unified) ── */}
+      <section id="use-cases">
+        <div className="wrap">
+          <FadeIn>
+            <span className="eyebrow"><span className="dot" /> Open Claw Network</span>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="section-title">
+              Powered by real infrastructure.<br />
+              <span className="grad">Built for your industry.</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="section-sub">
+              The same mesh — hub, cloud, and local node — runs every deployment.
+              Select your industry to see which nodes handle the work.
+            </p>
+          </FadeIn>
+        </div>
+
+        <MeshNetworkCanvas highlightNodes={highlightNodes} />
+
+        <div className="wrap">
+          <div className="uc-pills">
+            {useCases.map((uc, i) => (
+              <button
+                key={uc.title}
+                className={`uc-pill${selectedUseCase === i ? ' active' : ''}`}
+                style={{ '--uc-accent': uc.color }}
+                onClick={() => setSelectedUseCase(prev => prev === i ? null : i)}
+                aria-pressed={selectedUseCase === i}
+              >
+                {uc.industry}
+              </button>
+            ))}
+          </div>
+
+          <AnimatePresence mode="wait">
+            {selectedUseCase !== null && (
+              <motion.div
+                key={selectedUseCase}
+                className="uc-detail"
+                style={{ '--uc-accent': useCases[selectedUseCase].color }}
+                initial={{ opacity: 0, y: 12, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, y: 0,  filter: 'blur(0px)' }}
+                exit={{    opacity: 0, y: -6, filter: 'blur(3px)' }}
+                transition={{ type: 'spring', duration: 0.38, bounce: 0 }}
+              >
+                <div className="uc-detail-metric">
+                  {useCases[selectedUseCase].metric}
+                </div>
+                <div className="uc-detail-body">
+                  <h3>{useCases[selectedUseCase].title}</h3>
+                  <p>{useCases[selectedUseCase].solution}</p>
+                </div>
+                <div className="uc-detail-nodes">
+                  {USE_CASE_NODE_MAP[selectedUseCase].map(id => (
+                    <span key={id} className="uc-node-badge">{id}</span>
+                  ))}
+                  <span className="uc-node-label">active nodes</span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
+
       {/* ── Case Studies — before technical sections so social proof lands first ── */}
       <CaseStudies />
 
       {/* ── WorkflowCanvas ── */}
       <WorkflowCanvas />
-
-      {/* ── Mesh Network Infrastructure ── */}
-      <MeshNetworkCanvas />
 
       {/* ── Process ── */}
       <Process />
