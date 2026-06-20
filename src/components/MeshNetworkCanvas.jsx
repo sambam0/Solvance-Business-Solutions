@@ -442,17 +442,23 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
 
     if (reduced) {
       drawStatic()
+      return () => {
+        clearTimeout(resizeTimer)
+        window.removeEventListener('resize', handleResize)
+      }
     } else {
+      let observer = null
       const section = canvas.closest('section')
       if (section && 'IntersectionObserver' in window) {
-        new IntersectionObserver(entries => {
+        observer = new IntersectionObserver(entries => {
           isIntersecting = entries[0].isIntersecting
           if (isIntersecting) {
             if (!rafId) { resetState(); rafId = requestAnimationFrame(frame) }
           } else {
             if (rafId) { cancelAnimationFrame(rafId); rafId = null }
           }
-        }, { threshold: 0.15 }).observe(section)
+        }, { threshold: 0.15 })
+        observer.observe(section)
       } else {
         isIntersecting = true
         rafId = requestAnimationFrame(frame)
@@ -466,14 +472,11 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
 
       return () => {
         if (rafId) cancelAnimationFrame(rafId)
+        clearTimeout(resizeTimer)
+        observer?.disconnect()
         window.removeEventListener('resize', handleResize)
         document.removeEventListener('visibilitychange', handleVisibility)
       }
-    }
-
-    return () => {
-      if (rafId) cancelAnimationFrame(rafId)
-      window.removeEventListener('resize', handleResize)
     }
   }, [])
 
