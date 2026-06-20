@@ -166,7 +166,7 @@ export default function CustomBuilds() {
   const orb2Y = useTransform(scrollY, [0, 600], [0, prefersReduced ? 0 : -40])
   const headingY = useTransform(scrollY, [0, 400], [0, prefersReduced ? 0 : -30])
   const [selectedUseCase, setSelectedUseCase] = useState(null)
-  const highlightNodes = selectedUseCase !== null ? USE_CASE_NODE_MAP[selectedUseCase] : []
+  const highlightNodes = selectedUseCase !== null ? useCases[selectedUseCase].nodes : []
 
   useEffect(() => {
     document.title = 'Custom Builds — Solvance'
