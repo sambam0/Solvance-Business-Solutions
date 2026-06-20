@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 
 export default function MeshNetworkCanvas({ highlightNodes = [] }) {
   const canvasRef = useRef(null)
-  const highlightNodesRef = useRef(highlightNodes)
   const nodesRef = useRef(null)
 
   useEffect(() => {
