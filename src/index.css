@@ -3139,3 +3139,524 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .uc-pill { transition: none; }
 }
+
+/* ══════════════════════════════════════════════
+   Hero topology hint (CustomBuilds)
+══════════════════════════════════════════════ */
+
+.hero-topo {
+  position: absolute;
+  right: 6%;
+  top: 90px;
+  width: 260px;
+  height: 200px;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 960px) {
+  .hero-topo { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topo-traveler { display: none; }
+}
+
+/* ══════════════════════════════════════════════
+   What We Build — asymmetric layout
+══════════════════════════════════════════════ */
+
+.cb-build-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.64fr;
+  gap: 24px;
+  margin-top: 48px;
+  align-items: stretch;
+}
+
+.cb-build-featured-wrap {
+  height: 100%;
+  display: flex;
+}
+
+.card.cb-build-featured {
+  height: 100%;
+  padding: 36px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cb-build-featured-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cb-core-label {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand);
+  background: var(--soft);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.card.cb-build-featured h3 {
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.card.cb-build-featured > p {
+  color: var(--mute);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 48ch;
+}
+
+.cb-mini-mesh {
+  margin-top: auto;
+  padding-top: 12px;
+  opacity: 0.88;
+  border-top: 1px solid var(--line);
+}
+
+.cb-mini-mesh svg {
+  width: 100%;
+  height: auto;
+  max-height: 170px;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mini-mesh-traveler { display: none; }
+}
+
+.cb-build-secondary {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.cb-build-item {
+  padding: 28px 8px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.cb-build-item-divided {
+  border-bottom: 1px solid var(--line);
+}
+
+.cb-item-ic {
+  width: 36px !important;
+  height: 36px !important;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cb-item-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.cb-item-desc {
+  margin-top: 6px;
+  color: var(--mute);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .cb-build-layout {
+    grid-template-columns: 1fr;
+  }
+  .cb-build-featured-wrap {
+    height: auto;
+  }
+  .card.cb-build-featured {
+    height: auto;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   Open Claw — full-width canvas
+══════════════════════════════════════════════ */
+
+.cb-canvas-full {
+  position: relative;
+  margin-top: 52px;
+}
+
+/* Left/right vignette so canvas bleeds edge-to-edge without hard crop */
+.cb-canvas-full::before,
+.cb-canvas-full::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cb-canvas-full::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+
+.cb-canvas-full::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg), transparent);
+}
+
+/* Remove internal margin now that we control the outer */
+.cb-canvas-full .mesh-canvas-outer {
+  margin-bottom: 0;
+}
+
+/* ══════════════════════════════════════════════
+   Open Claw — node legend
+══════════════════════════════════════════════ */
+
+.cb-node-legend {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.cb-node-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cb-node-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cb-node-name {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.cb-node-desc {
+  font-size: 13px;
+  color: var(--mute);
+}
+
+@media (max-width: 600px) {
+  .cb-node-legend {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   Open Claw — agent handoff flow
+══════════════════════════════════════════════ */
+
+.cb-handoff {
+  margin: 48px 0 44px;
+  padding: 36px 40px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.cb-handoff-label {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--mute);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cb-handoff-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+.cb-handoff-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 96px;
+  flex-shrink: 0;
+}
+
+.cb-handoff-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-3);
+  border: 1px solid var(--line-2);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand);
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  flex-shrink: 0;
+}
+
+.cb-handoff-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+  text-align: center;
+}
+
+.cb-handoff-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.cb-handoff-sub {
+  font-size: 10px;
+  color: var(--mute);
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cb-handoff-connector {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 19px; /* visually centers on the circle (38px / 2) */
+  gap: 0;
+}
+
+.cb-handoff-line {
+  width: 48px;
+  height: 2px;
+  background: var(--line-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.cb-handoff-traveler {
+  position: absolute;
+  top: -2px;
+  left: -10px;
+  width: 10px;
+  height: 6px;
+  background: var(--brand);
+  border-radius: 3px;
+  box-shadow: 0 0 6px var(--brand);
+  animation: handoff-travel 2.2s ease-in-out infinite;
+}
+
+.cb-handoff-chevron {
+  color: var(--mute-2);
+  flex-shrink: 0;
+}
+
+@keyframes handoff-travel {
+  0%   { left: -10px; opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-handoff-traveler { animation: none !important; opacity: 0; }
+}
+
+@media (max-width: 860px) {
+  .cb-handoff {
+    padding: 28px 24px;
+  }
+  .cb-handoff-steps {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .cb-handoff-connector {
+    display: none;
+  }
+  .cb-handoff-step {
+    min-width: 80px;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   Open Claw — industry selector cards
+══════════════════════════════════════════════ */
+
+.uc-industry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.uc-industry-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--line-2);
+  background: var(--bg-2);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.26s ease;
+}
+
+.uc-industry-card:hover {
+  background: var(--bg-3);
+  border-color: var(--mute-2);
+}
+
+.uc-industry-card.active {
+  background: color-mix(in srgb, var(--uc-accent) 10%, var(--bg-2));
+  border-color: color-mix(in srgb, var(--uc-accent) 45%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--uc-accent) 8%, transparent);
+}
+
+.uc-ic-industry {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mute);
+  transition: color 0.18s ease;
+}
+
+.uc-industry-card.active .uc-ic-industry {
+  color: var(--uc-accent);
+}
+
+.uc-ic-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.uc-ic-metric {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  color: var(--mute-2);
+  margin-top: 4px;
+  transition: color 0.18s ease;
+}
+
+.uc-industry-card.active .uc-ic-metric {
+  color: var(--uc-accent);
+}
+
+@media (max-width: 900px) {
+  .uc-industry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .uc-industry-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .uc-industry-card {
+    padding: 14px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uc-industry-card { transition: none; }
+}
+
+/* ══════════════════════════════════════════════
+   Case Studies — deep ocean background
+══════════════════════════════════════════════ */
+
+.cb-case-bg {
+  background: linear-gradient(180deg,
+    var(--bg) 0%,
+    #0a1628 15%,
+    #0a1628 85%,
+    var(--bg) 100%
+  );
+}
+
+/* ══════════════════════════════════════════════
+   Capacity stripe — elevated conversion trigger
+══════════════════════════════════════════════ */
+
+.cb-capacity-stripe {
+  padding: 48px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(135deg,
+    rgba(52, 211, 153, 0.04) 0%,
+    transparent 55%
+  );
+}
+
+.cb-cap-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cb-cap-text {
+  font-size: 16px;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.cb-cap-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.cb-cap-cta {
+  font-size: 13px;
+  padding: 8px 18px;
+}
+
+@media (max-width: 600px) {
+  .cb-cap-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}
