@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-20T00:40:00-04:00",
+  "title": "Design System: Solvance",
+  "extensions": {
+    "colorMeta": {
+      "studio-void":     { "role": "neutral",   "displayName": "Studio Void",     "canonical": "#0A0A0C", "tonalRamp": ["#0A0A0C","#111114","#18181C","#222228","#2A2A32","#3A3A42","#5A5A66","#8A8A96"] },
+      "elevated-dark":   { "role": "neutral",   "displayName": "Elevated Dark",   "canonical": "#111114", "tonalRamp": ["#0A0A0C","#111114","#18181C","#222228","#2A2A32","#3A3A42","#5A5A66","#8A8A96"] },
+      "lifted-surface":  { "role": "neutral",   "displayName": "Lifted Surface",  "canonical": "#18181C", "tonalRamp": ["#0A0A0C","#111114","#18181C","#222228","#2A2A32","#3A3A42","#5A5A66","#8A8A96"] },
+      "cold-light":      { "role": "neutral",   "displayName": "Cold Light",      "canonical": "#F0F0F5", "tonalRamp": ["#8A8A96","#C8C8D0","#D8D8E0","#E4E4EC","#EAEAF0","#F0F0F5","#F6F6FA","#FAFAFD"] },
+      "diffused-light":  { "role": "neutral",   "displayName": "Diffused Light",  "canonical": "#C8C8D0", "tonalRamp": ["#5A5A66","#8A8A96","#AAAAB6","#C8C8D0","#D4D4DC","#E0E0E8","#EAEAF2","#F4F4FA"] },
+      "ambient-gray":    { "role": "neutral",   "displayName": "Ambient Gray",    "canonical": "#8A8A96", "tonalRamp": ["#3A3A42","#5A5A66","#6A6A76","#8A8A96","#AAAAB6","#C8C8D0","#E0E0E8","#F0F0F5"] },
+      "silent-edge":     { "role": "neutral",   "displayName": "Silent Edge",     "canonical": "#5A5A66", "tonalRamp": ["#2A2A32","#3A3A42","#4A4A56","#5A5A66","#6A6A76","#8A8A96","#AAAAB6","#C8C8D0"] },
+      "blueprint-line":  { "role": "neutral",   "displayName": "Blueprint Line",  "canonical": "#222228", "tonalRamp": ["#0A0A0C","#111114","#18181C","#222228","#2A2A32","#3A3A42","#5A5A66","#8A8A96"] },
+      "active-edge":     { "role": "neutral",   "displayName": "Active Edge",     "canonical": "#2A2A32", "tonalRamp": ["#0A0A0C","#111114","#18181C","#222228","#2A2A32","#3A3A42","#5A5A66","#8A8A96"] },
+      "bay-signal-blue": { "role": "primary",   "displayName": "Bay Signal Blue", "canonical": "#3B9EFF", "tonalRamp": ["#0F1E36","#1a3a6a","#1a7de0","#3B9EFF","#64B4FF","#8CCAFF","#B4DEFF","#D8EDFF"] },
+      "studio-violet":   { "role": "secondary", "displayName": "Studio Violet",   "canonical": "#9D6FFF", "tonalRamp": ["#1A1030","#2e1a6e","#6b3fd4","#9D6FFF","#B48FFF","#C9AFFF","#DDD0FF","#EEE8FF"] },
+      "deep-ocean":      { "role": "primary",   "displayName": "Deep Ocean",      "canonical": "#0F1E36", "tonalRamp": ["#070E1C","#0F1E36","#152A50","#1a3a6a","#23508A","#3B6FAA","#6490C0","#96B8D8"] },
+      "dusk-violet":     { "role": "secondary", "displayName": "Dusk Violet",     "canonical": "#1A1030", "tonalRamp": ["#0A0818","#1A1030","#261848","#2e1a6e","#3d258c","#5c3db0","#8060d0","#b090e8"] },
+      "signal-green":    { "role": "tertiary",  "displayName": "Signal Green",    "canonical": "#34D399", "tonalRamp": ["#064e3b","#065f46","#059669","#34D399","#6EE7B7","#A7F3D0","#D1FAE5","#ECFDF5"] }
+    },
+    "typographyMeta": {
+      "display":  { "displayName": "Display",  "purpose": "Hero headings only. Max 1 per page. The 108px ceiling is absolute." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles and sub-page heroes." },
+      "title":    { "displayName": "Title",    "purpose": "Card headings, nav brand, feature labels." },
+      "body":     { "displayName": "Body",     "purpose": "All prose. Max 65ch. Color: --ink-2, not --ink." },
+      "label":    { "displayName": "Label",    "purpose": "Geist Mono eyebrows and category tags only. One per section max." }
+    },
+    "shadows": [
+      { "name": "ambient",        "value": "0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.5)",          "purpose": "Default resting shadow on interactive panels." },
+      { "name": "deep-lift",      "value": "0 30px 60px -20px rgba(0,0,0,.7), 0 8px 24px rgba(0,0,0,.5)",  "purpose": "Hover state via Framer Motion spring — card lifts 4-5px." },
+      { "name": "nav-glass",      "value": "0 4px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04)", "purpose": "Floating nav bar depth + inner-edge glass highlight." },
+      { "name": "blue-btn-glow",  "value": "0 10px 24px -8px rgba(59,158,255,.45), inset 0 1px 0 rgba(255,255,255,.12)", "purpose": "Brand CTA button resting glow." },
+      { "name": "blue-btn-hover", "value": "0 14px 32px -8px rgba(59,158,255,.55)",                          "purpose": "Brand CTA button hover state glow." },
+      { "name": "cursor-glow",    "value": "radial-gradient(380px circle at var(--glow-x,50%) var(--glow-y,50%), rgba(59,158,255,.07), transparent 65%)", "purpose": "Applied via ::after on .card surfaces; follows cursor via JS." }
+    ],
+    "motion": [
+      { "name": "ease-standard",  "value": "cubic-bezier(0.2, 0.7, 0.2, 1)", "purpose": "Default easing for fadeUp and element entrances." },
+      { "name": "spring-card",    "value": "stiffness: 300, damping: 22 (Framer Motion spring)", "purpose": "Card hover lift — feels physical, not mathematical." },
+      { "name": "spring-cta",     "value": "stiffness: 400, damping: 20 (Framer Motion spring)", "purpose": "Button hover lift and tap — snappier than card spring." },
+      { "name": "lenis-scroll",   "value": "duration: 1.2s, easing: 1 - 2^(-10t)", "purpose": "Site-wide smooth scroll via Lenis. Disabled under prefers-reduced-motion." },
+      { "name": "grid-drift",     "value": "28s linear infinite — background-position drift", "purpose": "Subtle hero grid animation, barely perceptible." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "480px" },
+      { "name": "tablet", "value": "768px" },
+      { "name": "desktop", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button — Brand CTA",
+      "kind": "button",
+      "refersTo": "button-brand",
+      "description": "Primary call-to-action. Used for Get Free Audit and all primary conversion prompts.",
+      "html": "<button class=\"ds-btn-brand\">Get a free audit <span class=\"ds-btn-arrow\">→</span></button>",
+      "css": ".ds-btn-brand { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; font-weight: 500; font-size: 14px; font-family: 'Geist', system-ui, sans-serif; background: linear-gradient(180deg, #3B9EFF, #1a7de0); color: #fff; border: none; cursor: pointer; box-shadow: 0 10px 24px -8px rgba(59,158,255,.45), inset 0 1px 0 rgba(255,255,255,.12); transition: transform .22s cubic-bezier(.2,.7,.2,1), filter .22s ease, box-shadow .22s ease; } .ds-btn-brand:hover { transform: translateY(-1px); filter: brightness(1.08); box-shadow: 0 14px 32px -8px rgba(59,158,255,.55); } .ds-btn-brand:active { transform: scale(0.97); } .ds-btn-brand:focus-visible { outline: 2px solid #3B9EFF; outline-offset: 3px; } .ds-btn-arrow { transition: transform .25s ease; } .ds-btn-brand:hover .ds-btn-arrow { transform: translateX(3px); }"
+    },
+    {
+      "name": "Button — Primary (White)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Secondary action button. White fill, dark text. Used alongside Brand CTA.",
+      "html": "<button class=\"ds-btn-primary\">See packages</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; font-weight: 500; font-size: 14px; font-family: 'Geist', system-ui, sans-serif; background: #F0F0F5; color: #0A0A0C; border: none; cursor: pointer; box-shadow: 0 8px 20px -8px rgba(240,240,245,.15); transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease; } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -10px rgba(240,240,245,.22); } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid #3B9EFF; outline-offset: 3px; }"
+    },
+    {
+      "name": "Button — Ghost",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Tertiary / navigation prompts. Transparent-ish with border. 'Explore services ↓'",
+      "html": "<button class=\"ds-btn-ghost\">Explore services ↓</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; font-weight: 500; font-size: 14px; font-family: 'Geist', system-ui, sans-serif; background: #111114; color: #F0F0F5; border: 1px solid #2A2A32; cursor: pointer; transition: background .22s ease, border-color .22s ease; } .ds-btn-ghost:hover { background: #18181C; border-color: #5A5A66; } .ds-btn-ghost:focus-visible { outline: 2px solid #3B9EFF; outline-offset: 3px; }"
+    },
+    {
+      "name": "SpringCard",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The signature interactive card container. Cursor-tracked glow + spring hover lift. Every interactive card uses this pattern.",
+      "html": "<div class=\"ds-spring-card\"><div class=\"ds-spring-card-title\">Websites & SEO</div><div class=\"ds-spring-card-body\">Get found on Google in 14 days.</div></div>",
+      "css": ".ds-spring-card { position: relative; background: #111114; border: 1px solid #222228; border-radius: 20px; padding: 28px; cursor: pointer; transition: border-color .25s ease, box-shadow .25s ease; overflow: hidden; } .ds-spring-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(380px circle at 50% 50%, rgba(59,158,255,.07), transparent 65%); opacity: 0; transition: opacity .35s ease; pointer-events: none; } .ds-spring-card:hover { border-color: #2A2A32; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7), 0 8px 24px rgba(0,0,0,.5); transform: translateY(-4px); } .ds-spring-card:hover::after { opacity: 1; } .ds-spring-card > * { position: relative; z-index: 1; } .ds-spring-card-title { font-family: 'Geist', system-ui, sans-serif; font-size: 18px; font-weight: 600; color: #F0F0F5; letter-spacing: -0.02em; margin-bottom: 8px; } .ds-spring-card-body { font-family: 'Geist', system-ui, sans-serif; font-size: 15px; color: #C8C8D0; line-height: 1.55; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-item-active",
+      "description": "Floating frosted-glass pill nav. Fixed 16px from top. Active links get a blue-tinted pill overlay.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-nav-brand\"><div class=\"ds-nav-mark\"></div><span>Solvance</span></div><div class=\"ds-nav-links\"><a class=\"ds-nav-link ds-active\" href=\"#\">Home</a><a class=\"ds-nav-link\" href=\"#\">Websites</a><a class=\"ds-nav-link\" href=\"#\">Ads</a></div><div class=\"ds-nav-badge\"><span class=\"ds-nav-dot\"></span>Now taking clients</div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 60px; background: rgba(10,10,12,.82); backdrop-filter: saturate(180%) blur(20px); border: 1px solid rgba(255,255,255,.08); border-radius: 999px; box-shadow: 0 4px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); font-family: 'Geist', system-ui, sans-serif; } .ds-nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; color: #F0F0F5; letter-spacing: -0.02em; } .ds-nav-mark { width: 24px; height: 24px; border-radius: 8px; background: radial-gradient(circle at 30% 30%, #c4b5fd, #9D6FFF 60%, #5b21b6); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 2px 8px rgba(157,111,255,.45); } .ds-nav-links { display: flex; gap: 4px; } .ds-nav-link { font-size: 14px; color: #C8C8D0; text-decoration: none; padding: 4px 10px; border-radius: 6px; transition: color .2s ease; } .ds-nav-link:hover { color: #3B9EFF; } .ds-active { color: #3B9EFF; background: rgba(59,158,255,.10); border: 1px solid rgba(59,158,255,.18); } .ds-nav-badge { display: flex; align-items: center; gap: 6px; padding: 5px 11px; border: 1px solid #2A2A32; border-radius: 999px; font-size: 12px; color: #8A8A96; background: #111114; font-family: 'Geist', system-ui, sans-serif; } .ds-nav-dot { width: 7px; height: 7px; border-radius: 50%; background: #34D399; box-shadow: 0 0 0 3px rgba(52,211,153,.18); animation: ds-pulse 2.4s ease-in-out infinite; } @keyframes ds-pulse { 0%,100% { box-shadow: 0 0 0 3px rgba(52,211,153,.18); } 50% { box-shadow: 0 0 0 5px rgba(52,211,153,.28); } }"
+    },
+    {
+      "name": "Announcement Badge",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Frosted pill badge above the hero headline. Contains a gradient-filled category label inside.",
+      "html": "<div class=\"ds-ann\"><b>New</b> From your first website to your first AI agent →</div>",
+      "css": ".ds-ann { display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px; border: 1px solid #2A2A32; border-radius: 999px; font-size: 13px; color: #8A8A96; background: rgba(17,17,20,.9); backdrop-filter: blur(8px); font-family: 'Geist', system-ui, sans-serif; } .ds-ann b { background: linear-gradient(135deg, #3B9EFF, #9D6FFF); color: #fff; padding: 3px 9px; border-radius: 999px; font-weight: 600; font-size: 12px; }"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Inline pill badge used for service category labels and eyebrows. Geist Mono, small, uppercase.",
+      "html": "<span class=\"ds-pill\"><span class=\"ds-pill-dot\"></span>For growing businesses</span>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border: 1px solid #2A2A32; border-radius: 999px; font-size: 12px; color: #8A8A96; background: #111114; font-family: 'Geist Mono', ui-monospace, monospace; letter-spacing: 0.05em; } .ds-pill-dot { width: 7px; height: 7px; border-radius: 50%; background: #34D399; flex-shrink: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Build",
+    "overview": "Solvance is a Bay Area tech-design agency at 11pm — screens glowing, builds shipping, no clients watching. The aesthetic is not austere minimalism or corporate polish; it's the confident messiness of a studio that ships world-class work and doesn't need to announce it. Dark surfaces, electric signals in blue and violet, typography that moves with precision.\n\nThe palette is a deep studio void cut through with blue signal light. Motion is orchestrated and purposeful: Awwwards-tier entrance choreography, Active Theory–level scroll presence. Every surface reacts to the cursor. Nothing sits inert. The site should leave a visitor asking 'how did they build that?' — the answer is Solvance, and that's the whole pitch.\n\nThis system explicitly rejects: hustle-culture excitement (no '10x your revenue,' no emoji-heavy energy), corporate formality (no IBM-weight, no formal grid layouts, no impersonal committee-designed sections), and the generic AI landing page (no hero-metric template, no cream/warm-neutral backgrounds, no floating feature icon cards, no eyebrow labels on every section heading).",
+    "keyCharacteristics": [
+      "Near-void dark background (#0A0A0C) as the foundation — not dark gray, not navy, but the absence of light",
+      "Two signal colors (Bay Signal Blue + Studio Violet) used as emitters, not fills",
+      "Geist as the single type family: precise, geometric, the font of the builder generation",
+      "Cursor-tracked radial glows on every interactive surface",
+      "Spring physics on all hover interactions (Framer Motion)",
+      "Lenis smooth scroll — the scroll feel is part of the brand"
+    ],
+    "rules": [
+      { "name": "The Emitter Rule",    "body": "Bay Signal Blue and Studio Violet are light sources, not fills. They belong on small high-contrast elements (buttons, badges, glows, active indicators) and in gradients. A large blue surface is a violation — blue is rare here, and rarity is the point.", "section": "colors" },
+      { "name": "The Temperature Rule","body": "Every neutral has a cool undertone. Warm grays, cream, or sand backgrounds are prohibited — they conflict with the cold-light signal palette and read as a different brand entirely.", "section": "colors" },
+      { "name": "The Compression Rule","body": "Display and Headline headings use tight leading (0.96–1.02) and strong negative tracking (-0.03em to -0.04em). Loose leading on large type reads as unconfident. If a heading wraps, text-wrap: balance prevents orphans.", "section": "typography" },
+      { "name": "The Mono-as-Mark Rule","body": "Geist Mono signals technical precision. It appears on category labels, code, and stat suffixes — not on body copy, nav links, or marketing headings. Its rarity is what makes it mean something.", "section": "typography" },
+      { "name": "The Cursor-as-Light Rule", "body": "Elevation is not static — it follows the user. Every card surface tracks cursor position via --glow-x / --glow-y CSS custom properties and emits a 380px radial blue glow. Static flat cards are prohibited.", "section": "elevation" },
+      { "name": "The Flat-at-Rest Rule", "body": "Surfaces are flat at rest. Deep shadows appear only as a response to hover. A resting card does not lift itself out of the page.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the background at #0A0A0C (Studio Void). It is not dark gray and not navy.",
+      "Do use Bay Signal Blue sparingly as an emitter. CTAs, glows, active indicators, gradient accents only.",
+      "Do add cursor-tracked glow (--glow-x / --glow-y + SpringCard) to every interactive card surface.",
+      "Do use Geist Mono exclusively for labels, stat suffixes, category eyebrows, and code.",
+      "Do apply text-wrap: balance on h1–h3 elements to prevent orphan words at narrow viewports.",
+      "Do respect prefers-reduced-motion — Framer Motion's useReducedMotion is already in the hero; extend to all scroll-driven animations.",
+      "Do treat each section as its own visual world. Section backgrounds, grid treatments, and motion patterns can differ."
+    ],
+    "donts": [
+      "Don't use hype / hustle copy or excited-emoji energy. The brand voice is confident and specific, not motivational.",
+      "Don't use big-agency corporate aesthetics — no IBM-weight typography, no formal grid layouts.",
+      "Don't ship a generic AI-generated landing page. No hero-metric template, no cream/warm-neutral backgrounds, no floating feature icon cards, no eyebrow labels on every section heading.",
+      "Don't use warm or sand-tinted backgrounds. The entire neutral ramp is cool-tinted.",
+      "Don't add border-left colored stripes as accents on cards or callouts.",
+      "Don't use background-clip: text gradient text outside of the hero h1 .grad animation.",
+      "Don't place Geist Mono on body copy or marketing headings.",
+      "Don't use numbered section markers (01/02/03) as default scaffolding.",
+      "Don't reduce contrast for elegance — body text must read at 4.5:1 minimum against its background.",
+      "Don't ship a new card without SpringCard's cursor-glow behavior. If it's interactive, it tracks the cursor."
+    ]
+  }
+}
