@@ -325,7 +325,7 @@ export default function CustomBuilds() {
                   <p>{useCases[selectedUseCase].solution}</p>
                 </div>
                 <div className="uc-detail-nodes">
-                  {USE_CASE_NODE_MAP[selectedUseCase].map(id => (
+                  {useCases[selectedUseCase].nodes.map(id => (
                     <span key={id} className="uc-node-badge">{id}</span>
                   ))}
                   <span className="uc-node-label">active nodes</span>
