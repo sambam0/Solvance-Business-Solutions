@@ -92,6 +92,7 @@ const useCases = [
     title: 'Expert Witness Management',
     solution: '5 AI agents managing expert matching, intake, and follow-up — split across local and cloud nodes.',
     metric: '3× faster placement',
+    nodes: ['local'],
   },
   {
     industry: 'E-commerce',
@@ -99,6 +100,7 @@ const useCases = [
     title: 'Operations Automation',
     solution: 'Automated inventory alerts, supplier comms, and order reconciliation running 24/7.',
     metric: '80% ops time saved',
+    nodes: ['cloud'],
   },
   {
     industry: 'Tech / SaaS',
@@ -106,6 +108,7 @@ const useCases = [
     title: 'Customer Success Agents',
     solution: 'AI agents handling onboarding sequences, health scoring, and churn signal detection.',
     metric: '4× retention lift',
+    nodes: ['hub', 'cloud', 'local'],
   },
   {
     industry: 'Legal',
@@ -113,6 +116,7 @@ const useCases = [
     title: 'Law Firm Intake',
     solution: '24/7 client intake, conflict checks, and matter routing — no staff required after hours.',
     metric: 'Zero missed leads',
+    nodes: ['cloud'],
   },
   {
     industry: 'Healthcare',
@@ -120,6 +124,7 @@ const useCases = [
     title: 'Admin Coordination',
     solution: 'Appointment scheduling, insurance pre-auth, and patient follow-up coordination.',
     metric: '60% admin reduction',
+    nodes: ['cloud', 'hub'],
   },
   {
     industry: 'Real Estate',
@@ -127,16 +132,8 @@ const useCases = [
     title: 'Deal Pipeline Ops',
     solution: 'Lead qualification, showing scheduling, and CRM sync across platforms — automated end-to-end.',
     metric: '2× deal velocity',
+    nodes: ['hub', 'cloud'],
   },
-]
-
-const USE_CASE_NODE_MAP = [
-  ['local'],                   // 0 — Legal / Prof. Services (Hermes/Matching on Mac Mini)
-  ['cloud'],                   // 1 — E-commerce (Operations Agent on VPS)
-  ['hub', 'cloud', 'local'],  // 2 — Tech / SaaS (full mesh — complex integration)
-  ['cloud'],                   // 3 — Legal / Law Firm Intake (Intake Agent on VPS)
-  ['cloud', 'hub'],            // 4 — Healthcare (intake + routing)
-  ['hub', 'cloud'],            // 5 — Real Estate (routing + intake coordination)
 ]
 
 function TrustBar() {
