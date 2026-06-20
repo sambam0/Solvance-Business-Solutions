@@ -482,7 +482,6 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
 
   // Sync prop → ref WITHOUT triggering canvas re-mount
   useEffect(() => {
-    highlightNodesRef.current = highlightNodes
     if (!nodesRef.current) return
     const boostSet = new Set(highlightNodes)
     nodesRef.current.forEach(n => { n.boostGlow = boostSet.has(n.id) ? 1 : 0 })
