@@ -2882,3 +2882,256 @@ footer {
   margin-top: 10px;
   letter-spacing: .01em;
 }
+
+/* ══════════════════════════════════════════════
+   Mesh Network Canvas Section
+══════════════════════════════════════════════ */
+
+#mesh-network {
+  padding: 96px 0 80px;
+  overflow: hidden;
+}
+
+#mesh-network .wrap {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+#mesh-network .section-title,
+#mesh-network .section-sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mesh-canvas-outer {
+  margin-bottom: 56px;
+}
+
+#mesh-network canvas {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+}
+
+.mesh-callouts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.mesh-callout {
+  position: relative;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 28px 28px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.mesh-callout-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--mc-color, var(--brand));
+  border-radius: 20px 0 0 20px;
+  box-shadow: 0 0 12px 2px var(--mc-color, var(--brand));
+  opacity: 0.85;
+}
+
+.mesh-callout h3 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.mesh-callout p {
+  color: var(--mute);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════
+   Use Cases by Industry Section
+══════════════════════════════════════════════ */
+
+#use-cases {
+  padding: 96px 0 80px;
+  overflow: hidden;
+}
+
+#use-cases .wrap {
+  margin-bottom: 44px;
+}
+
+.uc-scroll-outer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.uc-scroll-outer::before,
+.uc-scroll-outer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 88px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.uc-scroll-outer::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg) 15%, transparent);
+}
+
+.uc-scroll-outer::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg) 15%, transparent);
+}
+
+.uc-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 8px 88px 28px;
+}
+
+.uc-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.uc-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--uc-accent, var(--brand));
+  border-radius: 20px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 308px;
+  max-width: 336px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cursor-tracked glow — same pattern as .card::after */
+.uc-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    360px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(99, 102, 241, .07),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.uc-card:hover::after {
+  opacity: 1;
+}
+
+.uc-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.uc-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Geist Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: .065em;
+  width: fit-content;
+}
+
+.uc-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.uc-problem {
+  color: var(--mute);
+  font-size: 14px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.uc-metric {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -.035em;
+  color: var(--uc-accent, var(--brand));
+  line-height: 1;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .mesh-callouts {
+    grid-template-columns: 1fr;
+  }
+
+  .uc-scroll {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .uc-scroll-outer::before,
+  .uc-scroll-outer::after {
+    width: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .uc-card {
+    min-width: 86vw;
+    max-width: 86vw;
+  }
+
+  #mesh-network .wrap,
+  #use-cases .wrap {
+    text-align: left;
+  }
+
+  #mesh-network .section-title,
+  #mesh-network .section-sub,
+  #use-cases .section-title,
+  #use-cases .section-sub {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uc-scroll {
+    scroll-behavior: auto;
+  }
+}

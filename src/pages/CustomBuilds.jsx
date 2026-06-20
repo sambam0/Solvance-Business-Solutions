@@ -7,6 +7,7 @@ import FadeIn from '../components/FadeIn.jsx'
 import AuditCTA from '../components/AuditCTA.jsx'
 import SpringCard from '../components/SpringCard.jsx'
 import WorkflowCanvas from '../components/WorkflowCanvas.jsx'
+import MeshNetworkCanvas from '../components/MeshNetworkCanvas.jsx'
 import Process from '../components/Process.jsx'
 import CaseStudies from '../components/CaseStudies.jsx'
 import Pricing from '../components/Pricing.jsx'
@@ -82,6 +83,51 @@ const industries = [
   { abbr: 'MD', label: 'Media & Content',         color: '#F97316' },
   { abbr: 'LG', label: 'Logistics',               color: '#60A5FA' },
   { abbr: 'RE', label: 'Real Estate',             color: '#A78BFA' },
+]
+
+const useCases = [
+  {
+    industry: 'Legal / Prof. Services',
+    color: '#9D6FFF',
+    title: 'Expert Witness Management',
+    solution: '5 AI agents managing expert matching, intake, and follow-up — split across local and cloud nodes.',
+    metric: '3× faster placement',
+  },
+  {
+    industry: 'E-commerce',
+    color: '#34D399',
+    title: 'Operations Automation',
+    solution: 'Automated inventory alerts, supplier comms, and order reconciliation running 24/7.',
+    metric: '80% ops time saved',
+  },
+  {
+    industry: 'Tech / SaaS',
+    color: '#3B9EFF',
+    title: 'Customer Success Agents',
+    solution: 'AI agents handling onboarding sequences, health scoring, and churn signal detection.',
+    metric: '4× retention lift',
+  },
+  {
+    industry: 'Legal',
+    color: '#F97316',
+    title: 'Law Firm Intake',
+    solution: '24/7 client intake, conflict checks, and matter routing — no staff required after hours.',
+    metric: 'Zero missed leads',
+  },
+  {
+    industry: 'Healthcare',
+    color: '#06B6D4',
+    title: 'Admin Coordination',
+    solution: 'Appointment scheduling, insurance pre-auth, and patient follow-up coordination.',
+    metric: '60% admin reduction',
+  },
+  {
+    industry: 'Real Estate',
+    color: '#F59E0B',
+    title: 'Deal Pipeline Ops',
+    solution: 'Lead qualification, showing scheduling, and CRM sync across platforms — automated end-to-end.',
+    metric: '2× deal velocity',
+  },
 ]
 
 function TrustBar() {
@@ -190,6 +236,35 @@ export default function CustomBuilds() {
       {/* ── Trust Bar ── */}
       <TrustBar />
 
+      {/* ── Use Cases by Industry ── */}
+      <section id="use-cases">
+        <div className="wrap">
+          <FadeIn><span className="eyebrow"><span className="dot" /> Use cases</span></FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="section-title">Built for your industry.<br /><span className="grad">Configured for your ops.</span></h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="section-sub">Real workflows running in production across six industries — not demos, not prototypes.</p>
+          </FadeIn>
+        </div>
+        <div className="uc-scroll-outer">
+          <div className="uc-scroll">
+            {useCases.map((uc, i) => (
+              <FadeIn key={uc.title} delay={0.06 * i}>
+                <SpringCard className="uc-card" hoverY={-4} style={{ '--uc-accent': uc.color }}>
+                  <span className="uc-tag" style={{ color: uc.color, background: `${uc.color}1a` }}>
+                    {uc.industry}
+                  </span>
+                  <h3>{uc.title}</h3>
+                  <p className="uc-problem">{uc.solution}</p>
+                  <div className="uc-metric">{uc.metric}</div>
+                </SpringCard>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── What We Build ── */}
       <section id="what-we-build">
         <div className="wrap">
@@ -220,6 +295,9 @@ export default function CustomBuilds() {
 
       {/* ── WorkflowCanvas ── */}
       <WorkflowCanvas />
+
+      {/* ── Mesh Network Infrastructure ── */}
+      <MeshNetworkCanvas />
 
       {/* ── Process ── */}
       <Process />
