@@ -251,7 +251,7 @@ export default function AITraining() {
       </section>
 
       {/* ── Who This Is For ── */}
-      <section id="who">
+      <section id="who" ref={whoRef}>
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> Who this is for</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">Sound familiar?</h2></FadeIn>
