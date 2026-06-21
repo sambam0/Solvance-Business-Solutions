@@ -9,6 +9,11 @@ import SpringCard from '../components/SpringCard.jsx'
 import Process from '../components/Process.jsx'
 import Pricing from '../components/Pricing.jsx'
 import FAQ from '../components/FAQ.jsx'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
