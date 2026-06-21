@@ -389,7 +389,7 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
       }
 
       ctx.globalAlpha = 1
-      ctx.fillStyle = '#050B18'
+      ctx.fillStyle = '#0A0A0C'
       ctx.fillRect(0, 0, W, H)
 
       ctx.globalAlpha = fadeAlpha
@@ -424,7 +424,7 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
       NODES.forEach(n => { n.state = 'complete'; n.glow = 1 })
       EDGES.forEach(e => { e.lit = 1 })
       currentTs = 0
-      ctx.fillStyle = '#050B18'
+      ctx.fillStyle = '#0A0A0C'
       ctx.fillRect(0, 0, W, H)
       drawBgDots()
       drawEdges()
