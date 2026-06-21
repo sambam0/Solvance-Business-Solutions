@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "reason": "Geist is intentional per DESIGN.md",
+        "createdAt": "2026-06-21T04:37:19.714Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist mono",
+        "reason": "Geist Mono is intentional per DESIGN.md",
+        "createdAt": "2026-06-21T04:37:19.768Z"
+      }
+    ]
+  }
+}
