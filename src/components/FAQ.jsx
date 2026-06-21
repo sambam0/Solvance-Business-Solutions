@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import FadeIn from './FadeIn.jsx'
 
-const faqs = [
+const defaultFaqs = [
   {
     q: 'How long does a typical project take?',
     a: 'Most engagements run 4–8 weeks from kickoff to production deploy. Discovery is week one. Build is two to four weeks depending on scope. We don\'t pad timelines — if something can ship faster, it does. Complex multi-system integrations may run longer, and we\'ll scope those honestly upfront.',
