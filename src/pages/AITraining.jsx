@@ -410,13 +410,13 @@ export default function AITraining() {
       </section>
 
       {/* ── Process ── */}
-      <Process />
+      <Process steps={trainingSteps} heading={trainingProcessHeading} subhead={trainingProcessSubhead} />
 
       {/* ── Pricing ── */}
-      <Pricing />
+      <Pricing tiers={trainingTiers} heading={trainingPricingHeading} subhead={trainingPricingSubhead} footnote={trainingPricingFootnote} />
 
       {/* ── FAQ ── */}
-      <FAQ />
+      <FAQ faqs={trainingFaqs} />
 
       <AuditCTA preset="ai-training" accent="blue" />
       <Footer />
