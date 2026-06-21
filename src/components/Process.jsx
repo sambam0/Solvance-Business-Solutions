@@ -91,11 +91,11 @@ export default function Process({ steps = defaultSteps, heading = defaultHeading
         <FadeIn><span className="eyebrow"><span className="dot" /> How it works</span></FadeIn>
         <FadeIn delay={0.05}>
           <h2 className="section-title">
-            Discover. Build. <br />
-            <span style={{ background: 'linear-gradient(90deg,#3B9EFF,#9D6FFF)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>Deploy.</span>
+            {heading.line1} <br />
+            <span style={{ background: 'linear-gradient(90deg,#3B9EFF,#9D6FFF)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>{heading.line2}</span>
           </h2>
         </FadeIn>
-        <FadeIn delay={0.1}><p className="section-sub">Three steps, no surprises. We move fast, keep you in the loop, and don't disappear after launch.</p></FadeIn>
+        <FadeIn delay={0.1}><p className="section-sub">{subhead}</p></FadeIn>
 
         <div className="steps-line" />
 
