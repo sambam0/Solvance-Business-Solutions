@@ -44,7 +44,7 @@ export default function Footer() {
               <span className="mk" />
               Solvance
             </button>
-            <p className="footer-tagline">Websites. Marketing. Custom Builds.<br />Solvance Business Solutions.</p>
+            <p className="footer-tagline">AI Agents. AI Training. Custom Systems.<br />Solvance Business Solutions.</p>
           </div>
 
           <nav className="footer-nav" aria-label="Footer navigation">
