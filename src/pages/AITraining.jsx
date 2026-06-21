@@ -300,8 +300,8 @@ export default function AITraining() {
           <FadeIn delay={0.1}><p className="section-sub">Every format ends the same way: you leave knowing how to use AI in your business, not just knowing that you should.</p></FadeIn>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 48 }}>
-            {formats.map((f, i) => (
-              <FadeIn key={f.title} delay={0.08 * i}>
+            {formats.map((f) => (
+              <div key={f.title} className="format-anim">
                 <SpringCard className="card" hoverY={-4} style={{ height: '100%', padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
                   <div className="ic">{f.icon}</div>
                   <div>
