@@ -199,6 +199,42 @@ export default function AIAgents() {
     return () => { cancelAnimationFrame(rafId); lenis.destroy() }
   }, [])
 
+  useGSAP(() => {
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      if (buildRef.current) {
+        const buildItems = buildRef.current.querySelectorAll('.build-anim')
+        gsap.from(buildItems, {
+          opacity: 0,
+          y: 28,
+          duration: 0.55,
+          ease: 'power3.out',
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: buildRef.current,
+            start: 'top 78%',
+            toggleActions: 'play none none none',
+          },
+        })
+      }
+      if (ucRef.current) {
+        const ucCards = ucRef.current.querySelectorAll('.uc-industry-card')
+        gsap.from(ucCards, {
+          opacity: 0,
+          y: 24,
+          duration: 0.5,
+          ease: 'power2.out',
+          stagger: 0.07,
+          scrollTrigger: {
+            trigger: ucRef.current.querySelector('.uc-industry-grid'),
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        })
+      }
+    })
+  })
+
   return (
     <>
       <motion.div className="scroll-progress" style={{ scaleX: scrollYProgress }} />
