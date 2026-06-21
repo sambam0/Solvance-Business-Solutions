@@ -2454,6 +2454,8 @@ footer {
 ══════════════════════════════════════════════ */
 
 .hero-wrap {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 48px;
