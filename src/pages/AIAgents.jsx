@@ -181,6 +181,8 @@ export default function AIAgents() {
   const { scrollYProgress } = useScroll()
   const prefersReduced = useReducedMotion()
   const containerRef = useRef(null)
+  const buildRef = useRef(null)
+  const ucRef = useRef(null)
   const { scrollY } = useScroll()
   const headingY = useTransform(scrollY, [0, 400], [0, prefersReduced ? 0 : -30])
   const [selectedUseCase, setSelectedUseCase] = useState(null)
