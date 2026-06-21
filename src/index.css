@@ -2112,10 +2112,6 @@ footer {
   font-weight: 700;
 }
 
-.funnel-hero-layout h1 {
-  font-size: clamp(32px, 3.5vw, 54px);
-}
-
 .page-hero.green-page::before {
   background-image:
     linear-gradient(rgba(52, 211, 153, .05) 1px, transparent 1px),
