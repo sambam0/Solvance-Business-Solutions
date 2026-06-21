@@ -329,7 +329,7 @@ export default function AIAgents() {
       <TrustBar />
 
       {/* ── What We Build ── */}
-      <section id="what-we-build">
+      <section id="what-we-build" ref={buildRef}>
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> What we build</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">Four capabilities.<br />Unlimited scope.</h2></FadeIn>
