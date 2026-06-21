@@ -3,9 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
-import WebsitesSEO from './pages/WebsitesSEO.jsx'
-import AdsMarketing from './pages/AdsMarketing.jsx'
-import CustomBuilds from './pages/CustomBuilds.jsx'
+import AIAgents from './pages/AIAgents.jsx'
+import AITraining from './pages/AITraining.jsx'
 
 function Router() {
   const [path, setPath] = useState(window.location.pathname)
