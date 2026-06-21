@@ -309,8 +309,8 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
     function drawPulses() {
       pulses.forEach(p => {
         const f = nMap[p.from], t = nMap[p.to]
-        const { sx, sy, ex, ey, cx1, cy1, cx2, cy2 } = edgeCtrlPts(f, t)
-        const pt = cubicPtFull(p.t, sx, sy, cx1, cy1, cx2, cy2, ex, ey)
+        const { sx, sy, ex, ey } = edgeCtrlPts(f, t)
+        const pt = { x: sx + p.t * (ex - sx), y: sy + p.t * (ey - sy) }
         const nc = f.color
 
         ctx.beginPath()
