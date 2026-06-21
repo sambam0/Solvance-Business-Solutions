@@ -333,7 +333,7 @@ export default function AITraining() {
           </motion.div>
 
           <div className="stats">
-            <StatCounter target={3} suffix="+" label="Workshops delivered" />
+            <StatCounter target={4} suffix="hr" label="Half-day workshop to your second brain" />
             <StatCounter target={40} suffix="+" label="Business owners trained" />
             <StatCounter target={12} suffix="+" label="AI tools covered across curricula" />
           </div>
