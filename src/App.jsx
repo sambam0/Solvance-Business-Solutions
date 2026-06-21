@@ -259,7 +259,7 @@ export default function App() {
       </section>
 
       {/* ── Two-pillar offering cards ── */}
-      <section id="services">
+      <section id="services" ref={servicesRef}>
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> What we do</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">Two offerings.<br />One focus.</h2></FadeIn>
