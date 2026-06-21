@@ -2042,51 +2042,6 @@ footer {
   border-radius: 4px
 }
 
-/* ── Results snapshot (home) ── */
-.results-snapshot {
-  padding: 72px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin-top: 0;
-}
-
-.result-item {
-  text-align: center;
-  padding: 28px 20px;
-  border-right: 1px solid var(--line);
-}
-
-.result-item:last-child {
-  border-right: 0;
-}
-
-.result-item .n {
-  font-size: 44px;
-  font-weight: 700;
-  letter-spacing: -.04em;
-  line-height: 1;
-}
-
-.result-item .n sup {
-  font-size: 20px;
-  color: var(--brand);
-  font-weight: 500;
-  vertical-align: top;
-}
-
-.result-item .l {
-  margin-top: 8px;
-  font-size: 13px;
-  color: var(--mute);
-  line-height: 1.4;
-}
-
 /* ── AuditCTA ── */
 .audit-cta {
   background: var(--bg-2);
