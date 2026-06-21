@@ -1,39 +1,51 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-function navigate(href) {
-  history.pushState({}, '', href)
-  window.dispatchEvent(new Event('locationchange'))
+const links = [
+  { href: '#systems',  label: 'AI Systems' },
+  { href: '#training', label: 'AI Training' },
+  { href: '#team',     label: 'Team' },
+]
+
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
-  const [path, setPath] = useState(window.location.pathname)
+  const [active, setActive] = useState(null)
+  const observerRef = useRef(null)
 
+  // Track which section is in view
   useEffect(() => {
-    const onNav = () => { setPath(window.location.pathname); setOpen(false) }
-    window.addEventListener('popstate', onNav)
-    window.addEventListener('locationchange', onNav)
-    return () => {
-      window.removeEventListener('popstate', onNav)
-      window.removeEventListener('locationchange', onNav)
-    }
+    const ids = links.map(l => l.href.slice(1))
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean)
+    if (!sections.length) return
+
+    observerRef.current = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActive('#' + entry.target.id)
+          }
+        }
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    )
+
+    sections.forEach(s => observerRef.current.observe(s))
+    return () => observerRef.current?.disconnect()
   }, [])
 
-  const links = [
-    { href: '/ai-agents',  label: 'AI Agents'  },
-    { href: '/ai-training', label: 'AI Training' },
-  ]
-
-  const goAudit = () => {
-    if (path !== '/') {
-      navigate('/')
-      setTimeout(() => document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' }), 300)
-    } else {
-      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' })
-    }
+  const goAudit = useCallback(() => {
+    scrollTo('audit')
     setOpen(false)
-  }
+  }, [])
+
+  const handleLink = useCallback((href) => {
+    scrollTo(href.slice(1))
+    setOpen(false)
+  }, [])
 
   return (
     <>
@@ -41,7 +53,7 @@ export default function Nav() {
         <div className="wrap row">
           <button
             className="brand nav-home-btn"
-            onClick={() => navigate('/')}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="Solvance home"
           >
             <span className="mk" />
@@ -50,11 +62,11 @@ export default function Nav() {
 
           <div className="nav-links">
             {links.map(l => {
-              const isActive = path === l.href
+              const isActive = active === l.href
               return (
                 <button
                   key={l.href}
-                  onClick={() => navigate(l.href)}
+                  onClick={() => handleLink(l.href)}
                   className={isActive ? 'active' : ''}
                 >
                   {isActive && (
@@ -103,7 +115,7 @@ export default function Nav() {
             transition={{ type: 'spring', stiffness: 400, damping: 32 }}
           >
             {links.map(l => (
-              <button key={l.href} className="mobile-link" onClick={() => navigate(l.href)}>
+              <button key={l.href} className="mobile-link" onClick={() => handleLink(l.href)}>
                 {l.label}
               </button>
             ))}
