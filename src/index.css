@@ -515,6 +515,7 @@ nav.top .row {
 
 .tp-body {
   padding: 16px 18px 20px;
+  overflow-x: hidden;
   overflow-y: auto;
   flex: 1;
   scrollbar-width: thin;
@@ -526,7 +527,7 @@ nav.top .row {
   font-family: 'Geist Mono', ui-monospace, monospace;
   font-size: 12px;
   line-height: 1.65;
-  white-space: pre;
+  white-space: pre-wrap;
   min-height: 1.65em;
 }
 
