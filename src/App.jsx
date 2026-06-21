@@ -167,8 +167,7 @@ export default function App() {
       {/* ── Two-pillar offering cards ── */}
       <section id="services" ref={servicesRef}>
         <div className="wrap">
-          <FadeIn><span className="eyebrow"><span className="dot" /> What we do</span></FadeIn>
-          <FadeIn delay={0.05}><h2 className="section-title">Two offerings.<br />One focus.</h2></FadeIn>
+          <FadeIn><h2 className="section-title">Two offerings.<br />One focus.</h2></FadeIn>
           <FadeIn delay={0.1}>
             <p className="section-sub">
               Whether you need AI built into your operations or your team trained to use it — we do both, under one roof.
