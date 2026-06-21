@@ -313,7 +313,7 @@ export default function AITraining() {
                     {f.cta} →
                   </a>
                 </SpringCard>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>
