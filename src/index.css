@@ -332,7 +332,7 @@ nav.top .row {
   font-size: clamp(48px, 7.6vw, 108px);
   line-height: .96;
   letter-spacing: -.04em;
-  font-weight: 500;
+  font-weight: 700;
   max-width: 16ch;
   color: var(--ink);
   text-wrap: balance
