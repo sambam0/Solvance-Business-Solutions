@@ -258,14 +258,14 @@ export default function AITraining() {
           <FadeIn delay={0.1}><p className="section-sub">You don't need to be technical. You need to be ready to actually use what you learn.</p></FadeIn>
 
           <div className="cb-build-layout" style={{ gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 48 }}>
-            {whoCards.map((card, i) => (
-              <FadeIn key={card.title} delay={0.08 * i}>
+            {whoCards.map((card) => (
+              <div key={card.title} className="who-anim">
                 <SpringCard className="card" hoverY={-4} style={{ height: '100%', padding: '28px 24px' }}>
                   <div className="ic" style={{ marginBottom: 16 }}>{card.icon}</div>
                   <div className="cb-item-title" style={{ fontSize: 16, marginBottom: 10 }}>{card.title}</div>
                   <p className="cb-item-desc">{card.desc}</p>
                 </SpringCard>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>
