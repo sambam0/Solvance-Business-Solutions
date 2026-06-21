@@ -386,7 +386,7 @@ export default function AITraining() {
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> How we teach</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">Three formats.<br />One outcome.</h2></FadeIn>
-          <FadeIn delay={0.1}><p className="section-sub">Every format ends the same way: you leave knowing how to use AI in your business, not just knowing that you should.</p></FadeIn>
+          <FadeIn delay={0.1}><p className="section-sub">Most people start with the Second Brain Setup. Some expand to coaching. Some bring us in for their team. All three end the same: you leave capable, not just informed.</p></FadeIn>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 48 }}>
             {formats.map((f) => (
