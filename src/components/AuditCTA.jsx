@@ -137,9 +137,9 @@ export default function AuditCTA({ preset = '', accent = 'blue' }) {
                       onChange={set('service')}
                     >
                       <option value="">Not sure yet — help me figure it out</option>
-                      <option value="websites-seo">Websites & SEO — get found online</option>
-                      <option value="ads-marketing">Ads & Marketing — get more clients</option>
-                      <option value="custom-builds">Custom Builds — AI, apps & advanced systems</option>
+                      <option value="ai-agents">AI Agents & Automation — build it for me</option>
+                      <option value="ai-training">AI Teaching & Training — teach me how</option>
+                      <option value="both">Both — let's map it out together</option>
                     </select>
                   </div>
                 </div>
