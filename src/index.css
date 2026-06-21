@@ -2257,20 +2257,6 @@ footer {
   transform: translateY(-1px);
 }
 
-/* ── Websites & SEO pricing variant ── */
-.seo-pricing {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.tier.green-featured {
-  background: var(--soft-green);
-  border-color: rgba(52, 211, 153, .3);
-  box-shadow: 0 0 0 1px rgba(52, 211, 153, .06), 0 0 40px rgba(52, 211, 153, .05);
-}
-
 /* ── Custom Builds — capacity signal ── */
 .cb-capacity {
   padding: 0 0 0;
