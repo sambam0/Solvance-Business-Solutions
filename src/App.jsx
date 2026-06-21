@@ -128,6 +128,7 @@ export default function App() {
   const { scrollYProgress } = useScroll()
   const prefersReduced = useReducedMotion()
   const containerRef = useRef(null)
+  const servicesRef = useRef(null)
   const { scrollY } = useScroll()
   const headingY = useTransform(scrollY, [0, 400], [0, prefersReduced ? 0 : -30])
 
