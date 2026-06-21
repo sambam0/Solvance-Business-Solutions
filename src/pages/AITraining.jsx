@@ -293,7 +293,7 @@ export default function AITraining() {
       </section>
 
       {/* ── How We Teach ── */}
-      <section id="formats">
+      <section id="formats" ref={formatsRef}>
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> How we teach</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">Three formats.<br />One outcome.</h2></FadeIn>
