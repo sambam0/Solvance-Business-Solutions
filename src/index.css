@@ -2315,21 +2315,10 @@ footer {
 
 /* ── Responsive additions ── */
 @media (max-width: 900px) {
-  .vertical-cards { grid-template-columns: 1fr; }
-  .results-grid { grid-template-columns: repeat(2, 1fr); }
-  .result-item { border-right: 0; border-bottom: 1px solid var(--line); }
-  .result-item:last-child { border-bottom: 0; }
   .audit-layout { grid-template-columns: 1fr; gap: 40px; }
-  .funnel-hero-layout { grid-template-columns: 1fr; }
-  .funnel-diagram { max-width: 260px; margin: 0 auto; }
-  .pain-grid { grid-template-columns: 1fr; }
-  .seo-pricing { grid-template-columns: 1fr; }
-  .wwd-grid { grid-template-columns: 1fr; }
-  .blueprint-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
 }
 
 @media (max-width: 600px) {
-  .results-grid { grid-template-columns: 1fr 1fr; }
   .page-hero { padding: 120px 0 60px; }
 }
 
