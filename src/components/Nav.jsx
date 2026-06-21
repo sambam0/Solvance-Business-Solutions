@@ -21,9 +21,8 @@ export default function Nav() {
   }, [])
 
   const links = [
-    { href: '/websites-seo', label: 'Websites & SEO' },
-    { href: '/ads-marketing', label: 'Ads & Marketing' },
-    { href: '/custom-builds', label: 'Custom Builds' },
+    { href: '/ai-agents',  label: 'AI Agents'  },
+    { href: '/ai-training', label: 'AI Training' },
   ]
 
   const goAudit = () => {
