@@ -24,9 +24,8 @@ const XIcon = () => (
 )
 
 const serviceLinks = [
-  { href: '/websites-seo', label: 'Websites & SEO' },
-  { href: '/ads-marketing', label: 'Ads & Marketing' },
-  { href: '/custom-builds', label: 'Custom Builds' },
+  { href: '/ai-agents',  label: 'AI Agents & Automation' },
+  { href: '/ai-training', label: 'AI Teaching & Training' },
 ]
 
 const socials = [
