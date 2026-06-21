@@ -1,5 +1,11 @@
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import FadeIn from './FadeIn.jsx'
 import SpringCard from './SpringCard.jsx'
+
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 const cases = [
   {
@@ -29,16 +35,40 @@ const cases = [
 ]
 
 export default function CaseStudies() {
+  const sectionRef = useRef(null)
+
+  useGSAP(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const grid = el.querySelector('.case-grid')
+      const cards = Array.from(el.querySelectorAll('.case-anim'))
+      if (!grid || cards.length < 3) return
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: grid,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      })
+      tl.from(cards[0], { opacity: 0, x: -40, y: 20, duration: 0.65, ease: 'power3.out' }, 0)
+      tl.from(cards[1], { opacity: 0, y: 40,        duration: 0.65, ease: 'power3.out' }, 0.12)
+      tl.from(cards[2], { opacity: 0, x: 40,  y: 20, duration: 0.65, ease: 'power3.out' }, 0.24)
+    })
+  })
+
   return (
-    <section style={{ background: 'var(--bg-2)' }}>
+    <section style={{ background: 'var(--bg-2)' }} ref={sectionRef}>
       <div className="wrap">
         <FadeIn><span className="eyebrow"><span className="dot" /> Work</span></FadeIn>
         <FadeIn delay={0.05}><h2 className="section-title">Results that speak for themselves.</h2></FadeIn>
         <FadeIn delay={0.1}><p className="section-sub">A sample of what we've built — and the outcomes that followed.</p></FadeIn>
 
         <div className="case-grid">
-          {cases.map((c, i) => (
-            <FadeIn key={c.tag} delay={0.08 * i}>
+          {cases.map((c) => (
+            <div key={c.tag} className="case-anim">
               <SpringCard className="case-card" hoverY={-4} style={{ height: '100%' }}>
                 <div className="case-tag">{c.tag}</div>
                 <div className="case-label">{c.label}</div>
@@ -47,7 +77,7 @@ export default function CaseStudies() {
                 <p className="case-quote">{c.quote}</p>
                 <span className="case-soon">↗ Full case study coming soon</span>
               </SpringCard>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>
