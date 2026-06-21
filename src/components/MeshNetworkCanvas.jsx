@@ -22,7 +22,7 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
       {
         id: 'cloud', label: 'Cloud Node', sub: 'Always-on VPS', abbr: 'VPS',
         agents: ['Intake Agent', 'Operations Agent'],
-        rx: 0.15, ry: 0.74, color: '#8B5CF6', glow: 0, state: 'dormant', boostGlow: 0,
+        rx: 0.313, ry: 0.74, color: '#8B5CF6', glow: 0, state: 'dormant', boostGlow: 0,
       },
       {
         id: 'local', label: 'Private Node', sub: 'Local Mac Mini', abbr: 'MAC',
