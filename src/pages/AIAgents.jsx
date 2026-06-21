@@ -381,7 +381,7 @@ export default function AIAgents() {
             {/* Right: 3 secondary capabilities */}
             <div className="cb-build-secondary">
               {secondaryBuilds.map((item, i) => (
-                <FadeIn key={item.title} delay={0.1 + 0.08 * i}>
+                <div key={item.title} className="build-anim">
                   <div className={`cb-build-item${i < secondaryBuilds.length - 1 ? ' cb-build-item-divided' : ''}`}>
                     <div className="ic cb-item-ic">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
