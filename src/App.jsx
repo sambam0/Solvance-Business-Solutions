@@ -6,6 +6,11 @@ import AuditCTA from './components/AuditCTA.jsx'
 import Footer from './components/Footer.jsx'
 import FadeIn from './components/FadeIn.jsx'
 import SpringCard from './components/SpringCard.jsx'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 function navigate(href) {
   history.pushState({}, '', href)
