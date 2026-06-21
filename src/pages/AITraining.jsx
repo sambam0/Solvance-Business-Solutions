@@ -279,14 +279,14 @@ export default function AITraining() {
           <FadeIn delay={0.1}><p className="section-sub">Every session is tailored to your business. These are the four pillars every engagement covers.</p></FadeIn>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 48 }}>
-            {pillars.map((p, i) => (
-              <FadeIn key={p.num} delay={0.08 * i}>
+            {pillars.map((p) => (
+              <div key={p.num} className="pillar-item-anim">
                 <div style={{ padding: '28px 24px', border: '1px solid var(--line)', borderRadius: 12, background: 'var(--bg-2)' }}>
                   <div style={{ fontFamily: 'monospace', fontSize: 11, color: 'var(--brand)', letterSpacing: '0.1em', marginBottom: 12 }}>{p.num}</div>
                   <div className="cb-item-title" style={{ fontSize: 17, marginBottom: 10 }}>{p.title}</div>
                   <p className="cb-item-desc">{p.desc}</p>
                 </div>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>
