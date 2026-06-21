@@ -1526,11 +1526,6 @@ footer {
 
 /* ── Responsive 600px ── */
 @media (max-width: 600px) {
-  .hero .stats,
-  .page-hero .stats {
-    grid-template-columns: 1fr
-  }
-
   .feat-grid {
     grid-template-columns: 1fr
   }
