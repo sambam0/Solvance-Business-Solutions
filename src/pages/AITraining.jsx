@@ -139,35 +139,33 @@ const trainingSteps = [
 const trainingProcessHeading = { line1: 'Audit. Setup.', line2: 'Apply.' }
 const trainingProcessSubhead = "Three steps to a second brain that actually saves you time. We start free, go hands-on fast, and stay available as you grow."
 
-const trainingTiers = [
+const offerings = [
+  {
+    name: 'Second Brain Setup',
+    desc: 'One half-day session. Claude configured for your voice, your workflow, and your top recurring tasks. You leave with a working system — prompt library, system prompt, tested on real work.',
+    items: ['4-hour hands-on session', 'System prompt tuned to your business', 'Prompt library for your top tasks', '30 days async follow-up', 'You own everything'],
+    cta: 'Start with a free audit',
+    ctaHref: '#audit',
+    featured: true,
+    ribbon: 'Start here',
+  },
   {
     name: '1-on-1 Coaching',
-    h3: 'Monthly sessions tailored to your business and your AI stack.',
-    amount: '$1,500',
-    per: '/month · cancel anytime',
-    items: ['2 sessions per month', 'Personal Claude setup + system prompt', 'Prompt library for your recurring tasks', 'Unlimited async Q&A', 'Monthly toolkit review', 'No long-term commitment'],
-    cta: 'Get started',
+    desc: 'Ongoing monthly sessions to expand your AI stack as your work evolves. New tools, new workflows, prompt refinement — scoped to what you actually need.',
+    items: ['2 sessions per month', 'Prompt library expansion', 'Tool and workflow integration', 'Unlimited async Q&A', 'No long-term commitment'],
+    cta: 'Book a call',
     ctaHref: '#audit',
-    ctaClass: 'ghost',
     featured: false,
   },
   {
     name: 'Team Training',
-    h3: 'Full AI rollout for your organization — from assessment to daily use.',
-    amount: 'Custom',
-    per: '· scoped per engagement',
-    items: ['Everything in 1-on-1', 'Team AI readiness assessment', 'Custom curriculum design', 'Live group training sessions', 'Follow-up Q&A and refinement', 'Prompt playbooks + documentation'],
+    desc: 'Custom AI training for your whole org — assessment, curriculum, live sessions, and prompt playbooks your team will actually use. Scoped per engagement.',
+    items: ['AI readiness assessment', 'Custom curriculum design', 'Live group training', 'Prompt playbooks + documentation', 'Follow-up Q&A and refinement'],
     cta: 'Book a scoping call',
     ctaHref: '#audit',
-    ctaClass: 'primary',
-    featured: true,
-    ribbon: 'Most Popular',
+    featured: false,
   },
 ]
-
-const trainingPricingHeading = { line1: 'Two ways to learn', line2: 'with us.' }
-const trainingPricingSubhead = 'Monthly 1-on-1 coaching for ongoing growth, or a full team training package scoped to your org. Both start with a free audit call.'
-const trainingPricingFootnote = 'Entry offer: Second Brain Setup — one half-day session to configure Claude for your workflow. Ask us in the audit call.'
 
 const trainingFaqs = [
   {
