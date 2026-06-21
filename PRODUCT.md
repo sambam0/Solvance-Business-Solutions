@@ -26,6 +26,8 @@ Custom AI agents and automation systems built for the client's specific operatio
 ### AI Teaching & Training
 Hands-on training for business owners and their teams. Entry offer: help the owner build their personal AI second brain — a customized Claude setup that handles research, drafting, planning, and decision support tailored to how their business actually works. Goal is to give them back time immediately, not teach theory. Expands to full team training, prompt engineering, workflow integration, and tool selection.
 
+Primary ICP for AI Training: a solo business owner who is personally time-poor. The flagship entry offer is the Second Brain Setup — one half-day session to configure Claude for their voice, workflow, and recurring tasks. They leave with a working system. Team training is a secondary expansion, not the primary pitch.
+
 ## Brand Personality
 
 Bay Area tech-design studio: modern, artistic, builder-energy execution. The physical anchor is the studio office of a Figma/Linear-era creative agency — tight craft, strong opinions, things shipped. Not a corporate agency, not a hustle-culture consultant. Smart people who build things.
