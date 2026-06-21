@@ -2282,6 +2282,10 @@ footer {
   }
 
   .hero-topo { display: none }
+
+  .terminal-pane {
+    max-height: 280px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
