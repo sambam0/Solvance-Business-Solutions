@@ -2322,31 +2322,6 @@ footer {
   .page-hero { padding: 120px 0 60px; }
 }
 
-/* ── Pain points section (Ads page) ── */
-.pain-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.card.pain-card {
-  border-left: 2px solid rgba(220, 38, 38, .35);
-}
-
-.pain-x {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(220, 38, 38, .1);
-  border: 1px solid rgba(220, 38, 38, .2);
-  border-radius: 8px;
-  color: #ef4444;
-  flex-shrink: 0;
-}
-
 /* ── Before / After case cards (Ads page) ── */
 .ba-before {
   margin-top: 12px;
