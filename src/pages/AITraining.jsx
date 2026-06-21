@@ -344,7 +344,7 @@ export default function AITraining() {
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> Who this is for</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">Sound familiar?</h2></FadeIn>
-          <FadeIn delay={0.1}><p className="section-sub">You don't need to be technical. You need to be ready to actually use what you learn.</p></FadeIn>
+          <FadeIn delay={0.1}><p className="section-sub">If you're running your business and losing hours to work that should be automated — this is for you. No technical background required.</p></FadeIn>
 
           <div className="cb-build-layout" style={{ gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 48 }}>
             {whoCards.map((card) => (
