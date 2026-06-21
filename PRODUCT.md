@@ -10,6 +10,7 @@ Small-to-medium business owners in one of three AI-readiness states:
 - **Aware but lost** — knows AI is relevant, has tried ChatGPT, not getting real results from it, unclear what's actually possible for their business
 - **Ready to automate** — operational and profitable, has identified manual processes they want removed, ready to pay someone to build it
 - **Team needs to level up** — owner or ops lead who needs their team to actually use AI in daily work, not just experiment with it
+- **Solo owner, personally behind** — the primary AI Training buyer. Time-poor, running their business largely alone or with a small team. Not looking to train a team — they want to personally understand and use AI. Specifically wants Claude configured as a second brain: their voice, their recurring tasks, their business context. The goal is to regain time, not build capability in the abstract.
 
 Context: they arrive skeptical, have been burned by agencies and hype before, and are specifically afraid of (a) paying for something that doesn't apply to their business, (b) being locked into a vendor's system, and (c) needing a tech team they don't have.
 
