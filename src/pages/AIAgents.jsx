@@ -406,7 +406,7 @@ export default function AIAgents() {
       </section>
 
       {/* ── Open Claw Network ── */}
-      <section id="use-cases">
+      <section id="use-cases" ref={ucRef}>
         <div className="wrap">
           <FadeIn>
             <span className="eyebrow"><span className="dot" /> Open Claw Network</span>
