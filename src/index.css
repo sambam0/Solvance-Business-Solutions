@@ -2042,48 +2042,6 @@ footer {
   border-radius: 4px
 }
 
-/* ── Chapter break — editorial mid-page nudge ── */
-.chapter-break {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 52px 28px;
-}
-
-.chapter-break::before {
-  content: '';
-  position: absolute;
-  left: 28px;
-  right: 28px;
-  top: 50%;
-  height: 1px;
-  background: var(--line-2);
-}
-
-.chapter-break-inner {
-  position: relative;
-  z-index: 1;
-  background: var(--bg);
-  padding: 0 28px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.chapter-break-text {
-  font-size: 14px;
-  color: var(--mute);
-  letter-spacing: 0.01em;
-}
-
-.chapter-break .btn {
-  font-size: 13px;
-  padding: 7px 16px;
-}
-
 /* ── Vertical service cards (home page) ── */
 .vertical-cards {
   display: grid;
