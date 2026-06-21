@@ -106,6 +106,96 @@ const pillars = [
   },
 ]
 
+const trainingSteps = [
+  {
+    num: '1', time: 'Session 1 · Free', title: 'Audit',
+    body: "A free 30-minute call to map where you're spending time and where AI can give you hours back. You leave with a clear picture of what to tackle first — useful whether or not you work with us.",
+    lines: [
+      { green: false, text: 'Reviewing your workflows + recurring tasks…' },
+      { green: true,  text: 'Top 3 time-drains identified' },
+      { green: true,  text: 'Your Claude setup plan ready' },
+    ],
+  },
+  {
+    num: '2', time: 'Half-Day · Hands-on', title: 'Setup',
+    body: "One session where we configure Claude for your specific voice, role, and recurring tasks. You leave with a working second brain — system prompt tuned, prompt library built, tested on real work.",
+    lines: [
+      { green: false, text: 'System prompt tuned to your workflow…' },
+      { green: true,  text: 'Prompt library built for your top tasks' },
+      { green: true,  text: 'Second brain live — tested on real work' },
+    ],
+  },
+  {
+    num: '3', time: 'Ongoing · Your pace', title: 'Apply',
+    body: "You use it on actual work from day one. We stay available for refinement, questions, and expanding to your team when you're ready.",
+    lines: [
+      { green: true, text: 'Day 1 — using it on real tasks' },
+      { green: true, text: 'Week 1 — prompt library expanding' },
+      { green: true, text: 'When ready — team rollout available' },
+    ],
+  },
+]
+
+const trainingProcessHeading = { line1: 'Audit. Setup.', line2: 'Apply.' }
+const trainingProcessSubhead = "Three steps to a second brain that actually saves you time. We start free, go hands-on fast, and stay available as you grow."
+
+const trainingTiers = [
+  {
+    name: '1-on-1 Coaching',
+    h3: 'Monthly sessions tailored to your business and your AI stack.',
+    amount: '$1,500',
+    per: '/month · cancel anytime',
+    items: ['2 sessions per month', 'Personal Claude setup + system prompt', 'Prompt library for your recurring tasks', 'Unlimited async Q&A', 'Monthly toolkit review', 'No long-term commitment'],
+    cta: 'Get started',
+    ctaHref: '#audit',
+    ctaClass: 'ghost',
+    featured: false,
+  },
+  {
+    name: 'Team Training',
+    h3: 'Full AI rollout for your organization — from assessment to daily use.',
+    amount: 'Custom',
+    per: '· scoped per engagement',
+    items: ['Everything in 1-on-1', 'Team AI readiness assessment', 'Custom curriculum design', 'Live group training sessions', 'Follow-up Q&A and refinement', 'Prompt playbooks + documentation'],
+    cta: 'Book a scoping call',
+    ctaHref: '#audit',
+    ctaClass: 'primary',
+    featured: true,
+    ribbon: 'Most Popular',
+  },
+]
+
+const trainingPricingHeading = { line1: 'Two ways to learn', line2: 'with us.' }
+const trainingPricingSubhead = 'Monthly 1-on-1 coaching for ongoing growth, or a full team training package scoped to your org. Both start with a free audit call.'
+const trainingPricingFootnote = 'Entry offer: Second Brain Setup — one half-day session to configure Claude for your workflow. Ask us in the audit call.'
+
+const trainingFaqs = [
+  {
+    q: "What's included in the Second Brain Setup?",
+    a: "The Second Brain Setup is a 4-hour hands-on session where we configure Claude specifically for your role, voice, and recurring tasks. You leave with a tuned system prompt, a prompt library for your most common workflows, and a setup you use from the next morning. We include 30 days of async follow-up so you can ask questions as you build the habit.",
+  },
+  {
+    q: "Do I need technical skills to get started?",
+    a: "None. Claude works in plain language — no code, no configuration files, no developer required. If you can write an email, you can use Claude. The session is built around your actual work, not abstract concepts.",
+  },
+  {
+    q: "Which AI tools do you cover?",
+    a: "Sessions are built around Claude as the primary tool — it's the most capable for business writing, research, and reasoning tasks. Depending on your workflow, we also cover GPT-4o, Perplexity, Notion AI, and automation tools like Make or Zapier. We teach you which tool to use when, so you stop guessing.",
+  },
+  {
+    q: "How quickly will I see results?",
+    a: "Most people leave the first session with time already saved — because we work on real tasks during the session, not hypotheticals. Within a week of daily use, the habits start to compound. The owners who get the most out of it are the ones who use it immediately on real work, not in test mode.",
+  },
+  {
+    q: "Can you train my whole team?",
+    a: "Yes. Team Training Packages include an AI readiness assessment across your team, custom curriculum design, live group sessions, and prompt playbooks everyone can follow. We scope these individually — reach out and we'll design something specific to your org.",
+  },
+  {
+    q: "What makes this different from just reading the Claude docs?",
+    a: "The docs tell you what Claude can do. We show you what it does for your business, in your workflow, on your actual recurring tasks. The difference is between knowing how a tool works and knowing how to use it to get an hour back by Thursday.",
+  },
+]
+
 const formats = [
   {
     icon: (
