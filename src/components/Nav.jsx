@@ -5,6 +5,7 @@ const links = [
   { href: '#systems',  label: 'AI Systems' },
   { href: '#training', label: 'AI Training' },
   { href: '#team',     label: 'Team' },
+  { href: '#faq',      label: 'FAQ' },
 ]
 
 function scrollTo(id) {
