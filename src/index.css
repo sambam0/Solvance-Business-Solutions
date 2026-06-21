@@ -1406,15 +1406,7 @@ footer {
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-  .hero h1 .grad {
-    animation: none
-  }
-
-  .marquee {
-    animation: none
-  }
-
-  .hero-orb {
+  .hero::before {
     animation: none
   }
 }
