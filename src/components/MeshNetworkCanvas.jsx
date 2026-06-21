@@ -27,7 +27,7 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
       {
         id: 'local', label: 'Private Node', sub: 'Local Mac Mini', abbr: 'MAC',
         agents: ['Main Agent', 'Librarian', 'Matching (Hermes)'],
-        rx: 0.85, ry: 0.74, color: '#22C55E', glow: 0, state: 'dormant', boostGlow: 0,
+        rx: 0.687, ry: 0.74, color: '#22C55E', glow: 0, state: 'dormant', boostGlow: 0,
       },
     ]
     const nMap = Object.fromEntries(NODES.map(n => [n.id, n]))
