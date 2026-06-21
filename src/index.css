@@ -2280,19 +2280,26 @@ footer {
    Hero topology hint (CustomBuilds)
 ══════════════════════════════════════════════ */
 
+.hero-wrap {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 64px;
+  align-items: center
+}
+
 .hero-topo {
-  position: absolute;
-  right: 6%;
-  top: 90px;
-  width: 260px;
-  height: 200px;
-  opacity: 0.14;
+  width: 100%;
+  opacity: 0.55;
   pointer-events: none;
-  z-index: 0;
+  flex-shrink: 0
 }
 
 @media (max-width: 960px) {
-  .hero-topo { display: none; }
+  .hero-wrap {
+    grid-template-columns: 1fr
+  }
+
+  .hero-topo { display: none }
 }
 
 @media (prefers-reduced-motion: reduce) {
