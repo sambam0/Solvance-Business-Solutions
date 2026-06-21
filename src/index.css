@@ -1413,11 +1413,6 @@ footer {
 
 /* ── Responsive 900px ── */
 @media (max-width: 900px) {
-  .hero .stats,
-  .page-hero .stats {
-    grid-template-columns: 1fr 1fr
-  }
-
   .page-hero { padding: 130px 0 70px; }
 
   .nav-links {
