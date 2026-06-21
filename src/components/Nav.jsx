@@ -79,7 +79,7 @@ export default function Nav() {
               whileTap={{ scale: 0.97 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             >
-              Free Audit <span className="arrow">→</span>
+              Get started <span className="arrow">→</span>
             </motion.button>
             <button
               className={`hamburger${open ? ' open' : ''}`}
