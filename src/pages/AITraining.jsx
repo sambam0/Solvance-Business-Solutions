@@ -410,8 +410,44 @@ export default function AITraining() {
       {/* ── Process ── */}
       <Process steps={trainingSteps} heading={trainingProcessHeading} subhead={trainingProcessSubhead} />
 
-      {/* ── Pricing ── */}
-      <Pricing tiers={trainingTiers} heading={trainingPricingHeading} subhead={trainingPricingSubhead} footnote={trainingPricingFootnote} />
+      {/* ── Offerings ── */}
+      <section id="offerings" style={{ background: 'var(--bg-2)' }}>
+        <div className="wrap">
+          <FadeIn><span className="eyebrow"><span className="dot" /> How to work with us</span></FadeIn>
+          <FadeIn delay={0.05}><h2 className="section-title">Three ways to work<br />with us.</h2></FadeIn>
+          <FadeIn delay={0.1}><p className="section-sub">Everything starts with a free 30-minute audit call. From there, we scope the right path.</p></FadeIn>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 48 }}>
+            {offerings.map((o, i) => (
+              <FadeIn key={o.name} delay={0.05 * (i + 1)}>
+                <SpringCard className={`tier${o.featured ? ' featured' : ''}`} hoverY={-3} style={{ height: '100%' }}>
+                  {o.ribbon && <span className="ribbon">{o.ribbon}</span>}
+                  <span className="name">{o.name}</span>
+                  <p style={{ fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.55, margin: '12px 0 20px' }}>{o.desc}</p>
+                  <ul>
+                    {o.items.map(item => (
+                      <li key={item}><span className="ck">✓</span> {item}</li>
+                    ))}
+                  </ul>
+                  <motion.a
+                    href={o.ctaHref}
+                    className={`btn ${o.featured ? 'brand' : 'ghost'}`}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+                  >
+                    {o.cta} <span className="arrow">→</span>
+                  </motion.a>
+                </SpringCard>
+              </FadeIn>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 24, color: 'var(--mute)', fontSize: 13 }}>
+            All engagements start with a free audit call — no commitment required.
+          </div>
+        </div>
+      </section>
 
       {/* ── FAQ ── */}
       <FAQ faqs={trainingFaqs} />
