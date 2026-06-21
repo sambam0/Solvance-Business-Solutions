@@ -428,20 +428,6 @@ export default function AIAgents() {
       {/* ── FAQ ── */}
       <FAQ />
 
-      {/* ── Capacity stripe ── */}
-      <div className="cb-capacity-stripe">
-        <div className="wrap">
-          <div className="cb-cap-inner">
-            <span className="cb-cap-dot" aria-hidden="true" />
-            <p className="cb-cap-text">
-              Taking <strong>3 new projects</strong> this quarter — <strong>2 slots remaining</strong>
-            </p>
-            <a href="#audit" className="btn brand cb-cap-cta">
-              Reserve a slot <span className="arrow">→</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
       <AuditCTA preset="ai-agents" accent="blue" />
       <Footer />
