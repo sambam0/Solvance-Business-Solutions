@@ -208,9 +208,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── Trust bar ── */}
-      <TrustBar />
-
       <AuditCTA preset="" accent="blue" />
       <Footer />
     </>
