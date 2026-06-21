@@ -303,10 +303,9 @@ nav.top .row {
 
 /* ── Hero ── */
 .hero {
-  padding: 128px 0 72px;
+  padding: 128px 0 80px;
   position: relative;
-  overflow: hidden;
-  text-align: center
+  overflow: hidden
 }
 
 .hero::before {
