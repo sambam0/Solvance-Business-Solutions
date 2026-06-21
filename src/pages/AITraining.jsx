@@ -272,7 +272,7 @@ export default function AITraining() {
       </section>
 
       {/* ── What You'll Learn ── */}
-      <section id="curriculum">
+      <section id="curriculum" ref={curriculumRef}>
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> Curriculum</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">What you'll learn.<br /><span className="grad">What you'll actually use.</span></h2></FadeIn>
