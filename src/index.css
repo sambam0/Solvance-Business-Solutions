@@ -419,6 +419,148 @@ nav.top .row {
 }
 
 
+/* ── Terminal Pane ── */
+.terminal-pane {
+  width: 100%;
+  border-radius: 16px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 40px -10px rgba(59, 158, 255, 0.10),
+    var(--shadow);
+  position: relative;
+}
+
+.tp-chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-3);
+  flex-shrink: 0;
+}
+
+.tp-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.tp-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line-2);
+}
+
+.tp-title {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--mute);
+  letter-spacing: 0.04em;
+  flex: 1;
+  text-align: center;
+}
+
+.tp-body {
+  padding: 16px 18px 20px;
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-2) transparent;
+}
+
+.tp-line {
+  display: block;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.65;
+  white-space: pre;
+  min-height: 1.65em;
+}
+
+.tp-line--prompt   { color: var(--brand); }
+.tp-line--command  { color: var(--ink); }
+.tp-line--meta     { color: var(--mute); }
+.tp-line--output   { color: var(--ink-2); }
+.tp-line--data     { color: var(--mute); }
+.tp-line--success  { color: var(--green); }
+.tp-line--gap      { min-height: 0.6em; }
+
+.tp-cmd-text { color: var(--ink); }
+
+.tp-cursor {
+  display: inline-block;
+  color: var(--brand);
+  animation: tp-blink 1s step-end infinite;
+}
+
+@keyframes tp-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tp-line { opacity: 1 !important; transform: none !important; }
+  .tp-cursor { animation: none; opacity: 1; }
+}
+
+
+/* ── Pain Points Grid ── */
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 48px;
+}
+
+@media (max-width: 768px) {
+  .pain-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ── Training Grid ── */
+.training-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.training-featured {
+  grid-row: 1 / 3;
+}
+
+.training-card-featured {
+  border-color: var(--brand-2);
+}
+
+@media (max-width: 768px) {
+  .training-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-featured {
+    grid-row: auto;
+  }
+}
+
+
+/* ── Team Intro ── */
+.team-intro {
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  max-width: 620px;
+  margin-bottom: 8px;
+}
+
+
 /* ── Sections ── */
 section {
   padding: 96px 0;
