@@ -7,7 +7,7 @@ import SpringCard from './SpringCard.jsx'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-const steps = [
+const defaultSteps = [
   {
     num: '1', time: 'Week 1 · Discovery', title: 'Discover',
     body: "We map your operations, interview your team, and identify the highest-leverage AI opportunities. You leave with a prioritized roadmap — useful whether or not you hire us.",
@@ -37,7 +37,10 @@ const steps = [
   },
 ]
 
-export default function Process() {
+const defaultHeading = { line1: 'Discover. Build.', line2: 'Deploy.' }
+const defaultSubhead = "Three steps, no surprises. We move fast, keep you in the loop, and don't disappear after launch."
+
+export default function Process({ steps = defaultSteps, heading = defaultHeading, subhead = defaultSubhead }) {
   const sectionRef = useRef(null)
 
   useGSAP(() => {
