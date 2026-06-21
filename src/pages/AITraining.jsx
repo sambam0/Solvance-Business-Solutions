@@ -60,17 +60,17 @@ const whoCards = [
         <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
       </svg>
     ),
-    title: 'You\'re using ChatGPT but not getting real results',
-    desc: 'You paste prompts and get mediocre output. There\'s a gap between what AI can do and what you\'re getting — we close it.',
+    title: 'You\'re watching hours disappear to work you know AI could handle',
+    desc: 'Drafting, summarizing, researching, responding — you\'re doing it manually because you haven\'t had time to set AI up properly. That\'s the problem we fix in a half day.',
   },
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
       </svg>
     ),
-    title: 'Your team keeps asking what AI tools to use',
-    desc: 'There are hundreds of tools and no clear answer. We cut through the noise and show you exactly which ones fit your workflow.',
+    title: 'You\'ve tried ChatGPT but it doesn\'t sound like you or know your business',
+    desc: 'Generic AI gives generic output. A second brain configured for your voice, your clients, and your recurring tasks is a different tool entirely — and it takes one session to build.',
   },
   {
     icon: (
@@ -78,8 +78,8 @@ const whoCards = [
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
-    title: 'You want to use AI without becoming dependent on a vendor',
-    desc: 'You want to understand what\'s happening under the hood — not just buy a black box. We teach the fundamentals so you stay in control.',
+    title: 'You want to run this yourself — not manage a vendor or depend on a tool you don\'t understand',
+    desc: 'You\'re not looking for a subscription or a black box. You want Claude set up, explained, and handed to you. You own it completely. We just get you there faster.',
   },
 ]
 
