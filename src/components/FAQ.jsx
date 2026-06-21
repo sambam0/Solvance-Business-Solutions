@@ -64,7 +64,7 @@ function FAQItem({ q, a }) {
   )
 }
 
-export default function FAQ() {
+export default function FAQ({ faqs = defaultFaqs }) {
   return (
     <section id="faq">
       <div className="wrap">
