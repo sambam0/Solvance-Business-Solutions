@@ -113,7 +113,7 @@ export default function Nav() {
               onClick={goAudit}
               whileTap={{ scale: 0.97 }}
             >
-              Free Audit →
+              Get started →
             </motion.button>
           </motion.div>
         )}
