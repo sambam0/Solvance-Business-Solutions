@@ -359,25 +359,10 @@ nav.top .row {
   font-size: clamp(48px, 7.6vw, 108px);
   line-height: .96;
   letter-spacing: -.04em;
-  font-weight: 700;
-  max-width: 18ch;
-  margin: 0 auto;
-  color: var(--ink)
-}
-
-.hero h1 .grad {
-  background: linear-gradient(90deg, #3B9EFF, #9D6FFF 55%, #3B9EFF);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: hueshift 8s linear infinite
-}
-
-@keyframes hueshift {
-  to {
-    background-position: 200% 0
-  }
+  font-weight: 500;
+  max-width: 16ch;
+  color: var(--ink);
+  text-wrap: balance
 }
 
 /* ── Hero ambient orbs ── */
