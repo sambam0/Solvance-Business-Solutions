@@ -24,9 +24,16 @@ function Router() {
     window.scrollTo(0, 0)
   }, [path])
 
-  if (path === '/websites-seo') return <WebsitesSEO />
-  if (path === '/ads-marketing') return <AdsMarketing />
-  if (path === '/custom-builds') return <CustomBuilds />
+  if (path === '/websites-seo' || path === '/ads-marketing') {
+    history.replaceState({}, '', '/')
+    return <App />
+  }
+  if (path === '/custom-builds') {
+    history.replaceState({}, '', '/ai-agents')
+    return <AIAgents />
+  }
+  if (path === '/ai-agents') return <AIAgents />
+  if (path === '/ai-training') return <AITraining />
   if (path === '/privacy') return <PrivacyPolicy />
   return <App />
 }
