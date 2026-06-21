@@ -270,8 +270,8 @@ export default function App() {
           </FadeIn>
 
           <div className="cb-build-layout" style={{ gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 48 }}>
-            {pillars.map((p, i) => (
-              <FadeIn key={p.label} delay={0.1 * i}>
+            {pillars.map((p) => (
+              <div key={p.label} className="pillar-anim">
                 <SpringCard
                   className="card"
                   hoverY={-5}
