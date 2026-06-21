@@ -76,14 +76,23 @@ export default function TerminalPane() {
   return (
     <SpringCard className="card terminal-pane" hoverY={-3}>
       <div ref={rootRef}>
-        {/* Chrome bar */}
-        <div className="tp-chrome">
+        {/* Title bar */}
+        <div className="tp-titlebar">
           <div className="tp-dots">
-            <span className="tp-dot" />
-            <span className="tp-dot" />
-            <span className="tp-dot" />
+            <span className="tp-dot tp-dot--close" />
+            <span className="tp-dot tp-dot--min" />
+            <span className="tp-dot tp-dot--max" />
           </div>
-          <span className="tp-title">intake-qualifier — bash</span>
+          <span className="tp-win-title">intake-qualifier — bash</span>
+        </div>
+
+        {/* Tab bar */}
+        <div className="tp-tabbar">
+          <div className="tp-tab tp-tab--active">
+            <span className="tp-tab-name">bash</span>
+            <span className="tp-tab-x">×</span>
+          </div>
+          <span className="tp-tab-new">+</span>
         </div>
 
         {/* Body */}
