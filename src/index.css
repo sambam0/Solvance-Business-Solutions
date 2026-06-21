@@ -1954,24 +1954,6 @@ footer {
   color: transparent;
 }
 
-/* ── Strikethrough effect (Websites & SEO hero) ── */
-.strike {
-  position: relative;
-  display: inline-block;
-}
-
-.strike::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 48%;
-  width: 100%;
-  height: 3px;
-  background: currentColor;
-  border-radius: 2px;
-  transform: rotate(-2deg);
-}
-
 /* ── Mobile nav ── */
 .mobile-nav {
   position: fixed;
