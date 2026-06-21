@@ -147,6 +147,27 @@ export default function App() {
     return () => { cancelAnimationFrame(rafId); lenis.destroy() }
   }, [])
 
+  useGSAP(() => {
+    const el = servicesRef.current
+    if (!el) return
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const pillarEls = el.querySelectorAll('.pillar-anim')
+      gsap.from(pillarEls, {
+        opacity: 0,
+        y: 32,
+        duration: 0.7,
+        ease: 'power3.out',
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 72%',
+          toggleActions: 'play none none none',
+        },
+      })
+    })
+  })
+
   return (
     <>
       <motion.div className="scroll-progress" style={{ scaleX: scrollYProgress }} />
