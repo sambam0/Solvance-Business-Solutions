@@ -163,6 +163,30 @@ export default function AITraining() {
     return () => { cancelAnimationFrame(rafId); lenis.destroy() }
   }, [])
 
+  useGSAP(() => {
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      if (whoRef.current) {
+        gsap.from(whoRef.current.querySelectorAll('.who-anim'), {
+          opacity: 0, y: 32, duration: 0.6, ease: 'power3.out', stagger: 0.1,
+          scrollTrigger: { trigger: whoRef.current, start: 'top 78%', toggleActions: 'play none none none' },
+        })
+      }
+      if (curriculumRef.current) {
+        gsap.from(curriculumRef.current.querySelectorAll('.pillar-item-anim'), {
+          opacity: 0, y: 28, duration: 0.55, ease: 'power3.out', stagger: 0.1,
+          scrollTrigger: { trigger: curriculumRef.current, start: 'top 78%', toggleActions: 'play none none none' },
+        })
+      }
+      if (formatsRef.current) {
+        gsap.from(formatsRef.current.querySelectorAll('.format-anim'), {
+          opacity: 0, y: 28, duration: 0.55, ease: 'power3.out', stagger: 0.1,
+          scrollTrigger: { trigger: formatsRef.current, start: 'top 78%', toggleActions: 'play none none none' },
+        })
+      }
+    })
+  })
+
   return (
     <>
       <motion.div className="scroll-progress" style={{ scaleX: scrollYProgress }} />
