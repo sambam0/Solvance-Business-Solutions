@@ -289,18 +289,19 @@ export default function AITraining() {
         </div>
 
         <div className="wrap">
-          <motion.a className="ann" href="#audit" {...fadeUp(0)}>
-            <b>New</b> Team training packages now available →
+          <motion.a className="ann" href="#offerings" {...fadeUp(0)}>
+            <b>New</b> Second Brain Setup — one session to configure Claude for your workflow →
           </motion.a>
 
           <motion.h1 style={{ y: headingY }} {...fadeUp(0.1)}>
-            Stop guessing with AI.<br />
-            <span className="grad">Start using it right.</span>
+            You're losing hours a week<br />
+            <span className="grad">to work Claude can do.</span>
           </motion.h1>
 
           <motion.p className="lede" {...fadeUp(0.28)}>
-            Hands-on AI training for business owners and their teams. Learn the tools, workflows, and
-            thinking patterns that turn AI from a curiosity into a competitive advantage.
+            Most business owners spend 10–15 hours a week on work they could hand off to AI. We set
+            up Claude as your personal second brain — tuned to your voice, your tasks, your business —
+            and hand it back to you in a half day.
           </motion.p>
 
           <motion.div className="ctas" {...fadeUp(0.44)}>
@@ -314,24 +315,24 @@ export default function AITraining() {
               Get started <span className="arrow">→</span>
             </motion.a>
             <motion.a
-              href="#formats"
+              href="#offerings"
               className="btn ghost"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             >
-              See formats
+              See the Second Brain Setup
             </motion.a>
           </motion.div>
 
           <motion.div className="micro" {...fadeUp(0.56)}>
-            <span><span className="ck">✓</span> Hands-on, not theoretical</span>
-            <span><span className="ck">✓</span> Your tools, your workflow</span>
-            <span><span className="ck">✓</span> Walk away capable</span>
+            <span><span className="ck">✓</span> One half-day session</span>
+            <span><span className="ck">✓</span> Your voice, your tasks, your Claude</span>
+            <span><span className="ck">✓</span> Using it on real work by end of week</span>
           </motion.div>
 
           <div className="stats">
-            <StatCounter target={4} suffix="hr" label="Half-day workshop to your second brain" />
+            <StatCounter target={4} suffix="hr" label="To a working second brain, from first call" />
             <StatCounter target={40} suffix="+" label="Business owners trained" />
             <StatCounter target={12} suffix="+" label="AI tools covered across curricula" />
           </div>
