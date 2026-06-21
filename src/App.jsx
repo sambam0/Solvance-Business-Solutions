@@ -297,7 +297,7 @@ export default function App() {
                     {p.cta} <span style={{ opacity: 0.7 }}>→</span>
                   </div>
                 </SpringCard>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>
