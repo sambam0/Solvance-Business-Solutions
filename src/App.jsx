@@ -23,69 +23,6 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: [0.2, 0.7, 0.2, 1] },
 })
 
-function StatCounter({ target, suffix, label }) {
-  const ref = useRef(null)
-  const numRef = useRef(null)
-  const prefersReduced = useReducedMotion()
-  useEffect(() => {
-    if (prefersReduced) return
-    const isDecimal = String(target).includes('.')
-    let started = false
-    const obs = new IntersectionObserver(entries => {
-      if (!entries[0].isIntersecting || started) return
-      started = true; obs.disconnect()
-      const duration = 1300; const startTime = performance.now()
-      function tick(now) {
-        const p = Math.min((now - startTime) / duration, 1)
-        const eased = 1 - Math.pow(1 - p, 3)
-        const val = isDecimal ? (eased * target).toFixed(1) : Math.floor(eased * target)
-        if (numRef.current) numRef.current.innerHTML = val + '<sup>' + suffix + '</sup>'
-        if (p < 1) requestAnimationFrame(tick)
-      }
-      requestAnimationFrame(tick)
-    }, { threshold: 0.5 })
-    if (ref.current) obs.observe(ref.current)
-    return () => obs.disconnect()
-  }, [target, suffix, prefersReduced])
-  return (
-    <motion.div className="stat" ref={ref} whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
-      <div className="n" ref={numRef} dangerouslySetInnerHTML={{ __html: `${target}<sup>${suffix}</sup>` }} />
-      <div className="l">{label}</div>
-    </motion.div>
-  )
-}
-
-const industries = [
-  { abbr: 'SA', label: 'SaaS / Operations',    color: '#3B9EFF' },
-  { abbr: 'EC', label: 'E-commerce',            color: '#34d399' },
-  { abbr: 'PS', label: 'Professional Services', color: '#9D6FFF' },
-  { abbr: 'HC', label: 'Healthcare',            color: '#06B6D4' },
-  { abbr: 'FN', label: 'Fintech',               color: '#F59E0B' },
-  { abbr: 'MD', label: 'Media & Content',       color: '#F97316' },
-  { abbr: 'LG', label: 'Logistics',             color: '#60A5FA' },
-  { abbr: 'RE', label: 'Real Estate',           color: '#A78BFA' },
-]
-
-function TrustBar() {
-  const tiles = [...industries, ...industries]
-  return (
-    <div className="logos-section">
-      <div className="wrap">
-        <p className="label">Industries we've shipped for</p>
-      </div>
-      <div className="marquee-wrap">
-        <div className="marquee">
-          {tiles.map((ind, i) => (
-            <div key={i} className="logo-tile">
-              <div className="lm" style={{ background: ind.color }}>{ind.abbr}</div>
-              {ind.label}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
 
 const pillars = [
   {
