@@ -6,16 +6,24 @@ brand
 
 ## Users
 
-Small-to-medium business owners at three distinct growth stages:
-- **Early stage** — need to exist online, get found on Google, build a review base
-- **Scaling stage** — have a site but need paid traffic, funnels, and a pipeline
-- **Established** — operational, profitable, ready for custom AI systems or mobile apps
+Small-to-medium business owners in one of three AI-readiness states:
+- **Aware but lost** — knows AI is relevant, has tried ChatGPT, not getting real results from it, unclear what's actually possible for their business
+- **Ready to automate** — operational and profitable, has identified manual processes they want removed, ready to pay someone to build it
+- **Team needs to level up** — owner or ops lead who needs their team to actually use AI in daily work, not just experiment with it
 
-Context: they arrive skeptical, have been burned by agencies before, and are looking for a team that clearly knows what they're doing — not salespeople with a pitch deck.
+Context: they arrive skeptical, have been burned by agencies and hype before, and are specifically afraid of (a) paying for something that doesn't apply to their business, (b) being locked into a vendor's system, and (c) needing a tech team they don't have.
 
 ## Product Purpose
 
-Solvance is a full-service digital agency operating across three verticals: Websites & SEO, Ads & Marketing, and Custom Builds. The site exists to convert a skeptical business owner into a booked free audit. Success looks like: visitor lands, immediately senses capability, picks their growth stage, and books the call — in under two minutes.
+Solvance is an AI consulting firm for SMBs — building custom AI agents and training teams to use AI well. The site exists to convert a skeptical business owner into a booked free audit. Success: visitor lands, immediately understands whether they need agents built, training delivered, or both — and books the call in under two minutes.
+
+## Services
+
+### AI Agents & Automation
+Custom AI agents and automation systems built for the client's specific operations — intake, ops, customer support, research, outreach. Stack-agnostic. Client owns everything. Live in weeks, not months.
+
+### AI Teaching & Training
+Hands-on training for business owners and their teams. Entry offer: help the owner build their personal AI second brain — a customized Claude setup that handles research, drafting, planning, and decision support tailored to how their business actually works. Goal is to give them back time immediately, not teach theory. Expands to full team training, prompt engineering, workflow integration, and tool selection.
 
 ## Brand Personality
 
@@ -36,10 +44,10 @@ The site should be impossible to replicate by prompting a generic AI. Visitors s
 
 ## Design Principles
 
-1. **The site is the proof** — Solvance builds websites for clients; every interaction on this site is a live demo of capability. The craft here is the portfolio.
+1. **The site is the proof** — Solvance builds AI systems for clients; the canvas diagrams, workflow visualizations, and technical precision of this site are the live portfolio. The craft here is the pitch.
 2. **Motion earns its place** — animations should feel like an Awwwards or Active Theory production: intentional, orchestrated, surprising. No fade-in-on-scroll as decoration.
 3. **One idea per fold** — each viewport-height section owns one dominant idea. Clarity by commitment, not by cramming.
-4. **Builder confidence, not hype** — copy and design communicate certainty through specificity (14 days, $97/mo, 40+ projects) not superlatives. Show the math.
+4. **Builder confidence, not hype** — copy communicates certainty through specificity (3 weeks to first result, 40+ projects, $1,500/mo advisory, 60-day post-launch support) not superlatives. Show the math.
 5. **Distinctive at every breakpoint** — every section should have its own visual world. Template repetition is the enemy.
 
 ## Accessibility & Inclusion
