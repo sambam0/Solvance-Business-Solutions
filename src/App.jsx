@@ -112,85 +112,54 @@ export default function App() {
 
       {/* ── Hero ── */}
       <section className="hero" id="hero" ref={containerRef}>
-        <div className="hero-orbs" aria-hidden="true">
-          <div className="hero-orb hero-orb-1" />
-          <div className="hero-orb hero-orb-2" />
-          <div className="hero-orb hero-orb-3" />
-        </div>
+        <div className="wrap hero-wrap">
+          <div className="hero-text">
+            <motion.h1 style={{ y: headingY }} {...fadeUp(0.1)}>
+              Your business on AI.<br />
+              Built right. Taught well.
+            </motion.h1>
 
-        {/* Faint topology hint — 3-node mesh architecture */}
-        <div className="hero-topo" aria-hidden="true">
-          <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="160" y1="44" x2="68" y2="196" stroke="#3B82F6" strokeWidth="1" strokeDasharray="4 7" />
-            <line x1="160" y1="44" x2="252" y2="196" stroke="#8B5CF6" strokeWidth="1" strokeDasharray="4 7" />
-            <line x1="68" y1="196" x2="252" y2="196" stroke="#22C55E" strokeWidth="1" strokeDasharray="4 7" />
-            <circle cx="160" cy="44" r="16" fill="#0F1E36" />
-            <circle cx="160" cy="44" r="16" stroke="#3B82F6" strokeWidth="1.5" />
-            <circle cx="68" cy="196" r="16" fill="#1A1030" />
-            <circle cx="68" cy="196" r="16" stroke="#8B5CF6" strokeWidth="1.5" />
-            <circle cx="252" cy="196" r="16" fill="#022c22" />
-            <circle cx="252" cy="196" r="16" stroke="#22C55E" strokeWidth="1.5" />
-            <text x="160" y="28" textAnchor="middle" fill="#3B82F6" fontSize="9" fontFamily="monospace" opacity="0.8">HUB</text>
-            <text x="68" y="226" textAnchor="middle" fill="#8B5CF6" fontSize="9" fontFamily="monospace" opacity="0.8">CLOUD</text>
-            <text x="252" y="226" textAnchor="middle" fill="#22C55E" fontSize="9" fontFamily="monospace" opacity="0.8">LOCAL</text>
-            <circle className="topo-traveler" r="3" fill="#3B9EFF">
-              <animateMotion dur="3s" repeatCount="indefinite" path="M160,44 L68,196" />
-            </circle>
-            <circle className="topo-traveler" r="3" fill="#9D6FFF">
-              <animateMotion dur="4.2s" repeatCount="indefinite" begin="1.4s" path="M160,44 L252,196" />
-            </circle>
-            <circle className="topo-traveler" r="3" fill="#22C55E">
-              <animateMotion dur="3.6s" repeatCount="indefinite" begin="2.1s" path="M68,196 L252,196" />
-            </circle>
-          </svg>
-        </div>
+            <motion.p className="lede" {...fadeUp(0.28)}>
+              We build custom AI agents for businesses ready to scale — and train the owners
+              who want to understand exactly how it works.
+            </motion.p>
 
-        <div className="wrap">
-          <motion.a className="ann" href="#audit" {...fadeUp(0)}>
-            <b>Now</b> Taking 3 new AI projects this quarter →
-          </motion.a>
+            <motion.div className="ctas" {...fadeUp(0.44)}>
+              <button className="btn brand" onClick={() => navigate('/ai-agents')}>
+                AI Agents <span className="arrow">→</span>
+              </button>
+              <button className="btn ghost" onClick={() => navigate('/ai-training')}>
+                AI Training <span className="arrow">→</span>
+              </button>
+            </motion.div>
 
-          <motion.h1 style={{ y: headingY }} {...fadeUp(0.1)}>
-            Your business on AI.<br />
-            <span className="grad">Built right. Taught well.</span>
-          </motion.h1>
+            <motion.div className="hero-proof" {...fadeUp(0.56)}>
+              <span>40 systems shipped. 3-week average to first result.</span>
+              <span>$1,500/mo to start — no lock-in. Everything you own.</span>
+            </motion.div>
+          </div>
 
-          <motion.p className="lede" {...fadeUp(0.28)}>
-            We build custom AI agents for businesses ready to scale — and train the owners
-            who want to understand exactly how it works.
-          </motion.p>
-
-          <motion.div className="ctas" {...fadeUp(0.44)}>
-            <motion.button
-              className="btn brand"
-              onClick={() => navigate('/ai-agents')}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-            >
-              AI Agents <span className="arrow">→</span>
-            </motion.button>
-            <motion.button
-              className="btn ghost"
-              onClick={() => navigate('/ai-training')}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-            >
-              AI Training <span className="arrow">→</span>
-            </motion.button>
-          </motion.div>
-
-          <motion.div className="micro" {...fadeUp(0.56)}>
-            <span><span className="ck">✓</span> You own everything we build</span>
-            <span><span className="ck">✓</span> AI Agents + Teaching under one roof</span>
-            <span><span className="ck">✓</span> Results-first, always</span>
-          </motion.div>
-
-          <div className="stats">
-            <StatCounter target={40} suffix="+" label="Projects delivered across industries" />
-            <StatCounter target={3} suffix=" wks" label="Average time to first measurable result" />
-            <StatCounter target={12} suffix="+" label="Industries served across all projects" />
+          <div className="hero-topo" aria-hidden="true">
+            <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="160" y1="44" x2="68" y2="196" stroke="var(--line-2)" strokeWidth="1" />
+              <line x1="160" y1="44" x2="252" y2="196" stroke="var(--line-2)" strokeWidth="1" />
+              <line x1="68" y1="196" x2="252" y2="196" stroke="var(--line-2)" strokeWidth="1" />
+              <circle cx="160" cy="44" r="16" fill="none" stroke="var(--line-2)" strokeWidth="1" />
+              <circle cx="68" cy="196" r="16" fill="none" stroke="var(--line-2)" strokeWidth="1" />
+              <circle cx="252" cy="196" r="16" fill="none" stroke="var(--line-2)" strokeWidth="1" />
+              <text x="160" y="28" textAnchor="middle" fill="var(--mute)" fontSize="9" fontFamily="monospace" opacity="0.9">HUB</text>
+              <text x="68" y="226" textAnchor="middle" fill="var(--mute)" fontSize="9" fontFamily="monospace" opacity="0.9">CLOUD</text>
+              <text x="252" y="226" textAnchor="middle" fill="var(--mute)" fontSize="9" fontFamily="monospace" opacity="0.9">LOCAL</text>
+              <circle className="topo-traveler" r="3" fill="var(--brand)">
+                <animateMotion dur="3s" repeatCount="indefinite" path="M160,44 L68,196" />
+              </circle>
+              <circle className="topo-traveler" r="3" fill="var(--brand)">
+                <animateMotion dur="4.2s" repeatCount="indefinite" begin="1.4s" path="M160,44 L252,196" />
+              </circle>
+              <circle className="topo-traveler" r="3" fill="var(--brand)">
+                <animateMotion dur="3.6s" repeatCount="indefinite" begin="2.1s" path="M68,196 L252,196" />
+              </circle>
+            </svg>
           </div>
         </div>
       </section>
