@@ -231,6 +231,7 @@ export default function App() {
 
       {/* ── 1. Hero ── */}
       <section className="hero" id="hero" ref={containerRef}>
+        <HeroRainCanvas />
         <div className="wrap hero-wrap">
           <div className="hero-text">
             <motion.h1 style={{ y: headingY }} {...fadeUp(0.1)}>
