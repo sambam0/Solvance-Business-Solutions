@@ -71,7 +71,7 @@ export default function Nav() {
           </div>
 
           <div className="nav-cta">
-            <span className="pill"><span className="dot" /> Taking clients</span>
+            <span className="pill"><span className="dot" /> Taking 3 AI projects this quarter</span>
             <motion.button
               className="btn brand"
               onClick={goAudit}
