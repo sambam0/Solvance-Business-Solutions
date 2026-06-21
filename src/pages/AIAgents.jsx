@@ -398,7 +398,7 @@ export default function AIAgents() {
                       <p className="cb-item-desc">{item.desc}</p>
                     </div>
                   </div>
-                </FadeIn>
+                </div>
               ))}
             </div>
           </div>
