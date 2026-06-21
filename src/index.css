@@ -375,31 +375,14 @@ nav.top .row {
   z-index: 1
 }
 
-@keyframes ann-in {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scale(.96)
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1)
-  }
+.hero .lede {
+  margin: 28px 0 0;
+  max-width: 52ch;
+  font-size: 19px;
+  color: var(--ink-2);
+  line-height: 1.5
 }
 
-@keyframes hero-h1-in {
-  from {
-    opacity: 0;
-    transform: translateY(24px)
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0)
-  }
-}
-
-.hero .lede,
 .page-hero .lede {
   margin: 28px auto 0;
   max-width: 62ch;
@@ -408,7 +391,13 @@ nav.top .row {
   line-height: 1.5
 }
 
-.hero .ctas,
+.hero .ctas {
+  margin-top: 36px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap
+}
+
 .page-hero .ctas {
   margin-top: 36px;
   display: flex;
@@ -417,77 +406,16 @@ nav.top .row {
   flex-wrap: wrap
 }
 
-.hero .micro,
-.page-hero .micro {
-  margin-top: 18px;
+.hero-proof {
+  margin-top: 28px;
   display: flex;
-  justify-content: center;
-  gap: 18px;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 12px;
   color: var(--mute);
-  font-size: 13px;
-  flex-wrap: wrap
-}
-
-.hero .micro span,
-.page-hero .micro span {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px
-}
-
-.hero .micro .ck,
-.page-hero .micro .ck {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--soft-2);
-  color: var(--brand-2);
-  display: grid;
-  place-items: center;
-  font-size: 10px
-}
-
-.hero .stats,
-.page-hero .stats {
-  margin: 72px auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  max-width: 980px
-}
-
-.hero .stat,
-.page-hero .stat {
-  padding: 24px;
-  background: var(--bg-2);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  text-align: left;
-  cursor: default
-}
-
-.hero .stat .n,
-.page-hero .stat .n {
-  font-size: 40px;
-  font-weight: 700;
-  letter-spacing: -.03em;
-  line-height: 1;
-  color: var(--ink)
-}
-
-.hero .stat .n sup,
-.page-hero .stat .n sup {
-  font-size: 18px;
-  color: var(--brand);
-  vertical-align: top;
-  font-weight: 500
-}
-
-.hero .stat .l,
-.page-hero .stat .l {
-  margin-top: 6px;
-  font-size: 13px;
-  color: var(--mute)
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums
 }
 
 /* ── Trusted By ── */
