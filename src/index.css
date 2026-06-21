@@ -2313,19 +2313,6 @@ footer {
   color: var(--green);
 }
 
-/* ── What We Do cards (Ads page) ── */
-.wwd-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 48px;
-}
-
-/* ── Home page services section subtitle ── */
-.services-intro {
-  padding-bottom: 0;
-}
-
 /* ── Responsive additions ── */
 @media (max-width: 900px) {
   .vertical-cards { grid-template-columns: 1fr; }
