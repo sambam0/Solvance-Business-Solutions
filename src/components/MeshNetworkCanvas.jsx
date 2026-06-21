@@ -163,7 +163,7 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
           ctx.shadowColor = ca(f.color, 0.75)
           ctx.beginPath()
           ctx.moveTo(sx, sy)
-          ctx.bezierCurveTo(cx1, cy1, cx2, cy2, ex, ey)
+          ctx.lineTo(ex, ey)
           ctx.strokeStyle = ca(f.color, e.lit * 0.5)
           ctx.lineWidth = 2.5
           ctx.stroke()
@@ -172,13 +172,13 @@ export default function MeshNetworkCanvas({ highlightNodes = [] }) {
 
         ctx.beginPath()
         ctx.moveTo(sx, sy)
-        ctx.bezierCurveTo(cx1, cy1, cx2, cy2, ex, ey)
+        ctx.lineTo(ex, ey)
         ctx.strokeStyle = e.lit > 0.04 ? ca(f.color, e.lit * 0.28 + 0.07) : 'rgba(255,255,255,0.07)'
         ctx.lineWidth = 1.5
         ctx.stroke()
 
-        // Arrowhead using bezier tangent at t=1: direction = 3*(P3-P2)
-        const tanX = 3 * (ex - cx2), tanY = 3 * (ey - cy2)
+        // Arrowhead tangent along straight edge
+        const tanX = ex - sx, tanY = ey - sy
         const aw = 5, ah = 3.2
         const ac = e.lit > 0.04 ? f.color : '#FFFFFF'
         const aa = e.lit > 0.04 ? 0.42 + 0.48 * e.lit : 0.14
