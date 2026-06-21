@@ -2322,50 +2322,6 @@ footer {
   .page-hero { padding: 120px 0 60px; }
 }
 
-/* ── Before / After case cards (Ads page) ── */
-.ba-before {
-  margin-top: 12px;
-  padding-bottom: 16px;
-}
-
-.ba-label {
-  font-size: 11px;
-  font-family: 'Geist Mono', monospace;
-  text-transform: uppercase;
-  letter-spacing: .09em;
-  color: var(--mute);
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.ba-label-after {
-  color: var(--orange);
-}
-
-.ba-divider {
-  height: 1px;
-  background: var(--line-2);
-  margin: 0 0 0 0;
-}
-
-.ba-before-text {
-  color: var(--mute);
-  font-size: 14px;
-  line-height: 1.65;
-}
-
-.ba-after {
-  padding-top: 16px;
-}
-
-.case-attribution {
-  font-size: 12px;
-  color: var(--mute);
-  font-family: 'Geist Mono', monospace;
-  margin-top: 10px;
-  letter-spacing: .01em;
-}
-
 /* ══════════════════════════════════════════════
    Mesh Network Canvas Section
 ══════════════════════════════════════════════ */
