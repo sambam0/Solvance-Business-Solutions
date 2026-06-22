@@ -44,13 +44,13 @@ export default function AuditCTA({ preset = '', accent = 'blue' }) {
             </FadeIn>
             <FadeIn delay={0.06}>
               <h2 className="section-title" style={{ marginTop: 16 }}>
-                Not sure where<br />to start?
+                30 minutes to<br />a clear AI plan.
               </h2>
             </FadeIn>
             <FadeIn delay={0.12}>
               <p style={{ marginTop: 18, color: 'var(--mute)', fontSize: 17, maxWidth: '46ch', lineHeight: 1.55 }}>
-                Get a free audit — we'll identify your biggest growth opportunity in 30 minutes.
-                No pitch, no pressure, no obligation.
+                We map your biggest manual bottleneck — specific to your business — and show you
+                exactly where AI fits. No pitch, no pressure, no obligation.
               </p>
             </FadeIn>
             <FadeIn delay={0.18}>
