@@ -14,6 +14,24 @@
         "value": "geist mono",
         "reason": "Geist Mono is intentional per DESIGN.md",
         "createdAt": "2026-06-21T04:37:19.768Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f97316",
+        "reason": "Intentional: per-industry accent color for Agency/Services use case card",
+        "createdAt": "2026-06-22T03:58:21.345Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#06b6d4",
+        "reason": "Intentional: per-industry accent color for Healthcare use case card",
+        "createdAt": "2026-06-22T03:58:21.404Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f59e0b",
+        "reason": "Intentional: per-industry accent color for Real Estate use case card",
+        "createdAt": "2026-06-22T03:58:21.478Z"
       }
     ]
   }

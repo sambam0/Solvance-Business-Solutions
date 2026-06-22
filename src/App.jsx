@@ -109,12 +109,12 @@ const offerings = [
   },
   {
     name: '1-on-1 Coaching',
-    desc: 'Monthly sessions to expand your AI stack. New tools, workflows, prompt refinement — scoped to what you actually need.',
+    desc: 'Monthly sessions to deepen how you use AI — new tools, workflows, prompt refinement — scoped to what you actually need next.',
     items: ['2 sessions per month', 'Prompt library expansion', 'Unlimited async Q&A', 'No long-term commitment'],
   },
   {
     name: 'Team Training',
-    desc: 'Custom AI training for your whole org. Assessment, curriculum, live sessions, and prompt playbooks your team will actually use.',
+    desc: 'Custom AI training for your whole team. Readiness assessment, live sessions, and prompt playbooks built for your specific workflows.',
     items: ['AI readiness assessment', 'Custom curriculum design', 'Live group training', 'Prompt playbooks + docs'],
   },
 ]
