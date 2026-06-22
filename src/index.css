@@ -584,27 +584,149 @@ nav.top .row {
 
 /* ── Training Grid ── */
 .training-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   margin-top: 48px;
 }
 
-.training-featured {
-  grid-row: 1 / 3;
+.training-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.training-card-featured {
-  border-color: var(--brand-2);
+/* ── Offering card internals ── */
+.offer-ribbon {
+  font-size: 11px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  color: var(--brand-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.offer-title {
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.offer-title-sm {
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -.015em;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.offer-desc {
+  font-size: 16px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.offer-desc-sm {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.offer-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.offer-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+/* ── Featured card hero panel ── */
+.training-hero-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.training-hero-panel .offer-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.offer-steps-label {
+  font-size: 11px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  color: var(--mute);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.offer-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.offer-step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.offer-step-num {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--brand-2);
+  line-height: 1.4;
+  padding-top: 2px;
+  flex-shrink: 0;
+  width: 20px;
+  letter-spacing: 0.04em;
+}
+
+.offer-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.offer-step-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -.01em;
+}
+
+.offer-step-desc {
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .training-hero-panel {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 
 @media (max-width: 768px) {
-  .training-grid {
+  .training-secondary {
     grid-template-columns: 1fr;
-  }
-
-  .training-featured {
-    grid-row: auto;
   }
 }
 
