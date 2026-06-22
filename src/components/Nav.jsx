@@ -91,7 +91,8 @@ export default function Nav() {
 
           <div className="nav-links">
             {links.map(l => {
-              const isActive = active === l.href
+              const isActive = (l.href.startsWith('#') && active === l.href) ||
+                               (l.href.startsWith('/') && path === l.href)
               return (
                 <button
                   key={l.href}
