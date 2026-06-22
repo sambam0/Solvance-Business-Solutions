@@ -203,7 +203,7 @@ export default function HeroTracesCanvas() {
           pick.pulsing = true
           pick.pulseT = 0
         }
-        nextPulseTime = elapsed + 3000 + Math.random() * 2000
+        nextPulseTime = elapsed + 1500 + Math.random() * 1500
       }
 
       // Update + draw traces
