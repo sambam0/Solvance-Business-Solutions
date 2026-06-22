@@ -47,7 +47,7 @@ export default function Other() {
 
       {/* Ambient particle canvas behind the entire page */}
       <div className="other-particle-bg">
-        <HeroParticleCanvas />
+        <PageParticleCanvas />
       </div>
 
       {/* Hero */}
