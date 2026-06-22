@@ -324,9 +324,29 @@ export default function App() {
           <FadeIn delay={0.1}>
             <p className="section-sub">
               We build AI agents that handle intake, ops, customer support, research, and outreach —
-              running 24/7 without your attention. The infrastructure is encrypted, privately hosted,
-              and owned entirely by you. No SaaS fees, no vendor lock-in, no black box.
+              running 24/7 without your attention. Everything we build runs in your environment.
+              You own the code, the models, and the data. No SaaS fees, no vendor lock-in.
             </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="process-rail">
+              {PROCESS_STEPS.map((s, i) => (
+                <SpringCard key={s.step} className="process-card">
+                  <div className="process-step-meta">
+                    <span className="process-step-num">{i + 1}</span>
+                    <span className="process-step-label">{s.step}</span>
+                  </div>
+                  <h3 className="process-headline">{s.headline}</h3>
+                  <p className="process-body">{s.body}</p>
+                  <div className="process-deliverable">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.5" style={{ flexShrink: 0 }}>
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    {s.deliverable}
+                  </div>
+                </SpringCard>
+              ))}
+            </div>
           </FadeIn>
         </div>
 
