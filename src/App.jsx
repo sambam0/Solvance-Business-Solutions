@@ -293,7 +293,8 @@ export default function App() {
       </section>
 
       {/* ── 3. AI Systems ── */}
-      <section id="systems" ref={systemsRef}>
+      <section id="systems" ref={systemsRef} style={{ position: 'relative', overflow: 'hidden' }}>
+        <HeroTracesCanvas />
         <div className="wrap">
           <FadeIn>
             <h2 className="section-title">What we build.</h2>
