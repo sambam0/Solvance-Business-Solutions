@@ -2992,3 +2992,12 @@ footer {
     gap: 16px;
   }
 }
+/* ── PageParticleCanvas ── */
+.page-particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
