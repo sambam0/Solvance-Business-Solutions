@@ -45,8 +45,9 @@ export default function HeroRainCanvas() {
     // ── Column factory ──
     function createColumn(x, colIndex) {
       const maxChars = Math.ceil(H / FONT_SIZE) + 4
-      // Stagger initial positions: some columns start off-screen above
-      const startY = -Math.random() * H * 1.4
+      const trailLength = 8 + Math.floor(Math.random() * 16)
+      // Distribute across full canvas height so rain looks populated from frame 1
+      const startY = Math.random() * (H + trailLength * FONT_SIZE)
       const speed = 0.3 + Math.random() * 0.7 // px per frame (~18-60fps-adjusted)
       // ~18% of columns are violet
       const isViolet = Math.random() < 0.18
@@ -67,7 +68,7 @@ export default function HeroRainCanvas() {
         maxChars,
         swapRate,
         frameCount: Math.floor(Math.random() * 20),
-        trailLength: 8 + Math.floor(Math.random() * 16), // visible trail length
+        trailLength,
       }
     }
 
