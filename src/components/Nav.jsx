@@ -1,17 +1,49 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-function navigate(href) {
-  history.pushState({}, '', href)
-  window.dispatchEvent(new Event('locationchange'))
+const links = [
+  { href: '#systems',  label: 'AI Systems' },
+  { href: '#training', label: 'AI Training' },
+  { href: '#team',     label: 'Team' },
+  { href: '#faq',      label: 'FAQ' },
+  { href: '/other',    label: 'Other' },
+]
+
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState(null)
   const [path, setPath] = useState(window.location.pathname)
+  const observerRef = useRef(null)
 
+  // Track which section is in view
   useEffect(() => {
-    const onNav = () => { setPath(window.location.pathname); setOpen(false) }
+    const anchorLinks = links.filter(l => l.href.startsWith('#'))
+    const ids = anchorLinks.map(l => l.href.slice(1))
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean)
+    if (!sections.length) return
+
+    observerRef.current = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActive('#' + entry.target.id)
+          }
+        }
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    )
+
+    sections.forEach(s => observerRef.current.observe(s))
+    return () => observerRef.current?.disconnect()
+  }, [])
+
+  // Track path for page-based active state
+  useEffect(() => {
+    const onNav = () => setPath(window.location.pathname)
     window.addEventListener('popstate', onNav)
     window.addEventListener('locationchange', onNav)
     return () => {
@@ -20,20 +52,29 @@ export default function Nav() {
     }
   }, [])
 
-  const links = [
-    { href: '/ai-agents',  label: 'AI Agents'  },
-    { href: '/ai-training', label: 'AI Training' },
-  ]
+  const goAudit = useCallback(() => {
+    scrollTo('audit')
+    setOpen(false)
+  }, [])
 
-  const goAudit = () => {
-    if (path !== '/') {
-      navigate('/')
-      setTimeout(() => document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' }), 300)
+  const handleLink = useCallback((href) => {
+    if (href.startsWith('#')) {
+      scrollTo(href.slice(1))
     } else {
-      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' })
+      history.pushState({}, '', href)
+      window.dispatchEvent(new Event('locationchange'))
     }
     setOpen(false)
-  }
+  }, [])
+
+  const handleBrand = useCallback(() => {
+    if (window.location.pathname !== '/') {
+      history.pushState({}, '', '/')
+      window.dispatchEvent(new Event('locationchange'))
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [])
 
   return (
     <>
@@ -41,7 +82,7 @@ export default function Nav() {
         <div className="wrap row">
           <button
             className="brand nav-home-btn"
-            onClick={() => navigate('/')}
+            onClick={handleBrand}
             aria-label="Solvance home"
           >
             <span className="mk" />
@@ -50,11 +91,12 @@ export default function Nav() {
 
           <div className="nav-links">
             {links.map(l => {
-              const isActive = path === l.href
+              const isActive = (l.href.startsWith('#') && active === l.href) ||
+                               (l.href.startsWith('/') && path === l.href)
               return (
                 <button
                   key={l.href}
-                  onClick={() => navigate(l.href)}
+                  onClick={() => handleLink(l.href)}
                   className={isActive ? 'active' : ''}
                 >
                   {isActive && (
@@ -71,7 +113,6 @@ export default function Nav() {
           </div>
 
           <div className="nav-cta">
-            <span className="pill"><span className="dot" /> Taking 3 AI projects this quarter</span>
             <motion.button
               className="btn brand"
               onClick={goAudit}
@@ -103,7 +144,7 @@ export default function Nav() {
             transition={{ type: 'spring', stiffness: 400, damping: 32 }}
           >
             {links.map(l => (
-              <button key={l.href} className="mobile-link" onClick={() => navigate(l.href)}>
+              <button key={l.href} className="mobile-link" onClick={() => handleLink(l.href)}>
                 {l.label}
               </button>
             ))}

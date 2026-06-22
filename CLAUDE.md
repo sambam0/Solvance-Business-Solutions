@@ -28,6 +28,26 @@ This is NOT a web/ads agency. Ignore any old references to Websites/SEO, Ads/Mar
 - No "10x your revenue" energy. No emoji. No excited punctuation.
 - No numbered section markers (01 / 02 / 03) unless the section IS an ordered sequence.
 
+## Design aesthetic
+
+The studio is a Figma/Linear-era creative agency at 11pm — builds shipping, no clients watching, screens glowing in the dark. The physical anchor: an open-plan studio where the work on the monitors IS the proof of capability. Not a corporate agency presenting credentials, not a consultant with a pitch deck. Smart people who build things. That's the room. Design from it.
+
+**What this means in practice:**
+- Surfaces are dark and precise, lit by signal — not atmospheric or moody for its own sake
+- Motion is choreographed, not decorative. Ask: does this movement carry information or earn attention? If no, cut it
+- Typography is compressed and confident. Loose leading reads as unconfident; tight leading reads as a decision
+- Blue and violet appear as electricity in the dark — CTAs, active states, glows. They are rare by design. Their rarity is what makes them feel alive
+- Every interactive surface tracks the cursor. The cursor is a light source, not a pointer
+- Each section should feel like it was art-directed individually. Template repetition is the enemy
+
+**What this is not:**
+- Not austere Scandinavian minimalism — there is texture, motion, and signal here
+- Not dark-mode SaaS — not the standard navy-to-black with purple accents template
+- Not hype — no gradient blobs, no floating feature icon cards, no "10x" energy
+- Not a portfolio — this is a live demonstration of capability, not a showcase of past work
+
+**The test:** Would a visitor ask "how was this made?" If it could have been generated from a default AI prompt, start over. The site should be impossible to replicate by prompting a generic AI.
+
 ## North star
 "The Night Build" — Bay Area tech studio at 11pm. Awwwards/Active Theory production quality.
-The site should make a visitor ask "how was this made?" If it could be generated from a default AI prompt, start over.
+References: Active Theory interaction density, Awwwards-tier entrance choreography, Linear's typographic confidence, Figma's builder credibility.

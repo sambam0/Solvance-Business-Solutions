@@ -7,7 +7,6 @@ import FadeIn from '../components/FadeIn.jsx'
 import AuditCTA from '../components/AuditCTA.jsx'
 import SpringCard from '../components/SpringCard.jsx'
 import Process from '../components/Process.jsx'
-import Pricing from '../components/Pricing.jsx'
 import FAQ from '../components/FAQ.jsx'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -60,17 +59,17 @@ const whoCards = [
         <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
       </svg>
     ),
-    title: 'You\'re using ChatGPT but not getting real results',
-    desc: 'You paste prompts and get mediocre output. There\'s a gap between what AI can do and what you\'re getting — we close it.',
+    title: 'You\'re watching hours disappear to work you know AI could handle',
+    desc: 'Drafting, summarizing, researching, responding — you\'re doing it manually because you haven\'t had time to set AI up properly. That\'s the problem we fix in a half day.',
   },
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
       </svg>
     ),
-    title: 'Your team keeps asking what AI tools to use',
-    desc: 'There are hundreds of tools and no clear answer. We cut through the noise and show you exactly which ones fit your workflow.',
+    title: 'You\'ve tried ChatGPT but it doesn\'t sound like you or know your business',
+    desc: 'Generic AI gives generic output. A second brain configured for your voice, your clients, and your recurring tasks is a different tool entirely — and it takes one session to build.',
   },
   {
     icon: (
@@ -78,8 +77,8 @@ const whoCards = [
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
-    title: 'You want to use AI without becoming dependent on a vendor',
-    desc: 'You want to understand what\'s happening under the hood — not just buy a black box. We teach the fundamentals so you stay in control.',
+    title: 'You want to run this yourself — not manage a vendor or depend on a tool you don\'t understand',
+    desc: 'You\'re not looking for a subscription or a black box. You want Claude set up, explained, and handed to you. You own it completely. We just get you there faster.',
   },
 ]
 
@@ -139,35 +138,33 @@ const trainingSteps = [
 const trainingProcessHeading = { line1: 'Audit. Setup.', line2: 'Apply.' }
 const trainingProcessSubhead = "Three steps to a second brain that actually saves you time. We start free, go hands-on fast, and stay available as you grow."
 
-const trainingTiers = [
+const offerings = [
+  {
+    name: 'Second Brain Setup',
+    desc: 'One half-day session. Claude configured for your voice, your workflow, and your top recurring tasks. You leave with a working system — prompt library, system prompt, tested on real work.',
+    items: ['4-hour hands-on session', 'System prompt tuned to your business', 'Prompt library for your top tasks', '30 days async follow-up', 'You own everything'],
+    cta: 'Start with a free audit',
+    ctaHref: '#audit',
+    featured: true,
+    ribbon: 'Start here',
+  },
   {
     name: '1-on-1 Coaching',
-    h3: 'Monthly sessions tailored to your business and your AI stack.',
-    amount: '$1,500',
-    per: '/month · cancel anytime',
-    items: ['2 sessions per month', 'Personal Claude setup + system prompt', 'Prompt library for your recurring tasks', 'Unlimited async Q&A', 'Monthly toolkit review', 'No long-term commitment'],
-    cta: 'Get started',
+    desc: 'Ongoing monthly sessions to expand your AI stack as your work evolves. New tools, new workflows, prompt refinement — scoped to what you actually need.',
+    items: ['2 sessions per month', 'Prompt library expansion', 'Tool and workflow integration', 'Unlimited async Q&A', 'No long-term commitment'],
+    cta: 'Book a call',
     ctaHref: '#audit',
-    ctaClass: 'ghost',
     featured: false,
   },
   {
     name: 'Team Training',
-    h3: 'Full AI rollout for your organization — from assessment to daily use.',
-    amount: 'Custom',
-    per: '· scoped per engagement',
-    items: ['Everything in 1-on-1', 'Team AI readiness assessment', 'Custom curriculum design', 'Live group training sessions', 'Follow-up Q&A and refinement', 'Prompt playbooks + documentation'],
+    desc: 'Custom AI training for your whole org — assessment, curriculum, live sessions, and prompt playbooks your team will actually use. Scoped per engagement.',
+    items: ['AI readiness assessment', 'Custom curriculum design', 'Live group training', 'Prompt playbooks + documentation', 'Follow-up Q&A and refinement'],
     cta: 'Book a scoping call',
     ctaHref: '#audit',
-    ctaClass: 'primary',
-    featured: true,
-    ribbon: 'Most Popular',
+    featured: false,
   },
 ]
-
-const trainingPricingHeading = { line1: 'Two ways to learn', line2: 'with us.' }
-const trainingPricingSubhead = 'Monthly 1-on-1 coaching for ongoing growth, or a full team training package scoped to your org. Both start with a free audit call.'
-const trainingPricingFootnote = 'Entry offer: Second Brain Setup — one half-day session to configure Claude for your workflow. Ask us in the audit call.'
 
 const trainingFaqs = [
   {
@@ -291,18 +288,19 @@ export default function AITraining() {
         </div>
 
         <div className="wrap">
-          <motion.a className="ann" href="#audit" {...fadeUp(0)}>
-            <b>New</b> Team training packages now available →
+          <motion.a className="ann" href="#offerings" {...fadeUp(0)}>
+            <b>New</b> Second Brain Setup — one session to configure Claude for your workflow →
           </motion.a>
 
           <motion.h1 style={{ y: headingY }} {...fadeUp(0.1)}>
-            Stop guessing with AI.<br />
-            <span className="grad">Start using it right.</span>
+            You're losing hours a week<br />
+            <span className="grad">to work Claude can do.</span>
           </motion.h1>
 
           <motion.p className="lede" {...fadeUp(0.28)}>
-            Hands-on AI training for business owners and their teams. Learn the tools, workflows, and
-            thinking patterns that turn AI from a curiosity into a competitive advantage.
+            Most business owners spend 10–15 hours a week on work they could hand off to AI. We set
+            up Claude as your personal second brain — tuned to your voice, your tasks, your business —
+            and hand it back to you in a half day.
           </motion.p>
 
           <motion.div className="ctas" {...fadeUp(0.44)}>
@@ -316,24 +314,24 @@ export default function AITraining() {
               Get started <span className="arrow">→</span>
             </motion.a>
             <motion.a
-              href="#formats"
+              href="#offerings"
               className="btn ghost"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             >
-              See formats
+              See the Second Brain Setup
             </motion.a>
           </motion.div>
 
           <motion.div className="micro" {...fadeUp(0.56)}>
-            <span><span className="ck">✓</span> Hands-on, not theoretical</span>
-            <span><span className="ck">✓</span> Your tools, your workflow</span>
-            <span><span className="ck">✓</span> Walk away capable</span>
+            <span><span className="ck">✓</span> One half-day session</span>
+            <span><span className="ck">✓</span> Your voice, your tasks, your Claude</span>
+            <span><span className="ck">✓</span> Using it on real work by end of week</span>
           </motion.div>
 
           <div className="stats">
-            <StatCounter target={4} suffix="hr" label="Half-day workshop to your second brain" />
+            <StatCounter target={4} suffix="hr" label="To a working second brain, from first call" />
             <StatCounter target={40} suffix="+" label="Business owners trained" />
             <StatCounter target={12} suffix="+" label="AI tools covered across curricula" />
           </div>
@@ -345,7 +343,7 @@ export default function AITraining() {
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> Who this is for</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">Sound familiar?</h2></FadeIn>
-          <FadeIn delay={0.1}><p className="section-sub">You don't need to be technical. You need to be ready to actually use what you learn.</p></FadeIn>
+          <FadeIn delay={0.1}><p className="section-sub">If you're running your business and losing hours to work that should be automated — this is for you. No technical background required.</p></FadeIn>
 
           <div className="cb-build-layout" style={{ gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 48 }}>
             {whoCards.map((card) => (
@@ -387,7 +385,7 @@ export default function AITraining() {
         <div className="wrap">
           <FadeIn><span className="eyebrow"><span className="dot" /> How we teach</span></FadeIn>
           <FadeIn delay={0.05}><h2 className="section-title">Three formats.<br />One outcome.</h2></FadeIn>
-          <FadeIn delay={0.1}><p className="section-sub">Every format ends the same way: you leave knowing how to use AI in your business, not just knowing that you should.</p></FadeIn>
+          <FadeIn delay={0.1}><p className="section-sub">Most people start with the Second Brain Setup. Some expand to coaching. Some bring us in for their team. All three end the same: you leave capable, not just informed.</p></FadeIn>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 48 }}>
             {formats.map((f) => (
@@ -412,8 +410,44 @@ export default function AITraining() {
       {/* ── Process ── */}
       <Process steps={trainingSteps} heading={trainingProcessHeading} subhead={trainingProcessSubhead} />
 
-      {/* ── Pricing ── */}
-      <Pricing tiers={trainingTiers} heading={trainingPricingHeading} subhead={trainingPricingSubhead} footnote={trainingPricingFootnote} />
+      {/* ── Offerings ── */}
+      <section id="offerings" style={{ background: 'var(--bg-2)' }}>
+        <div className="wrap">
+          <FadeIn><span className="eyebrow"><span className="dot" /> How to work with us</span></FadeIn>
+          <FadeIn delay={0.05}><h2 className="section-title">Three ways to work<br />with us.</h2></FadeIn>
+          <FadeIn delay={0.1}><p className="section-sub">Everything starts with a free 30-minute audit call. From there, we scope the right path.</p></FadeIn>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginTop: 48 }}>
+            {offerings.map((o, i) => (
+              <FadeIn key={o.name} delay={0.05 * (i + 1)}>
+                <SpringCard className={`tier${o.featured ? ' featured' : ''}`} hoverY={-3} style={{ height: '100%' }}>
+                  {o.ribbon && <span className="ribbon">{o.ribbon}</span>}
+                  <span className="name">{o.name}</span>
+                  <p style={{ fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.55, margin: '12px 0 20px' }}>{o.desc}</p>
+                  <ul>
+                    {o.items.map(item => (
+                      <li key={item}><span className="ck">✓</span> {item}</li>
+                    ))}
+                  </ul>
+                  <motion.a
+                    href={o.ctaHref}
+                    className={`btn ${o.featured ? 'brand' : 'ghost'}`}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+                  >
+                    {o.cta} <span className="arrow">→</span>
+                  </motion.a>
+                </SpringCard>
+              </FadeIn>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 24, color: 'var(--mute)', fontSize: 13 }}>
+            All engagements start with a free audit call — no commitment required.
+          </div>
+        </div>
+      </section>
 
       {/* ── FAQ ── */}
       <FAQ faqs={trainingFaqs} />
