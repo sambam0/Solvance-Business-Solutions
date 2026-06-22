@@ -60,6 +60,27 @@ const HANDOFF_STEPS = [
   { label: 'Delivered Output', sub: 'Task complete' },
 ]
 
+const PROCESS_STEPS = [
+  {
+    step: 'Audit',
+    headline: 'We look before we build.',
+    body: 'After your free call, we map your operations and price your options honestly. No pitch, no upsell.',
+    deliverable: 'Operations map + prioritized AI opportunity list',
+  },
+  {
+    step: 'Consult',
+    headline: 'You see the full plan before you commit.',
+    body: 'A concrete build proposal: what we build, what you own, what it costs, when it ships. You approve every line before we start.',
+    deliverable: 'Signed scope + fixed-price quote',
+  },
+  {
+    step: 'Build',
+    headline: 'We ship it. You own everything.',
+    body: 'Your code, your models, your data pipelines. No monthly SaaS fees. No vendor dependency. No black box.',
+    deliverable: 'Live system + 60-day support window',
+  },
+]
+
 const useCases = [
   {
     industry: 'Professional Services', color: '#9D6FFF',
