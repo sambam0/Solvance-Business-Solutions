@@ -37,7 +37,7 @@ export default function HeroTracesCanvas() {
     }
 
     /* ── Trace factory ── */
-    const TRACE_COUNT = 20
+    const TRACE_COUNT = 40
 
     function pickColor() {
       const r = Math.random()
