@@ -151,7 +151,7 @@ export default function HeroTracesCanvas() {
       // Bright head dot with subtle glow
       if (headOpacity > 0.12) {
         ctx.save()
-        ctx.shadowBlur = 6 + pulseBoost * 10
+        ctx.shadowBlur = 10 + pulseBoost * 16
         ctx.shadowColor = rgba(t.color, headOpacity * 0.8)
         ctx.beginPath()
         ctx.arc(hx, hy, 1.0 + pulseBoost * 0.6, 0, Math.PI * 2)
