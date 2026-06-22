@@ -195,10 +195,18 @@ export default function HeroParticleCanvas() {
           }
         }
 
+        const cursorInfluence = (hasCursor) ? (() => {
+          const dx2 = p.x - mouseX, dy2 = p.y - mouseY
+          const dSq2 = dx2 * dx2 + dy2 * dy2
+          return dSq2 < cursorSq ? 1 - Math.sqrt(dSq2) / CURSOR_RADIUS : 0
+        })() : 0
+        ctx.shadowBlur = 4 + (cursorInfluence * 6)
+        ctx.shadowColor = p.isViolet ? 'rgba(157,111,255,0.6)' : 'rgba(59,158,255,0.6)'
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
         ctx.fillStyle = rgba(color, alpha)
         ctx.fill()
+        ctx.shadowBlur = 0
       }
     }
 
