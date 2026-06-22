@@ -18,17 +18,17 @@ export default function HeroParticleCanvas() {
     const isTouchDevice = window.matchMedia('(hover: none)').matches
 
     // --- Config ---
-    const PARTICLE_COUNT = 100
-    const CONNECTION_DIST = 135
+    const PARTICLE_COUNT = 160
+    const CONNECTION_DIST = 150
     const CURSOR_RADIUS = 200
     const BASE_SPEED_MIN = 0.1
     const BASE_SPEED_MAX = 0.3
-    const PARTICLE_R_MIN = 0.8
-    const PARTICLE_R_MAX = 1.5
-    const BASE_PARTICLE_ALPHA = 0.08
-    const BASE_LINE_ALPHA_MAX = 0.06
-    const CURSOR_PARTICLE_ALPHA = 0.25
-    const CURSOR_LINE_ALPHA = 0.08
+    const PARTICLE_R_MIN = 1.2
+    const PARTICLE_R_MAX = 2.8
+    const BASE_PARTICLE_ALPHA = 0.22
+    const BASE_LINE_ALPHA_MAX = 0.14
+    const CURSOR_PARTICLE_ALPHA = 0.55
+    const CURSOR_LINE_ALPHA = 0.20
     const VIOLET_CHANCE = 0.1
 
     // Signal colors
