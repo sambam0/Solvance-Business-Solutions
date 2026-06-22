@@ -334,6 +334,23 @@ export default function App() {
               inputs, and make decisions — they're not just routing triggers from A to B.
             </p>
           </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="scenario-split">
+              <div className="scenario-card">
+                <span className="scenario-label">Best for</span>
+                <h4 className="scenario-heading">You want work handled without you</h4>
+                <p className="scenario-body">Intake routed, emails drafted, data reconciled — automatically, around the clock. You describe the workflow; we build the agent.</p>
+                <a href="#systems" className="scenario-link">AI Agents & Automation <span className="arrow">→</span></a>
+              </div>
+              <div className="scenario-divider" aria-hidden="true" />
+              <div className="scenario-card">
+                <span className="scenario-label">Best for</span>
+                <h4 className="scenario-heading">You want to use AI yourself, better</h4>
+                <p className="scenario-body">A Claude setup tuned to your voice, your recurring tasks, and how you make decisions. Done in a half day. You leave using it immediately.</p>
+                <a href="#training" className="scenario-link">AI Teaching & Training <span className="arrow">→</span></a>
+              </div>
+            </div>
+          </FadeIn>
           <FadeIn delay={0.2}>
             <div className="process-rail">
               {PROCESS_STEPS.map((s, i) => (
