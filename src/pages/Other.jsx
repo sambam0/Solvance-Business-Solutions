@@ -91,6 +91,13 @@ export default function Other() {
         </div>
       </section>
 
+      <section className="other-contact-cta">
+        <p className="other-contact-label">Interested in working together?</p>
+        <a href="mailto:sam@solvance.net" className="btn brand">
+          sam@solvance.net <span className="arrow">→</span>
+        </a>
+      </section>
+
       <Footer />
     </>
   )
