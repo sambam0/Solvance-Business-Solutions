@@ -132,7 +132,7 @@ const team = [
     name: 'Joe',
     role: 'Head of Sales',
     initials: 'J',
-    desc: 'Your first call. Translates business problems into technical scopes, manages timelines, and makes sure nothing gets lost between what you need and what gets built.',
+    desc: 'Your first call. Turns what you need into a concrete build plan, manages timelines, and makes sure nothing gets lost between the conversation and what ships.',
     social: { linkedin: 'https://linkedin.com/in/joe-solvance' },
   },
 ]
