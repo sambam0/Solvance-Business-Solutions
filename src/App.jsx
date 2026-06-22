@@ -457,28 +457,93 @@ export default function App() {
           </FadeIn>
 
           <div className="training-grid">
-            {offerings.map((o) => (
-              <div key={o.name} className={`offer-anim${o.featured ? ' training-featured' : ''}`}>
-                <SpringCard className={`card${o.featured ? ' training-card-featured' : ''}`} hoverY={-4} style={{ height: '100%', padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 16, borderColor: o.featured ? 'var(--brand-2)' : undefined }}>
-                  {o.ribbon && <span style={{ fontSize: 11, fontFamily: "'Geist Mono', monospace", color: 'var(--brand-2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{o.ribbon}</span>}
-                  <h3 style={{ fontSize: 20, lineHeight: 1.3, color: 'var(--ink)' }}>{o.name}</h3>
-                  <p style={{ fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.55, flex: 1 }}>{o.desc}</p>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {o.items.map(item => (
-                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 14, color: 'var(--ink-2)', lineHeight: 1.5 }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: 2 }}>
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <a href="#audit" className={`btn ${o.featured ? 'brand' : 'ghost'}`} style={{ alignSelf: 'flex-start', fontSize: 13, padding: '10px 20px' }}>
-                    {o.featured ? 'Start with a free audit' : 'Learn more'} <span className="arrow">→</span>
-                  </a>
-                </SpringCard>
-              </div>
-            ))}
+            {/* Featured hero panel — Second Brain Setup */}
+            {(() => {
+              const featured = offerings.find(o => o.featured);
+              return (
+                <FadeIn delay={0.05}>
+                  <SpringCard className="card" hoverY={-3} style={{ padding: '36px 32px', borderColor: 'var(--brand-2)' }}>
+                    <div className="training-hero-panel">
+                      {/* Left: identity + checklist + CTA */}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                          <span className="offer-ribbon">{featured.ribbon}</span>
+                          <h3 className="offer-title">{featured.name}</h3>
+                          <p className="offer-desc">{featured.desc}</p>
+                        </div>
+                        <ul className="offer-features">
+                          {featured.items.map(item => (
+                            <li key={item} className="offer-feature">
+                              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: 2 }}>
+                                <polyline points="20 6 9 17 4 12" />
+                              </svg>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                        <a href="#audit" className="btn brand" style={{ alignSelf: 'flex-start', fontSize: 14, padding: '13px 24px' }}>
+                          Start with a free audit <span className="arrow">→</span>
+                        </a>
+                      </div>
+                      {/* Right: process steps */}
+                      <div className="offer-steps">
+                        <p className="offer-steps-label">How the 4 hours work</p>
+                        <div className="offer-step">
+                          <span className="offer-step-num">01</span>
+                          <div className="offer-step-body">
+                            <span className="offer-step-name">Discovery</span>
+                            <span className="offer-step-desc">We map your top 5 recurring tasks and how you think through decisions.</span>
+                          </div>
+                        </div>
+                        <div className="offer-step">
+                          <span className="offer-step-num">02</span>
+                          <div className="offer-step-body">
+                            <span className="offer-step-name">Configuration</span>
+                            <span className="offer-step-desc">We build your system prompt, prompt library, and test everything on real work.</span>
+                          </div>
+                        </div>
+                        <div className="offer-step">
+                          <span className="offer-step-num">03</span>
+                          <div className="offer-step-body">
+                            <span className="offer-step-name">Handoff</span>
+                            <span className="offer-step-desc">You leave running it yourself. 30 days of async follow-up if anything needs tuning.</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SpringCard>
+                </FadeIn>
+              );
+            })()}
+
+            {/* Secondary cards — 1-on-1 Coaching + Team Training */}
+            <div className="training-secondary">
+              {offerings.filter(o => !o.featured).map((o, i) => {
+                const labels = ['Learn about Coaching', 'Learn about Team Training'];
+                return (
+                  <FadeIn key={o.name} delay={0.1 + i * 0.06}>
+                    <SpringCard className="card" hoverY={-4} style={{ height: '100%', padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+                      <h3 className="offer-title-sm">{o.name}</h3>
+                      <p className="offer-desc-sm">{o.desc}</p>
+                      <ul className="offer-features">
+                        {o.items.map(item => (
+                          <li key={item} className="offer-feature">
+                            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: 2 }}>
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                      <a href="#audit" className="btn ghost" style={{ alignSelf: 'flex-start', fontSize: 14, padding: '13px 24px', marginTop: 'auto' }}
+                        aria-label={labels[i]}>
+                        {labels[i]} <span className="arrow">→</span>
+                      </a>
+                    </SpringCard>
+                  </FadeIn>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
