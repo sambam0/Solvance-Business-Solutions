@@ -56,9 +56,9 @@ export default function HeroTracesCanvas() {
         : (15 + Math.random() * 15) * (Math.random() < 0.5 ? 1 : -1) // diagonal ±15-30°
       const angle = degToRad(ltr ? angleDeg : 180 + angleDeg)
 
-      const speed = 0.8 + Math.random() * 2.8   // 0.8–3.6 px / frame
-      const length = 40 + Math.random() * 80     // 40-120 px
-      const baseOpacity = 0.15 + Math.random() * 0.20  // 0.15–0.35
+      const speed = 1.2 + Math.random() * 3.3   // 1.2–4.5 px / frame
+      const length = 60 + Math.random() * 100     // 60-160 px
+      const baseOpacity = 0.30 + Math.random() * 0.30  // 0.30–0.60
 
       // Start position
       const x = seedX !== undefined ? seedX : randomStartX(ltr)
