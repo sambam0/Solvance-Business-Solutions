@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import Other from './pages/Other.jsx'
 
 function Router() {
   const [path, setPath] = useState(window.location.pathname)
