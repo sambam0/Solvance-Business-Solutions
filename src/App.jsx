@@ -185,6 +185,10 @@ const faqs = [
     q: "What if it doesn't work?",
     a: "The free audit has zero commitment — it's designed to show you exactly where AI fits before you spend anything. Agent builds are scoped with fixed pricing and a 3-week delivery target. If we miss the target, we extend support free until it's right.",
   },
+  {
+    q: 'What does a build cost?',
+    a: "Every build is scoped before it's priced — complexity and integrations vary too much for a fixed menu. The Second Brain Setup is a flat half-day session. All pricing comes in a written fixed-price quote after the free audit — no hourly billing, no surprises. If the numbers don't make sense for your business, we'll tell you upfront.",
+  },
 ]
 
 
