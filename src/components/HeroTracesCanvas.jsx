@@ -104,7 +104,7 @@ export default function HeroTracesCanvas() {
       oc.height = Math.round(H * DPR)
       const oc2 = oc.getContext('2d')
       oc2.scale(DPR, DPR)
-      oc2.fillStyle = 'rgba(255,255,255,0.02)'
+      oc2.fillStyle = 'rgba(255,255,255,0.04)'
       const spacing = 32
       for (let x = spacing; x < W; x += spacing) {
         for (let y = spacing; y < H; y += spacing) {
