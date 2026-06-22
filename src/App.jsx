@@ -297,14 +297,13 @@ export default function App() {
         <HeroTracesCanvas />
         <div className="wrap">
           <FadeIn>
-            <h2 className="section-title">What we build.</h2>
+            <h2 className="section-title">AI agents built for<br />your operations.</h2>
           </FadeIn>
           <FadeIn delay={0.1}>
             <p className="section-sub">
-              Every system runs on a distributed mesh — private nodes for sensitive data,
-              cloud nodes for always-on availability, encrypted tunnels between them.
-              Built on <span className="mono">OpenClaw</span> orchestration, <span className="mono">Hermes</span> for
-              intelligent routing, and <span className="mono">Tailscale</span> for zero-trust networking.
+              We build AI agents that handle intake, ops, customer support, research, and outreach —
+              running 24/7 without your attention. The infrastructure is encrypted, privately hosted,
+              and owned entirely by you. No SaaS fees, no vendor lock-in, no black box.
             </p>
           </FadeIn>
         </div>
