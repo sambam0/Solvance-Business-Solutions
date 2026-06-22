@@ -338,6 +338,15 @@ nav.top .row {
   text-wrap: balance
 }
 
+/* ── Hero background canvas (all variants) ── */
+.hero-particle-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
 
 /* ── Card cursor glow ── */
 .card::after,
