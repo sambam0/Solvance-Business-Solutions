@@ -243,8 +243,8 @@ export default function App() {
             </motion.h1>
 
             <motion.p className="lede" {...fadeUp(0.28)}>
-              We build custom AI systems for businesses ready to scale — and train the
-              owners who want to understand exactly how it works.
+              We build custom AI systems for businesses ready to stop doing things manually —
+              and train owners who want AI working for them, not just open in a tab.
             </motion.p>
 
             <motion.div className="ctas" {...fadeUp(0.44)}>
