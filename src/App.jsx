@@ -403,8 +403,9 @@ export default function App() {
       </section>
 
       {/* ── 4. AI Teaching / Second Brain ── */}
-      <section id="training" ref={trainingRef} style={{ background: 'var(--bg-2)' }}>
-        <div className="wrap">
+      <section id="training" ref={trainingRef} style={{ background: 'var(--bg-2)', position: 'relative' }}>
+        <NeuralNetCanvas />
+        <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
           <FadeIn><h2 className="section-title">Your second brain,<br />configured in a half day.</h2></FadeIn>
           <FadeIn delay={0.1}>
             <p className="section-sub">
