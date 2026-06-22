@@ -175,7 +175,7 @@ const faqs = [
   },
   {
     q: "What do we actually own when it's done?",
-    a: "Everything. Code, prompts, infrastructure, documentation. No recurring licensing fees, no vendor lock-in, no hostage situation. You own it completely and can modify it without us.",
+    a: "Everything — code, prompts, infrastructure, model configurations, and documentation. No recurring licensing fees, no vendor lock-in. You can modify the system yourself, hand it to another developer, migrate it to a different provider, or shut it down entirely. We write clean, documented code so you don't need us to maintain it unless you want to. After the 60-day support window, the system is fully yours to run independently.",
   },
   {
     q: 'Is our data safe?',
