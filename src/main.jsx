@@ -28,6 +28,7 @@ function Router() {
     return <App />
   }
 
+  if (path === '/other') return <Other />
   if (path === '/privacy') return <PrivacyPolicy />
   return <App />
 }
