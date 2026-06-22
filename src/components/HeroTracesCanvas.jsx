@@ -123,7 +123,7 @@ export default function HeroTracesCanvas() {
 
       // Pulse intensity: makes head brighter + trail longer
       const pulseBoost = t.pulseT
-      const headOpacity = t.baseOpacity + pulseBoost * (0.50 - t.baseOpacity)
+      const headOpacity = t.baseOpacity + pulseBoost * (0.75 - t.baseOpacity)
       const trailLen = t.length * (1 + pulseBoost * 0.8)
 
       // Head position
