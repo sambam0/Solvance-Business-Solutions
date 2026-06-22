@@ -126,7 +126,7 @@ export default function HeroParticleCanvas() {
       const cursorSq = CURSOR_RADIUS * CURSOR_RADIUS
 
       // Draw connections — iterate via spatial grid for O(n)
-      ctx.lineWidth = 0.5
+      ctx.lineWidth = 1.0
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
         const col = Math.min(Math.floor(p.x / CELL_SIZE), gridCols - 1)
