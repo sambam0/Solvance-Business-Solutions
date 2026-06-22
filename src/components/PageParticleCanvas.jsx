@@ -1,0 +1,324 @@
+import { useEffect, useRef } from 'react'
+
+/**
+ * PageParticleCanvas — full-page fixed-position constellation / neural-network particle field.
+ * Floats behind the entire page as the user scrolls, cursor-reactive across all sections.
+ * More subtle than HeroParticleCanvas since it covers the whole viewport at all times.
+ */
+export default function PageParticleCanvas() {
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const DPR = window.devicePixelRatio || 1
+    const isTouchDevice = window.matchMedia('(hover: none)').matches
+
+    // --- Config ---
+    const PARTICLE_COUNT = 200
+    const CONNECTION_DIST = 150
+    const CURSOR_RADIUS = 200
+    const BASE_SPEED_MIN = 0.1
+    const BASE_SPEED_MAX = 0.3
+    const PARTICLE_R_MIN = 1.2
+    const PARTICLE_R_MAX = 2.8
+    const BASE_PARTICLE_ALPHA = 0.15
+    const BASE_LINE_ALPHA_MAX = 0.10
+    const CURSOR_PARTICLE_ALPHA = 0.55
+    const CURSOR_LINE_ALPHA = 0.20
+    const VIOLET_CHANCE = 0.1
+
+    // Signal colors
+    const BLUE = { r: 59, g: 158, b: 255 }   // #3B9EFF
+    const VIOLET = { r: 157, g: 111, b: 255 } // #9D6FFF
+    const WHITE = { r: 255, g: 255, b: 255 }
+
+    let W = 0, H = 0
+    let rafId = null
+    let mouseX = -9999, mouseY = -9999
+
+    // --- Spatial hash grid ---
+    const CELL_SIZE = CONNECTION_DIST + 10
+    let gridCols = 0, gridRows = 0
+    /** @type {Int16Array} */
+    let gridCells = null
+    /** @type {Int16Array} */
+    let gridNext = null
+
+    function rebuildGrid() {
+      gridCols = Math.ceil(W / CELL_SIZE) || 1
+      gridRows = Math.ceil(H / CELL_SIZE) || 1
+      gridCells = new Int16Array(gridCols * gridRows).fill(-1)
+      gridNext = new Int16Array(PARTICLE_COUNT).fill(-1)
+    }
+
+    function clearGrid() {
+      gridCells.fill(-1)
+      gridNext.fill(-1)
+    }
+
+    function insertIntoGrid(i, x, y) {
+      const col = Math.min(Math.floor(x / CELL_SIZE), gridCols - 1)
+      const row = Math.min(Math.floor(y / CELL_SIZE), gridRows - 1)
+      const cellIdx = row * gridCols + col
+      gridNext[i] = gridCells[cellIdx]
+      gridCells[cellIdx] = i
+    }
+
+    // --- Particles ---
+    const particles = []
+
+    function createParticle() {
+      const angle = Math.random() * Math.PI * 2
+      const speed = BASE_SPEED_MIN + Math.random() * (BASE_SPEED_MAX - BASE_SPEED_MIN)
+      const isViolet = Math.random() < VIOLET_CHANCE
+      return {
+        x: Math.random() * (W || 1),
+        y: Math.random() * (H || 1),
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        r: PARTICLE_R_MIN + Math.random() * (PARTICLE_R_MAX - PARTICLE_R_MIN),
+        color: isViolet ? VIOLET : WHITE,
+        isViolet,
+      }
+    }
+
+    function initParticles() {
+      particles.length = 0
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(createParticle())
+      }
+    }
+
+    // --- Sizing — fixed canvas, always sized to viewport ---
+    function setSize() {
+      W = window.innerWidth
+      H = window.innerHeight
+      canvas.width = Math.round(W * DPR)
+      canvas.height = Math.round(H * DPR)
+      canvas.style.width = W + 'px'
+      canvas.style.height = H + 'px'
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0)
+      rebuildGrid()
+    }
+
+    // --- Drawing ---
+    function rgba(c, a) {
+      return `rgba(${c.r},${c.g},${c.b},${a})`
+    }
+
+    function drawFrame() {
+      ctx.clearRect(0, 0, W, H)
+
+      // Build spatial grid
+      clearGrid()
+      for (let i = 0; i < particles.length; i++) {
+        insertIntoGrid(i, particles[i].x, particles[i].y)
+      }
+
+      const hasCursor = !isTouchDevice && mouseX > -999
+      const dSq = CONNECTION_DIST * CONNECTION_DIST
+      const cursorSq = CURSOR_RADIUS * CURSOR_RADIUS
+
+      // Draw connections — iterate via spatial grid for O(n)
+      ctx.lineWidth = 1.0
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]
+        const col = Math.min(Math.floor(p.x / CELL_SIZE), gridCols - 1)
+        const row = Math.min(Math.floor(p.y / CELL_SIZE), gridRows - 1)
+
+        // Check neighboring cells (3x3 block)
+        for (let dr = -1; dr <= 1; dr++) {
+          const nr = row + dr
+          if (nr < 0 || nr >= gridRows) continue
+          for (let dc = -1; dc <= 1; dc++) {
+            const nc = col + dc
+            if (nc < 0 || nc >= gridCols) continue
+            let j = gridCells[nr * gridCols + nc]
+            while (j !== -1) {
+              if (j > i) {
+                const q = particles[j]
+                const dx = p.x - q.x
+                const dy = p.y - q.y
+                const distSq = dx * dx + dy * dy
+                if (distSq < dSq) {
+                  const dist = Math.sqrt(distSq)
+                  const proximity = 1 - dist / CONNECTION_DIST
+
+                  // Check if midpoint is near cursor
+                  let lineAlpha = proximity * BASE_LINE_ALPHA_MAX
+                  let lineColor = WHITE
+                  if (hasCursor) {
+                    const mx = (p.x + q.x) * 0.5 - mouseX
+                    const my = (p.y + q.y) * 0.5 - mouseY
+                    const mDistSq = mx * mx + my * my
+                    if (mDistSq < cursorSq) {
+                      const cursorProx = 1 - Math.sqrt(mDistSq) / CURSOR_RADIUS
+                      lineAlpha = Math.max(lineAlpha, proximity * CURSOR_LINE_ALPHA * cursorProx)
+                      lineColor = BLUE
+                    }
+                  }
+
+                  ctx.beginPath()
+                  ctx.moveTo(p.x, p.y)
+                  ctx.lineTo(q.x, q.y)
+                  ctx.strokeStyle = rgba(lineColor, lineAlpha)
+                  ctx.stroke()
+                }
+              }
+              j = gridNext[j]
+            }
+          }
+        }
+      }
+
+      // Draw particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]
+        let alpha = BASE_PARTICLE_ALPHA
+        let color = p.color
+
+        if (hasCursor) {
+          const dx = p.x - mouseX
+          const dy = p.y - mouseY
+          const distSq = dx * dx + dy * dy
+          if (distSq < cursorSq) {
+            const cursorProx = 1 - Math.sqrt(distSq) / CURSOR_RADIUS
+            alpha = BASE_PARTICLE_ALPHA + (CURSOR_PARTICLE_ALPHA - BASE_PARTICLE_ALPHA) * cursorProx
+            // Violet particles stay violet near cursor, white particles go blue
+            if (!p.isViolet) color = BLUE
+          }
+        }
+
+        const cursorInfluence = hasCursor ? (() => {
+          const dx2 = p.x - mouseX, dy2 = p.y - mouseY
+          const dSq2 = dx2 * dx2 + dy2 * dy2
+          return dSq2 < cursorSq ? 1 - Math.sqrt(dSq2) / CURSOR_RADIUS : 0
+        })() : 0
+        ctx.shadowBlur = 4 + (cursorInfluence * 6)
+        ctx.shadowColor = p.isViolet ? 'rgba(157,111,255,0.6)' : 'rgba(59,158,255,0.6)'
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+        ctx.fillStyle = rgba(color, alpha)
+        ctx.fill()
+        ctx.shadowBlur = 0
+      }
+    }
+
+    function updateParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]
+        p.x += p.vx
+        p.y += p.vy
+
+        // Wrap around edges
+        if (p.x < -2) p.x += W + 4
+        else if (p.x > W + 2) p.x -= W + 4
+        if (p.y < -2) p.y += H + 4
+        else if (p.y > H + 2) p.y -= H + 4
+      }
+    }
+
+    // --- Animation loop ---
+    function frame() {
+      if (document.hidden) { rafId = null; return }
+      updateParticles()
+      drawFrame()
+      rafId = requestAnimationFrame(frame)
+    }
+
+    // --- Static frame for reduced motion ---
+    function drawStatic() {
+      setSize()
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].x = Math.random() * W
+        particles[i].y = Math.random() * H
+      }
+      drawFrame()
+    }
+
+    // --- Mouse tracking — listen on document since canvas is fixed full-page ---
+    function handleMouseMove(e) {
+      mouseX = e.clientX
+      mouseY = e.clientY
+    }
+    function handleMouseLeave() {
+      mouseX = -9999
+      mouseY = -9999
+    }
+
+    if (!isTouchDevice) {
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseleave', handleMouseLeave)
+    }
+
+    // --- Resize ---
+    let resizeTimer
+    function handleResize() {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(() => {
+        const oldW = W, oldH = H
+        setSize()
+        // Rescale particle positions to new dimensions
+        if (oldW > 0 && oldH > 0) {
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].x = (particles[i].x / oldW) * W
+            particles[i].y = (particles[i].y / oldH) * H
+          }
+        }
+        if (reduced) drawStatic()
+      }, 100)
+    }
+    window.addEventListener('resize', handleResize)
+
+    // --- Init ---
+    setSize()
+    initParticles()
+
+    if (reduced) {
+      drawStatic()
+
+      return () => {
+        clearTimeout(resizeTimer)
+        window.removeEventListener('resize', handleResize)
+        if (!isTouchDevice) {
+          document.removeEventListener('mousemove', handleMouseMove)
+          document.removeEventListener('mouseleave', handleMouseLeave)
+        }
+      }
+    } else {
+      // Start animation immediately — no IntersectionObserver needed for fixed full-page canvas
+      rafId = requestAnimationFrame(frame)
+
+      // Pause/resume on tab visibility change
+      const handleVisibility = () => {
+        if (!document.hidden && !rafId) {
+          rafId = requestAnimationFrame(frame)
+        }
+      }
+      document.addEventListener('visibilitychange', handleVisibility)
+
+      return () => {
+        if (rafId) cancelAnimationFrame(rafId)
+        clearTimeout(resizeTimer)
+        window.removeEventListener('resize', handleResize)
+        document.removeEventListener('visibilitychange', handleVisibility)
+        if (!isTouchDevice) {
+          document.removeEventListener('mousemove', handleMouseMove)
+          document.removeEventListener('mouseleave', handleMouseLeave)
+        }
+      }
+    }
+  }, [])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="page-particle-canvas"
+      aria-hidden="true"
+    />
+  )
+}
