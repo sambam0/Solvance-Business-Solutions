@@ -144,7 +144,7 @@ export default function HeroTracesCanvas() {
       ctx.moveTo(tx, ty)
       ctx.lineTo(hx, hy)
       ctx.strokeStyle = grad
-      ctx.lineWidth = 1.2 + pulseBoost * 0.8
+      ctx.lineWidth = 2.0 + pulseBoost * 1.5
       ctx.lineCap = 'round'
       ctx.stroke()
 
