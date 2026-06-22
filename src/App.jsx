@@ -9,13 +9,9 @@ import SpringCard from './components/SpringCard.jsx'
 import TerminalPane from './components/TerminalPane.jsx'
 import MeshNetworkCanvas from './components/MeshNetworkCanvas.jsx'
 import HeroRainCanvas from './components/HeroRainCanvas.jsx'
-import HeroParticleCanvas from './components/HeroParticleCanvas.jsx'
 import HeroTracesCanvas from './components/HeroTracesCanvas.jsx'
 
-/* ?hero=rain|particles|traces — switch hero background for comparison */
-const HERO_BG_MAP = { rain: HeroRainCanvas, particles: HeroParticleCanvas, traces: HeroTracesCanvas }
-const heroParam = new URLSearchParams(window.location.search).get('hero') || 'rain'
-const HeroBg = HERO_BG_MAP[heroParam] || HeroRainCanvas
+const HeroBg = HeroRainCanvas
 import FAQ from './components/FAQ.jsx'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
