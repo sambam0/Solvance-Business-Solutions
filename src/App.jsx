@@ -326,6 +326,8 @@ export default function App() {
               We build AI agents that handle intake, ops, customer support, research, and outreach —
               running 24/7 without your attention. Everything we build runs in your environment.
               You own the code, the models, and the data. No SaaS fees, no vendor lock-in.
+              Unlike rule-based automation tools, these agents can read context, handle ambiguous
+              inputs, and make decisions — they're not just routing triggers from A to B.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
