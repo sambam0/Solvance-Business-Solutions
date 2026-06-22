@@ -35,7 +35,7 @@ const painPoints = [
   {
     icon: <><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></>,
     title: 'Your competitors are already using it',
-    desc: "The businesses pulling ahead automated their repetitive work and focused on growth. The gap widens every month you wait.",
+    desc: "Businesses automating their ops now run leaner than competitors at the same revenue. That efficiency gap doesn't shrink on its own.",
   },
   {
     icon: <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></>,
