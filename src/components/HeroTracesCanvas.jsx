@@ -94,7 +94,7 @@ export default function HeroTracesCanvas() {
     }
 
     /* ── Pulse scheduling ── */
-    let nextPulseTime = 3000 + Math.random() * 2000 // first pulse in 3-5 s
+    let nextPulseTime = 1500 + Math.random() * 1500 // first pulse in 1.5-3 s
     let elapsed = 0
 
     /* ── Background dot grid (cached) ── */
