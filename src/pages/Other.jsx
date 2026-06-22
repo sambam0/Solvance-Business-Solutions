@@ -3,7 +3,7 @@ import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import SpringCard from '../components/SpringCard.jsx'
 import HeroRainCanvas from '../components/HeroRainCanvas.jsx'
-import HeroParticleCanvas from '../components/HeroParticleCanvas.jsx'
+import PageParticleCanvas from '../components/PageParticleCanvas.jsx'
 
 const webDesignItems = [
   {
