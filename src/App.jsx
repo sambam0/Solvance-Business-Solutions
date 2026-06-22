@@ -327,7 +327,7 @@ export default function App() {
           {/* Agent Handoff Flow */}
           <FadeIn>
             <div className="cb-handoff">
-              <p className="cb-handoff-label">How a request flows through the network</p>
+              <p className="cb-handoff-label">How your AI handles a request from start to finish</p>
               <div className="cb-handoff-steps">
                 {HANDOFF_STEPS.map((step, i) => (
                   <Fragment key={step.label}>
