@@ -59,7 +59,13 @@ export default function Nav() {
 
   const handleLink = useCallback((href) => {
     if (href.startsWith('#')) {
-      scrollTo(href.slice(1))
+      if (window.location.pathname !== '/') {
+        sessionStorage.setItem('scrollTarget', href.slice(1))
+        history.pushState({}, '', '/')
+        window.dispatchEvent(new Event('locationchange'))
+      } else {
+        scrollTo(href.slice(1))
+      }
     } else {
       history.pushState({}, '', href)
       window.dispatchEvent(new Event('locationchange'))
