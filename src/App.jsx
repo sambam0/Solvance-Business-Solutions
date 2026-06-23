@@ -148,7 +148,7 @@ const team = [
     role: 'CEO / CTO',
     initials: 'S',
     desc: 'Builds the systems. Configures the infrastructure. Writes the code. Stays on through deployment and 60-day support. If it ships, Sam built it.',
-    social: { github: 'https://github.com/sambam0', linkedin: 'https://linkedin.com/in/sam-solvance' },
+    social: { github: 'https://github.com/sambam0', linkedin: 'https://www.linkedin.com/in/samuel-antoncich-785647358/' },
   },
   {
     name: 'Joe',
