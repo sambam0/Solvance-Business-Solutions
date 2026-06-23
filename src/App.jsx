@@ -155,7 +155,7 @@ const team = [
     role: 'Head of Sales',
     initials: 'J',
     desc: 'Your first call. Turns what you need into a concrete build plan, manages timelines, and makes sure nothing gets lost between the conversation and what ships.',
-    social: { linkedin: 'https://linkedin.com/in/joe-solvance' },
+    social: { linkedin: 'https://www.linkedin.com/in/joseph-fasullo-a8112a368/' },
   },
 ]
 
