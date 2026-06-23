@@ -473,12 +473,13 @@ export default function App() {
           <FadeIn><h2 className="section-title">Your second brain,<br />configured in a half day.</h2></FadeIn>
           <FadeIn delay={0.1}>
             <p className="section-sub">
-              If you want to run AI yourself — inside your own workflow, without a technical
-              build — this is where you start. If you need a system that operates without your
-              involvement, that's AI Agents. Most clients do one, then the other.{' '}
-              Most business owners spend 10–15 hours a week on work they could hand off to AI.
-              We set up Claude as your personal second brain — tuned to your voice, your tasks,
-              your business — and hand it back to you in a half day.
+              Most people use Claude like a search engine — open it, ask a question, copy the
+              answer, close the tab. That's not wrong, it's just the surface.{' '}
+              We teach you how to actually work with it: connect it to your tools, build a second
+              brain that knows your business, and automate the repetitive work that's eating your
+              week. Most clients reclaim 5–10 hours in the first month.{' '}
+              If you need a system that operates without your involvement at all, that's AI Agents.
+              Most clients do one, then the other.
             </p>
           </FadeIn>
 
