@@ -205,6 +205,16 @@ export default function App() {
   const highlightNodes = selectedUseCase !== null ? useCases[selectedUseCase].nodes : []
 
   useEffect(() => {
+    const target = sessionStorage.getItem('scrollTarget')
+    if (target) {
+      sessionStorage.removeItem('scrollTarget')
+      setTimeout(() => {
+        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' })
+      }, 150)
+    }
+  }, [])
+
+  useEffect(() => {
     document.title = 'Solvance — AI Consulting & Implementation'
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const lenis = new Lenis({
