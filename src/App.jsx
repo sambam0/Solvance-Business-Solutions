@@ -10,7 +10,6 @@ import TerminalPane from './components/TerminalPane.jsx'
 import MeshNetworkCanvas from './components/MeshNetworkCanvas.jsx'
 import HeroRainCanvas from './components/HeroRainCanvas.jsx'
 import HeroTracesCanvas from './components/HeroTracesCanvas.jsx'
-import NeuralNetCanvas from './components/NeuralNetCanvas.jsx'
 
 const HeroBg = HeroRainCanvas
 import FAQ from './components/FAQ.jsx'
