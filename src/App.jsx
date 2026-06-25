@@ -302,7 +302,7 @@ export default function App() {
       {/* ── 2. Pain Points ── */}
       <section id="pain" ref={painRef}>
         <div className="wrap">
-          <FadeIn><h2 className="section-title">Here's what doing it<br />manually is costing you.</h2></FadeIn>
+          <FadeIn><h2 className="section-title">Here's what not using AI<br />is costing you.</h2></FadeIn>
           <FadeIn delay={0.1}>
             <p className="section-sub">
               Your revenue grows. Your operations don't keep up. Every one of these is solvable — without hiring more people.
