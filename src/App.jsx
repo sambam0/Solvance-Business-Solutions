@@ -463,7 +463,7 @@ export default function App() {
         <NeuralNetCanvas />
         <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-identity">AI Training & Teaching</div>
-          <FadeIn><h2 className="section-title">Your second brain,<br />configured in a half day.</h2></FadeIn>
+          <FadeIn><h2 className="section-title">AI training,<br />for your business.</h2></FadeIn>
           <FadeIn delay={0.1}>
             <p className="section-sub">
               Most people use Claude like a search engine — open it, ask a question, copy the
