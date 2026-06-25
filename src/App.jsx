@@ -201,7 +201,6 @@ export default function App() {
   const teamRef = useRef(null)
   const headingY = useTransform(scrollY, [0, 400], [0, prefersReduced ? 0 : -30])
   const [selectedUseCase, setSelectedUseCase] = useState(null)
-  const highlightNodes = selectedUseCase !== null ? useCases[selectedUseCase].nodes : []
 
   useEffect(() => {
     const target = sessionStorage.getItem('scrollTarget')
