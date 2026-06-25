@@ -45,12 +45,6 @@ const painPoints = [
 ]
 
 /* ── AI Systems: mesh, handoff, use cases ── */
-const NODE_LEGEND = [
-  { id: 'hub',   color: 'var(--brand)',  label: 'Mesh Hub',     desc: 'VPN routing & secure tunnels' },
-  { id: 'cloud', color: 'var(--brand-2)', label: 'Cloud Node',   desc: 'Always-on intake & ops agents' },
-  { id: 'local', color: 'var(--green)',  label: 'Private Node', desc: 'Local AI & proprietary data' },
-]
-
 const HANDOFF_STEPS = [
   { label: 'Client Request', sub: 'Inbound trigger' },
   { label: 'Intake Agent',   sub: 'Cloud Node / VPS' },
