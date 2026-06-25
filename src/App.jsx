@@ -358,6 +358,9 @@ export default function App() {
               </div>
             </div>
           </FadeIn>
+          <FadeIn>
+            <h2 className="section-title" style={{ marginBottom: '2rem' }}>Our process</h2>
+          </FadeIn>
           <FadeIn delay={0.2}>
             <div className="process-rail">
               {PROCESS_STEPS.map((s, i) => (
