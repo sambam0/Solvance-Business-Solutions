@@ -498,7 +498,7 @@ export default function App() {
               const featured = offerings.find(o => o.featured);
               return (
                 <FadeIn delay={0.05}>
-                  <SpringCard className="card" hoverY={-3} style={{ padding: '36px 32px', borderColor: 'var(--brand-2)' }}>
+                  <SpringCard className="card" hoverY={-3} style={{ padding: '36px 32px', borderColor: 'var(--brand)' }}>
                     <div className="training-hero-panel">
                       {/* Left: identity + checklist + CTA */}
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
