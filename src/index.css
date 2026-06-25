@@ -625,6 +625,45 @@ nav.top .row {
 }
 
 
+/* ── Training Stats ── */
+.training-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 2rem 0 2.5rem;
+}
+
+.training-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.stat-metric {
+  font-size: 1.5rem;
+  font-weight: 650;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--mute);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .training-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ── Training Grid ── */
 .training-grid {
   display: flex;
