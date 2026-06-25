@@ -330,7 +330,7 @@ export default function App() {
         <HeroTracesCanvas />
         <div className="wrap">
           <FadeIn>
-            <h2 className="section-title">AI agents built for<br />your operations.</h2>
+            <h2 className="section-title">AI agents built for<br />your business.</h2>
           </FadeIn>
           <FadeIn delay={0.1}>
             <p className="section-sub">
