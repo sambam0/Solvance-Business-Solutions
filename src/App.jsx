@@ -478,7 +478,7 @@ export default function App() {
 
           <div className="training-stats">
             {[
-              { metric: '5–10 hrs', label: 'reclaimed per week' },
+              { metric: '5–10 hrs', label: 'saved per week' },
               { metric: 'Half day', label: 'to get fully set up' },
               { metric: '30 days', label: 'async follow-up included' },
             ].map(({ metric, label }) => (
