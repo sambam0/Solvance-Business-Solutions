@@ -772,7 +772,7 @@ nav.top .row {
 .offer-step-num {
   font-family: 'Geist Mono', ui-monospace, monospace;
   font-size: 11px;
-  color: var(--brand-2);
+  color: var(--brand);
   line-height: 1.4;
   padding-top: 2px;
   flex-shrink: 0;
