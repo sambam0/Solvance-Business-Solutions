@@ -284,7 +284,12 @@ export default function App() {
               </a>
             </motion.div>
 
-            <motion.div className="hero-proof" {...fadeUp(0.56)}>
+            <motion.div className="hero-service-nav" {...fadeUp(0.52)}>
+              <a href="#systems" className="service-chip">AI Systems & Automation <span className="chip-arrow">↓</span></a>
+              <a href="#training" className="service-chip">AI Training & Teaching <span className="chip-arrow">↓</span></a>
+            </motion.div>
+
+            <motion.div className="hero-proof" {...fadeUp(0.62)}>
               <span>40+ AI systems shipped. 3 weeks to first result.</span>
               <span>Stack-agnostic. You own everything we build.</span>
             </motion.div>
