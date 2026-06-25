@@ -638,7 +638,7 @@ nav.top .row {
   flex-direction: column;
   gap: 6px;
   padding: 20px 22px;
-  border-radius: 12px;
+  border-radius: 20px;
   border: 1px solid var(--border);
   background: var(--bg);
 }
