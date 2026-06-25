@@ -476,6 +476,19 @@ export default function App() {
             </p>
           </FadeIn>
 
+          <div className="training-stats">
+            {[
+              { metric: '5–10 hrs', label: 'reclaimed per week' },
+              { metric: 'Half day', label: 'to get fully set up' },
+              { metric: '30 days', label: 'async follow-up included' },
+            ].map(({ metric, label }) => (
+              <SpringCard key={metric} className="training-stat offer-anim" hoverY={-2}>
+                <span className="stat-metric">{metric}</span>
+                <span className="stat-label">{label}</span>
+              </SpringCard>
+            ))}
+          </div>
+
           <div className="training-grid">
             {/* Featured hero panel — Second Brain Setup */}
             {(() => {
