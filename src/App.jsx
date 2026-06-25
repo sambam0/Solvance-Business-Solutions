@@ -381,10 +381,6 @@ export default function App() {
           </FadeIn>
         </div>
 
-        <div className="cb-canvas-full">
-          <MeshNetworkCanvas highlightNodes={highlightNodes} />
-        </div>
-
         <div className="wrap">
           {/* Node legend */}
           <div className="cb-node-legend">
