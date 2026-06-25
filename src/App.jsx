@@ -376,17 +376,6 @@ export default function App() {
         </div>
 
         <div className="wrap">
-          {/* Node legend */}
-          <div className="cb-node-legend">
-            {NODE_LEGEND.map(n => (
-              <div key={n.id} className="cb-node-legend-item">
-                <span className="cb-node-dot" style={{ background: n.color, boxShadow: `0 0 8px color-mix(in srgb, ${n.color} 40%, transparent)` }} />
-                <span className="cb-node-name" style={{ color: n.color }}>{n.label}</span>
-                <span className="cb-node-desc">{n.desc}</span>
-              </div>
-            ))}
-          </div>
-
           {/* Agent Handoff Flow */}
           <FadeIn>
             <div className="cb-handoff">
