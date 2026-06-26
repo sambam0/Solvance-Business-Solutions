@@ -290,8 +290,7 @@ export default function App() {
             </motion.div>
 
             <motion.div className="hero-proof" {...fadeUp(0.62)}>
-              <span>40+ AI systems shipped. 3 weeks to first result.</span>
-              <span>Stack-agnostic. You own everything we build.</span>
+              <span>You own everything we build.</span>
             </motion.div>
           </div>
 
